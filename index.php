@@ -50,11 +50,11 @@
     <section class="content">
       <div class="container-fluid">
          <?php 
-            $page = isset($_GET['page']) ? $_GET['page'] : 'home';
-            if(!file_exists("admin/home.php")){
+            // $page = isset($_GET['page']) ? $_GET['page'] : 'home';
+            if(!file_exists("admin/{$_GET['page']}.php")){
                 include '404.html';
             }else{
-            include 'admin/home.php';
+            include "admin/{$_GET['page']}.php";
 
             }
           ?>

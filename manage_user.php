@@ -4,7 +4,7 @@ session_start();
 if(isset($_GET['id'])){
 $type = array("","users","faculty_list","student_list");
 $user = $conn->query("SELECT * FROM {$type[$_SESSION['login_type']]} where id =".$_GET['id']);
-foreach($user->fetch_array() as $k =>$v){
+foreach($user->fetch(PDO::FETCH_ASSOC) as $k =>$v){
 	$meta[$k] = $v;
 }
 }

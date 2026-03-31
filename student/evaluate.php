@@ -28,7 +28,7 @@ $restriction = $conn->query("SELECT r.id,s.id as sid,f.id as fid,concat(f.firstn
 		<div class="col-md-3">
 			<div class="list-group">
 				<?php 
-				while($row=$restriction->fetch_array()):
+				while($row=$restriction->fetch(PDO::FETCH_ASSOC)):
 					if(empty($rid)){
 							$rid = $row['id'];
 							$faculty_id = $row['fid'];

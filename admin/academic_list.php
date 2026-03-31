@@ -30,7 +30,7 @@
 					<?php
 					$i = 1;
 					$qry = $conn->query("SELECT * FROM academic_list order by abs(year) desc,abs(semester) desc ");
-					while($row= $qry->fetch_assoc()):
+					while($row= $qry->fetch(PDO::FETCH_ASSOC)):
 					?>
 					<tr>
 						<th class="text-center"><?php echo $i++ ?></th>

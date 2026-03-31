@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
 <?php 
 session_start();
 include('./db_connect.php');
@@ -13,11 +11,14 @@ include('./db_connect.php');
   // }
   ob_end_flush();
 ?>
+
 <?php 
 if(isset($_SESSION['login_id']))
 header("location:index.php?page=home");
 
 ?>
+<!DOCTYPE html>
+<html lang="en">
 <?php include 'header.php' ?>
 <body class="hold-transition login-page bg-black">
   <h2><b><?php echo $_SESSION['system']['name'] ?> - Admin</b></h2>

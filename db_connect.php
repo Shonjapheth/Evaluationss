@@ -1,3 +1,14 @@
-<?php 
+<?php
 
-$conn= new mysqli('localhost','root','','evaluation_db')or die("Could not connect to mysql".mysqli_error($con));
+try {
+    $conn = new PDO(
+        "pgsql:host=YOUR_HOST;port=5432;dbname=evaluation_db_m4cd",
+        "evaluation_db_m4cd_user",
+        "JNpe5tSt0jcPcCri0IyCnZeOB1CDZDKC"
+    );
+
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+} catch (PDOException $e) {
+    die("Connection failed: " . $e->getMessage());
+}

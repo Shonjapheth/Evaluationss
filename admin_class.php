@@ -17,24 +17,33 @@ class Action
 		ob_end_flush();
 	}
 
-	function login()
+	function login($conn)
 	{
+		session_start();
 		extract($_POST);
 		$type = array("", "users", "faculty_list", "student_list");
 		$type2 = array("", "admin", "faculty", "student");
-		$qry = $conn->query("SELECT *,concat(firstname,' ',lastname) as name FROM users where email = '" . $email . "' and password = '" . md5($password) . "'  ");
-		if ($qry->num_rows > 0) {
-			foreach ($qry->fetch(PDO::FETCH_ASSOC) as $key => $value) {
-				if ($key != 'password' && !is_numeric($key))
+
+		$stmt = $conn->prepare("SELECT *, CONCAT(firstname,' ',lastname) AS name FROM {$type[$login]} WHERE email = :email AND password = :password");
+		$stmt->execute([
+			':email' => $email,
+			':password' => md5($password)
+		]);
+
+		$row = $stmt->fetch(PDO::FETCH_ASSOC);
+		if ($row) {
+			foreach ($row as $key => $value) {
+				if ($key != 'password')
 					$_SESSION['login_' . $key] = $value;
 			}
 			$_SESSION['login_type'] = $login;
 			$_SESSION['login_view_folder'] = $type2[$login] . '/';
-			$academic = $conn->query("SELECT * FROM academic_list where is_default = 1 ");
-			if ($academic->num_rows > 0) {
-				foreach ($academic->fetch(PDO::FETCH_ASSOC) as $k => $v) {
-					if (!is_numeric($k))
-						$_SESSION['academic'][$k] = $v;
+
+			$stmt2 = $conn->query("SELECT * FROM academic_list WHERE is_default = 1");
+			$academic = $stmt2->fetch(PDO::FETCH_ASSOC);
+			if ($academic) {
+				foreach ($academic as $k => $v) {
+					$_SESSION['academic'][$k] = $v;
 				}
 			}
 			return 1;

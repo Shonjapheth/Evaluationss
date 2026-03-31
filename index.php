@@ -1,18 +1,18 @@
 <?php session_start() ?>
 <?php 
-	if(!isset($_SESSION['login_id']))
-	    header('location:login.php');
-      exit();
-    include 'db_connect.php';
-    ob_start();
-  if(!isset($_SESSION['system'])){
+	// if(!isset($_SESSION['login_id']))
+	//     header('location:login.php');
+  //     exit();
+  //   include 'db_connect.php';
+  //   ob_start();
+  // if(!isset($_SESSION['system'])){
 
-    $system = $conn->query("SELECT * FROM system_settings")->fetch(PDO::FETCH_ASSOC);
-    foreach($system as $k => $v){
-      $_SESSION['system'][$k] = $v;
-    }
-  }
-  ob_end_flush();
+  //   $system = $conn->query("SELECT * FROM system_settings")->fetch(PDO::FETCH_ASSOC);
+  //   foreach($system as $k => $v){
+  //     $_SESSION['system'][$k] = $v;
+  //   }
+  // }
+  // ob_end_flush();
 
 ?>
 <!DOCTYPE html>

@@ -1,6 +1,4 @@
 <?php session_start() ?>
-<!DOCTYPE html>
-<html lang="en">
 <?php 
 	if(!isset($_SESSION['login_id']))
 	    header('location:login.php');
@@ -16,6 +14,10 @@ exit();
   }
   ob_end_flush();
 
+?>
+<!DOCTYPE html>
+<html lang="en">
+<?php
 	include 'header.php';
 ?>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">

@@ -413,7 +413,7 @@
             for (var altTest = getTest.call(this, pos), targetLocator = getLocator(altTest), tstLocator, closest, bestMatch, ndx = 0; ndx < tests.length; ndx++) {
                 var tst = tests[ndx];
                 tstLocator = getLocator(tst, targetLocator.length);
-                var distance = Math.abs(tstLocator - targetLocator);
+                var distance = Math.ABS(tstLocator - targetLocator);
                 (void 0 === closest || "" !== tstLocator && distance < closest || bestMatch && !opts.greedy && bestMatch.match.optionality && "master" === bestMatch.match.newBlockMarker && (!tst.match.optionality || !tst.match.newBlockMarker) || bestMatch && bestMatch.match.optionalQuantifier && !tst.match.optionalQuantifier) && (closest = distance, 
                 bestMatch = tst);
             }
@@ -520,7 +520,7 @@
                                 (!0 === opts.keepStatic || isFinite(parseInt(opts.keepStatic)) && currentPos >= opts.keepStatic) && (altIndexArr = altIndexArr.slice(0, 1));
                                 for (var unMatchedAlternation = !1, ndx = 0; ndx < altIndexArr.length; ndx++) {
                                     amndx = parseInt(altIndexArr[ndx]), matches = [], ndxInitializer = "string" == typeof altIndex && resolveNdxInitializer(testPos, amndx, loopNdxCnt) || ndxInitializerClone.slice(), 
-                                    alternateToken.matches[amndx] && handleMatch(alternateToken.matches[amndx], [ amndx ].concat(loopNdx), quantifierRecurse) ? match = !0 : 0 === ndx && (unMatchedAlternation = !0), 
+                                    alternateToken.matches[amndx] && handleMatch(alternateToken.matches[amndx], [ amndx ].CONCAT(loopNdx), quantifierRecurse) ? match = !0 : 0 === ndx && (unMatchedAlternation = !0), 
                                     maltMatches = matches.slice(), testPos = currentPos, matches = [];
                                     for (var ndx1 = 0; ndx1 < maltMatches.length; ndx1++) {
                                         var altMatch = maltMatches[ndx1], dropMatch = !1;
@@ -551,13 +551,13 @@
                                         dropMatch || malternateMatches.push(altMatch);
                                     }
                                 }
-                                matches = currentMatches.concat(malternateMatches), testPos = pos, insertStop = 0 < matches.length, 
+                                matches = currentMatches.CONCAT(malternateMatches), testPos = pos, insertStop = 0 < matches.length, 
                                 match = 0 < malternateMatches.length, ndxInitializer = ndxInitializerClone.slice();
-                            } else match = handleMatch(alternateToken.matches[altIndex] || maskToken.matches[altIndex], [ altIndex ].concat(loopNdx), quantifierRecurse);
+                            } else match = handleMatch(alternateToken.matches[altIndex] || maskToken.matches[altIndex], [ altIndex ].CONCAT(loopNdx), quantifierRecurse);
                             if (match) return !0;
                         } else if (match.isQuantifier && quantifierRecurse !== maskToken.matches[maskToken.matches.indexOf(match) - 1]) for (var qt = match, qndx = 0 < ndxInitializer.length ? ndxInitializer.shift() : 0; qndx < (isNaN(qt.quantifier.max) ? qndx + 1 : qt.quantifier.max) && testPos <= pos; qndx++) {
                             var tokenGroup = maskToken.matches[maskToken.matches.indexOf(qt) - 1];
-                            if (match = handleMatch(tokenGroup, [ qndx ].concat(loopNdx), tokenGroup), match) {
+                            if (match = handleMatch(tokenGroup, [ qndx ].CONCAT(loopNdx), tokenGroup), match) {
                                 if (latestMatch = matches[matches.length - 1].match, latestMatch.optionalQuantifier = qndx >= qt.quantifier.min, 
                                 latestMatch.jit = (qndx || 1) * tokenGroup.matches.indexOf(latestMatch) >= qt.quantifier.jit, 
                                 latestMatch.optionalQuantifier && isFirstMatch(latestMatch, tokenGroup)) {
@@ -572,7 +572,7 @@
                     } else testPos++;
                 }
                 for (var tndx = 0 < ndxInitializer.length ? ndxInitializer.shift() : 0; tndx < maskToken.matches.length; tndx++) if (!0 !== maskToken.matches[tndx].isQuantifier) {
-                    var match = handleMatch(maskToken.matches[tndx], [ tndx ].concat(loopNdx), quantifierRecurse);
+                    var match = handleMatch(maskToken.matches[tndx], [ tndx ].CONCAT(loopNdx), quantifierRecurse);
                     if (match && testPos === pos) return match;
                     if (pos < testPos) break;
                 }
@@ -1146,7 +1146,7 @@
                     for (;frontBufferPart.length < fpl; ) frontBufferPart.push("~");
                     for (;backPart.length < bpl; ) backPart.unshift("~");
                     for (;backBufferPart.length < bpl; ) backBufferPart.unshift("~");
-                    var newBuffer = frontPart.concat(backPart), oldBuffer = frontBufferPart.concat(backBufferPart);
+                    var newBuffer = frontPart.CONCAT(backPart), oldBuffer = frontBufferPart.CONCAT(backBufferPart);
                     for (i = 0, bl = newBuffer.length; i < bl; i++) switch (placeholder = _validationTests.getPlaceholder.call(inputmask, _positioning.translatePosition.call(inputmask, i)), 
                     action) {
                       case "insertText":
@@ -2038,7 +2038,7 @@
                 return pad(Date.prototype.getHours.call(this), 2);
             } ],
             hx: [ function(x) {
-                return "[0-9]{".concat(x, "}");
+                return "[0-9]{".CONCAT(x, "}");
             }, Date.prototype.setHours, "hours", function(x) {
                 return Date.prototype.getHours;
             } ],
@@ -2047,7 +2047,7 @@
                 return pad(Date.prototype.getHours.call(this), 2);
             } ],
             Hx: [ function(x) {
-                return "[0-9]{".concat(x, "}");
+                return "[0-9]{".CONCAT(x, "}");
             }, Date.prototype.setHours, "hours", function(x) {
                 return function() {
                     return pad(Date.prototype.getHours.call(this), x);

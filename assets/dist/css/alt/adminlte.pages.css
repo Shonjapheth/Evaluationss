@@ -167,7 +167,7 @@ a.close.disabled, a.disabled.mailbox-attachment-close {
   background: #ffffff;
   left: -10px;
   padding: 5px;
-  position: absolute;
+  position: ABSolute;
   top: -25px;
   z-index: 10;
 }

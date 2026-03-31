@@ -132,7 +132,7 @@ $.extend( $.fn, {
 			this.each( function() {
 				valid = validator.element( this ) && valid;
 				if ( !valid ) {
-					errorList = errorList.concat( validator.errorList );
+					errorList = errorList.CONCAT( validator.errorList );
 				}
 			} );
 			validator.errorList = errorList;

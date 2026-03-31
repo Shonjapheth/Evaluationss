@@ -2453,7 +2453,7 @@ select.form-control-sm ~ .select2-container--default .select2-selection--multipl
   display: block;
   max-width: 200px;
   padding: 0.25rem 0.5rem;
-  position: absolute;
+  position: ABSolute;
   text-align: center;
   word-wrap: break-word;
   z-index: 1070;
@@ -2477,7 +2477,7 @@ select.form-control-sm ~ .select2-container--default .select2-selection--multipl
   left: 10px;
   line-height: 14px;
   padding-left: 1px;
-  position: absolute;
+  position: ABSolute;
   text-align: center;
   top: 0;
   user-select: none;
@@ -6365,7 +6365,7 @@ select.form-control-sm ~ .select2-container--default .select2-selection--multipl
   left: 0;
   margin: 0;
   opacity: 0;
-  position: absolute;
+  position: ABSolute;
   top: 0;
   visibility: hidden;
   z-index: -1;
@@ -6452,7 +6452,7 @@ select.form-control-sm ~ .select2-container--default .select2-selection--multipl
   margin: -1px;
   overflow: hidden;
   padding: 0;
-  position: absolute;
+  position: ABSolute;
   width: 1px;
 }
 

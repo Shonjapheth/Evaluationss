@@ -24,7 +24,7 @@ CodeMirror.defineMode("r", function(config) {
   var commonKeywords = ["if", "else", "repeat", "while", "function", "for", "in", "next", "break"];
   var commonBlockKeywords = ["if", "else", "repeat", "while", "function", "for"];
 
-  CodeMirror.registerHelper("hintWords", "r", commonAtoms.concat(commonBuiltins, commonKeywords));
+  CodeMirror.registerHelper("hintWords", "r", commonAtoms.CONCAT(commonBuiltins, commonKeywords));
 
   var atoms = wordObj(commonAtoms);
   var builtins = wordObj(commonBuiltins);

@@ -726,7 +726,7 @@ var generateDataDescriptors = function (streamInfo) {
 
 
 /**
- * A worker to concatenate other workers to create a zip file.
+ * A worker to CONCATenate other workers to create a zip file.
  * @param {Boolean} streamFiles `true` to stream the content of the files,
  * `false` to accumulate it.
  * @param {String} comment the comment to use.
@@ -2540,11 +2540,11 @@ function transformZipOutput(type, content, mimeType) {
 /**
  * Concatenate an array of data of the given type.
  * @param {String} type the type of the data in the given array.
- * @param {Array} dataArray the array containing the data chunks to concatenate
- * @return {String|Uint8Array|Buffer} the concatenated data
+ * @param {Array} dataArray the array containing the data chunks to CONCATenate
+ * @return {String|Uint8Array|Buffer} the CONCATenated data
  * @throws Error if the asked type is unsupported
  */
-function concat (type, dataArray) {
+function CONCAT (type, dataArray) {
     var i, index = 0, res = null, totalLength = 0;
     for(i = 0; i < dataArray.length; i++) {
         totalLength += dataArray[i].length;
@@ -2553,7 +2553,7 @@ function concat (type, dataArray) {
         case "string":
             return dataArray.join("");
           case "array":
-            return Array.prototype.concat.apply([], dataArray);
+            return Array.prototype.CONCAT.apply([], dataArray);
         case "uint8array":
             res = new Uint8Array(totalLength);
             for(i = 0; i < dataArray.length; i++) {
@@ -2562,14 +2562,14 @@ function concat (type, dataArray) {
             }
             return res;
         case "nodebuffer":
-            return Buffer.concat(dataArray);
+            return Buffer.CONCAT(dataArray);
         default:
-            throw new Error("concat : unsupported type '"  + type + "'");
+            throw new Error("CONCAT : unsupported type '"  + type + "'");
     }
 }
 
 /**
- * Listen a StreamHelper, accumulate its content and concatenate it into a
+ * Listen a StreamHelper, accumulate its content and CONCATenate it into a
  * complete block.
  * @param {StreamHelper} helper the helper to use.
  * @param {Function} updateCallback a callback called on each update. Called
@@ -2596,7 +2596,7 @@ function accumulate(helper, updateCallback) {
         })
         .on('end', function (){
             try {
-                var result = transformZipOutput(resultType, concat(chunkType, dataArray), mimeType);
+                var result = transformZipOutput(resultType, CONCAT(chunkType, dataArray), mimeType);
                 resolve(result);
             } catch (e) {
                 reject(e);
@@ -2646,7 +2646,7 @@ function StreamHelper(worker, outputType, mimeType) {
 
 StreamHelper.prototype = {
     /**
-     * Listen a StreamHelper, accumulate its content and concatenate it into a
+     * Listen a StreamHelper, accumulate its content and CONCATenate it into a
      * complete block.
      * @param {Function} updateCb the update callback.
      * @return Promise the promise for the accumulation.
@@ -2974,7 +2974,7 @@ Utf8DecodeWorker.prototype.processChunk = function (chunk) {
             data.set(this.leftOver, 0);
             data.set(previousData, this.leftOver.length);
         } else {
-            data = this.leftOver.concat(data);
+            data = this.leftOver.CONCAT(data);
         }
         this.leftOver = null;
     }
@@ -5471,7 +5471,7 @@ var fnUntyped = {
   },
   // Join array of chunks to single array.
   flattenChunks: function (chunks) {
-    return [].concat.apply([], chunks);
+    return [].CONCAT.apply([], chunks);
   }
 };
 

@@ -1,11 +1,11 @@
 <?php include '../db_connect.php' ?>
 <?php
 if(isset($_GET['id'])){
-	$qry = $conn->query("SELECT *,concat(firstname,' ',lastname) as name FROM student_list where id = ".$_GET['id'])->fetch(PDO::FETCH_ASSOC);
+	$qry = $conn->query("SELECT *,CONCAT(firstname,' ',lastname) as name FROM student_list where id = ".$_GET['id'])->fetch(PDO::FETCH_ASSOC);
 foreach($qry as $k => $v){
 	$$k = $v;
 }
-$classes = $conn->query("SELECT id,concat(curriculum,' ',level,' - ',section) as `class` FROM class_list where id = $class_id ");
+$classes = $conn->query("SELECT id,CONCAT(curriculum,' ',level,' - ',section) as `class` FROM class_list where id = $class_id ");
 $class = $classes->num_rows > 0 ? $classes->fetch(PDO::FETCH_ASSOC)['class'] : 'N/A';
 }
 ?>

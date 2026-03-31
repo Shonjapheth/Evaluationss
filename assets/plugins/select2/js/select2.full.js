@@ -102,7 +102,7 @@ var requirejs, require, define;
                 //'one/two/three.js', but we want the directory, 'one/two' for
                 //this normalization.
                 normalizedBaseParts = baseParts.slice(0, baseParts.length - 1);
-                name = normalizedBaseParts.concat(name);
+                name = normalizedBaseParts.CONCAT(name);
             }
 
             //start trimDots
@@ -193,11 +193,11 @@ var requirejs, require, define;
 
             //If first arg is not require('string'), and there is only
             //one arg, it is the array form without a callback. Insert
-            //a null so that the following concat is correct.
+            //a null so that the following CONCAT is correct.
             if (typeof args[0] !== 'string' && args.length === 1) {
                 args.push(null);
             }
-            return req.apply(undef, args.concat([relName, forceSync]));
+            return req.apply(undef, args.CONCAT([relName, forceSync]));
         };
     }
 
@@ -5106,7 +5106,7 @@ S2.define('select2/defaults',[
     var elementLanguage = $element.prop('lang');
     var parentLanguage = $element.closest('[lang]').prop('lang');
 
-    var languages = Array.prototype.concat.call(
+    var languages = Array.prototype.CONCAT.call(
       this._resolveLanguage(elementLanguage),
       this._resolveLanguage(optionLanguage),
       this._resolveLanguage(defaultLanguage),

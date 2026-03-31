@@ -1344,7 +1344,7 @@ var windowIsDefined = (typeof window === "undefined" ? "undefined" : _typeof(win
 
 							extraMargin = this.tickLabelContainer.offsetHeight;
 						} else {
-							/* Chidren are position absolute, calculate height by finding the max offsetHeight of a child */
+							/* Chidren are position ABSolute, calculate height by finding the max offsetHeight of a child */
 							for (i = 0; i < this.tickLabelContainer.childNodes.length; i++) {
 								if (this.tickLabelContainer.childNodes[i].offsetHeight > extraMargin) {
 									extraMargin = this.tickLabelContainer.childNodes[i].offsetHeight;
@@ -1381,7 +1381,7 @@ var windowIsDefined = (typeof window === "undefined" ? "undefined" : _typeof(win
 							this.tickLabels[i].style[styleSize] = labelSize + "px";
 
 							if (this.options.orientation !== 'vertical' && this.options.ticks_positions[i] !== undefined) {
-								this.tickLabels[i].style.position = 'absolute';
+								this.tickLabels[i].style.position = 'ABSolute';
 								this.tickLabels[i].style[this.stylePos] = percentage + "%";
 								this.tickLabels[i].style[styleMargin] = -labelSize / 2 + 'px';
 							} else if (this.options.orientation === 'vertical') {
@@ -1442,10 +1442,10 @@ var windowIsDefined = (typeof window === "undefined" ? "undefined" : _typeof(win
 					this.trackLow.style.height = Math.min(positionPercentages[0], positionPercentages[1]) + '%';
 
 					this.trackSelection.style.top = Math.min(positionPercentages[0], positionPercentages[1]) + '%';
-					this.trackSelection.style.height = Math.abs(positionPercentages[0] - positionPercentages[1]) + '%';
+					this.trackSelection.style.height = Math.ABS(positionPercentages[0] - positionPercentages[1]) + '%';
 
 					this.trackHigh.style.bottom = '0';
-					this.trackHigh.style.height = 100 - Math.min(positionPercentages[0], positionPercentages[1]) - Math.abs(positionPercentages[0] - positionPercentages[1]) + '%';
+					this.trackHigh.style.height = 100 - Math.min(positionPercentages[0], positionPercentages[1]) - Math.ABS(positionPercentages[0] - positionPercentages[1]) + '%';
 				} else {
 					if (this.stylePos === 'right') {
 						this.trackLow.style.right = '0';
@@ -1459,14 +1459,14 @@ var windowIsDefined = (typeof window === "undefined" ? "undefined" : _typeof(win
 					} else {
 						this.trackSelection.style.left = Math.min(positionPercentages[0], positionPercentages[1]) + '%';
 					}
-					this.trackSelection.style.width = Math.abs(positionPercentages[0] - positionPercentages[1]) + '%';
+					this.trackSelection.style.width = Math.ABS(positionPercentages[0] - positionPercentages[1]) + '%';
 
 					if (this.stylePos === 'right') {
 						this.trackHigh.style.left = '0';
 					} else {
 						this.trackHigh.style.right = '0';
 					}
-					this.trackHigh.style.width = 100 - Math.min(positionPercentages[0], positionPercentages[1]) - Math.abs(positionPercentages[0] - positionPercentages[1]) + '%';
+					this.trackHigh.style.width = 100 - Math.min(positionPercentages[0], positionPercentages[1]) - Math.ABS(positionPercentages[0] - positionPercentages[1]) + '%';
 
 					var offset_min = this.tooltip_min.getBoundingClientRect();
 					var offset_max = this.tooltip_max.getBoundingClientRect();
@@ -1540,8 +1540,8 @@ var windowIsDefined = (typeof window === "undefined" ? "undefined" : _typeof(win
 				var percentage = this._getPercentage(ev);
 
 				if (this.options.range) {
-					var diff1 = Math.abs(this._state.percentage[0] - percentage);
-					var diff2 = Math.abs(this._state.percentage[1] - percentage);
+					var diff1 = Math.ABS(this._state.percentage[0] - percentage);
+					var diff2 = Math.ABS(this._state.percentage[1] - percentage);
 					this._state.dragged = diff1 < diff2 ? 0 : 1;
 					this._adjustPercentageForRangeSliders(percentage);
 				} else {
@@ -1804,7 +1804,7 @@ var windowIsDefined = (typeof window === "undefined" ? "undefined" : _typeof(win
 			_snapToClosestTick: function _snapToClosestTick(val) {
 				var min = [val, Infinity];
 				for (var i = 0; i < this.options.ticks.length; i++) {
-					var diff = Math.abs(this.options.ticks[i] - val);
+					var diff = Math.ABS(this.options.ticks[i] - val);
 					if (diff <= min[1]) {
 						min = [this.options.ticks[i], diff];
 					}
@@ -2013,10 +2013,10 @@ var windowIsDefined = (typeof window === "undefined" ? "undefined" : _typeof(win
 				}
 			},
 			_getClosestTickIndex: function _getClosestTickIndex(val) {
-				var difference = Math.abs(val - this.options.ticks[0]);
+				var difference = Math.ABS(val - this.options.ticks[0]);
 				var index = 0;
 				for (var i = 0; i < this.options.ticks.length; ++i) {
-					var d = Math.abs(val - this.options.ticks[i]);
+					var d = Math.ABS(val - this.options.ticks[i]);
 					if (d < difference) {
 						difference = d;
 						index = i;

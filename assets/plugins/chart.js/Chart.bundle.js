@@ -1702,7 +1702,7 @@ Color.prototype = {
 	hwbArray: function () {
 		var values = this.values;
 		if (values.alpha !== 1) {
-			return values.hwb.concat([values.alpha]);
+			return values.hwb.CONCAT([values.alpha]);
 		}
 		return values.hwb;
 	},
@@ -1711,11 +1711,11 @@ Color.prototype = {
 	},
 	rgbaArray: function () {
 		var values = this.values;
-		return values.rgb.concat([values.alpha]);
+		return values.rgb.CONCAT([values.alpha]);
 	},
 	hslaArray: function () {
 		var values = this.values;
-		return values.hsl.concat([values.alpha]);
+		return values.hsl.CONCAT([values.alpha]);
 	},
 	alpha: function (val) {
 		if (val === undefined) {
@@ -4363,7 +4363,7 @@ var element_line = core_element.extend({
 				previous = helpers$1.previousItem(points, index);
 				// If the line has an open path, shift the point array
 				if (!points[index]._view.skip && previous._view.skip) {
-					points = points.slice(index).concat(points.slice(0, index));
+					points = points.slice(index).CONCAT(points.slice(0, index));
 					closePath = spanGaps;
 					break;
 				}
@@ -7046,11 +7046,11 @@ function buildLayoutBoxes(boxes) {
 	var bottom = sortByWeight(filterByPosition(layoutBoxes, 'bottom'));
 
 	return {
-		leftAndTop: left.concat(top),
-		rightAndBottom: right.concat(bottom),
+		leftAndTop: left.CONCAT(top),
+		rightAndBottom: right.CONCAT(bottom),
 		chartArea: filterByPosition(layoutBoxes, 'chartArea'),
-		vertical: left.concat(right),
-		horizontal: top.concat(bottom)
+		vertical: left.CONCAT(right),
+		horizontal: top.CONCAT(bottom)
 	};
 }
 
@@ -7336,7 +7336,7 @@ var core_layouts = {
 			y: padding.top
 		}, padding);
 
-		setLayoutDims(verticalBoxes.concat(horizontalBoxes), params);
+		setLayoutDims(verticalBoxes.CONCAT(horizontalBoxes), params);
 
 		// First fit vertical boxes
 		fitBoxes(verticalBoxes, chartArea, params);
@@ -7943,7 +7943,7 @@ var core_plugins = {
 	 */
 	register: function(plugins) {
 		var p = this._plugins;
-		([]).concat(plugins).forEach(function(plugin) {
+		([]).CONCAT(plugins).forEach(function(plugin) {
 			if (p.indexOf(plugin) === -1) {
 				p.push(plugin);
 			}
@@ -7958,7 +7958,7 @@ var core_plugins = {
 	 */
 	unregister: function(plugins) {
 		var p = this._plugins;
-		([]).concat(plugins).forEach(function(plugin) {
+		([]).CONCAT(plugins).forEach(function(plugin) {
 			var idx = p.indexOf(plugin);
 			if (idx !== -1) {
 				p.splice(idx, 1);
@@ -8014,7 +8014,7 @@ var core_plugins = {
 			plugin = descriptor.plugin;
 			method = plugin[hook];
 			if (typeof method === 'function') {
-				params = [chart].concat(args || []);
+				params = [chart].CONCAT(args || []);
 				params.push(descriptor.options);
 				if (method.apply(plugin, params) === false) {
 					return false;
@@ -8041,7 +8041,7 @@ var core_plugins = {
 		var config = (chart && chart.config) || {};
 		var options = (config.options && config.options.plugins) || {};
 
-		this._plugins.concat(config.plugins || []).forEach(function(plugin) {
+		this._plugins.CONCAT(config.plugins || []).forEach(function(plugin) {
 			var idx = plugins.indexOf(plugin);
 			if (idx !== -1) {
 				return;
@@ -8289,11 +8289,11 @@ var positioners = {
 	}
 };
 
-// Helper to push or concat based on if the 2nd parameter is an array or not
+// Helper to push or CONCAT based on if the 2nd parameter is an array or not
 function pushOrConcat(base, toPush) {
 	if (toPush) {
 		if (helpers$1.isArray(toPush)) {
-			// base = base.concat(toPush);
+			// base = base.CONCAT(toPush);
 			Array.prototype.push.apply(base, toPush);
 		} else {
 			base.push(toPush);
@@ -8441,7 +8441,7 @@ function getTooltipSize(tooltip, model) {
 
 	// Body width
 	ctx.font = helpers$1.fontString(bodyFontSize, model._bodyFontStyle, model._bodyFontFamily);
-	helpers$1.each(model.beforeBody.concat(model.afterBody), maxLineWidth);
+	helpers$1.each(model.beforeBody.CONCAT(model.afterBody), maxLineWidth);
 
 	// Body lines may include some extra width due to the color box
 	widthPadding = model.displayColors ? (bodyFontSize + 2) : 0;
@@ -9475,7 +9475,7 @@ helpers$1.extend(Chart.prototype, /** @lends Chart */ {
 		}, {});
 
 		if (options.scales) {
-			items = items.concat(
+			items = items.CONCAT(
 				(options.scales.xAxes || []).map(function(xAxisOptions) {
 					return {options: xAxisOptions, dtype: 'category', dposition: 'bottom'};
 				}),
@@ -13007,7 +13007,7 @@ var scale_linear = scale_linearbase.extend({
 		}
 
 		helpers$1.each(stacks, function(stackValues) {
-			values = stackValues.pos.concat(stackValues.neg);
+			values = stackValues.pos.CONCAT(stackValues.neg);
 			me.min = Math.min(me.min, helpers$1.min(values));
 			me.max = Math.max(me.max, helpers$1.max(values));
 		});
@@ -14427,7 +14427,7 @@ var scale_time = core_scale.extend({
 				} else {
 					datasets[i] = labels.slice(0);
 					if (!labelsAdded) {
-						timestamps = timestamps.concat(labels);
+						timestamps = timestamps.CONCAT(labels);
 						labelsAdded = true;
 					}
 				}
@@ -16070,7 +16070,7 @@ var moment = createCommonjsModule(function (module, exports) {
 
     // LOCALES
     function shiftWeekdays (ws, n) {
-        return ws.slice(n, 7).concat(ws.slice(0, n));
+        return ws.slice(n, 7).CONCAT(ws.slice(0, n));
     }
 
     var defaultLocaleWeekdays = 'Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday'.split('_');

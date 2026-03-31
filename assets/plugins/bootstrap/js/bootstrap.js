@@ -777,13 +777,13 @@
     };
 
     _proto._handleSwipe = function _handleSwipe() {
-      var absDeltax = Math.abs(this.touchDeltaX);
+      var ABSDeltax = Math.ABS(this.touchDeltaX);
 
-      if (absDeltax <= SWIPE_THRESHOLD) {
+      if (ABSDeltax <= SWIPE_THRESHOLD) {
         return;
       }
 
-      var direction = absDeltax / this.touchDeltaX;
+      var direction = ABSDeltax / this.touchDeltaX;
       this.touchDeltaX = 0; // swipe left
 
       if (direction > 0) {
@@ -2746,7 +2746,7 @@
       }
 
       var attributeList = [].slice.call(el.attributes);
-      var whitelistedAttributes = [].concat(whiteList['*'] || [], whiteList[elName] || []);
+      var whitelistedAttributes = [].CONCAT(whiteList['*'] || [], whiteList[elName] || []);
       attributeList.forEach(function (attr) {
         if (!allowedAttribute(attr, whitelistedAttributes)) {
           el.removeAttribute(attr.nodeName);

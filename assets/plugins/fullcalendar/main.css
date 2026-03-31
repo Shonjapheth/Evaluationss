@@ -59,8 +59,8 @@
     border: 1px solid #ddd;
     border: 1px solid var(--fc-border-color, #ddd);
   }
-/* for FF, which doesn't expand a 100% div within a table cell. use absolute positioning */
-/* inner-wrappers are responsible for being absolute */
+/* for FF, which doesn't expand a 100% div within a table cell. use ABSolute positioning */
+/* inner-wrappers are responsible for being ABSolute */
 /* TODO: best place for this? */
 .fc-liquid-hack td,
   .fc-liquid-hack th {
@@ -306,13 +306,13 @@ When it's NOT activated, the fc-button classes won't even be in the DOM.
   }
 .fc .fc-scroller {
     -webkit-overflow-scrolling: touch;
-    position: relative; /* for abs-positioned elements within */
+    position: relative; /* for ABS-positioned elements within */
   }
 .fc .fc-scroller-liquid {
     height: 100%;
   }
-.fc .fc-scroller-liquid-absolute {
-    position: absolute;
+.fc .fc-scroller-liquid-ABSolute {
+    position: ABSolute;
     top: 0;
     right: 0;
     left: 0;
@@ -424,7 +424,7 @@ When it's NOT activated, the fc-button classes won't even be in the DOM.
 
 }
 .fc .fc-view-harness-active > .fc-view {
-    position: absolute;
+    position: ABSolute;
     top: 0;
     right: 0;
     bottom: 0;
@@ -437,8 +437,8 @@ When it's NOT activated, the fc-button classes won't even be in the DOM.
 .fc .fc-bg-event,
   .fc .fc-non-business,
   .fc .fc-highlight {
-    /* will always have a harness with position:relative/absolute, so absolutely expand */
-    position: absolute;
+    /* will always have a harness with position:relative/ABSolute, so ABSolutely expand */
+    position: ABSolute;
     top: 0;
     left: 0;
     right: 0;
@@ -499,7 +499,7 @@ a.fc-event:hover {
 /* (subclasses should hone positioning for touch and non-touch) */
 .fc-event .fc-event-resizer {
     display: none;
-    position: absolute;
+    position: ABSolute;
     z-index: 4;
   }
 .fc-event:hover, /* MOUSE */
@@ -528,7 +528,7 @@ a.fc-event:hover {
   }
 .fc-event-selected .fc-event-resizer:before {
       content: '';
-      position: absolute;
+      position: ABSolute;
       top: -20px;
       left: -20px;
       right: -20px;
@@ -544,7 +544,7 @@ a.fc-event:hover {
 }
 .fc-event-selected:before {
     content: "";
-    position: absolute;
+    position: ABSolute;
     z-index: 3;
     top: 0;
     left: 0;
@@ -560,7 +560,7 @@ a.fc-event:hover {
     content: "";
     background: rgba(0, 0, 0, 0.25);
     background: var(--fc-event-selected-overlay-color, rgba(0, 0, 0, 0.25));
-    position: absolute;
+    position: ABSolute;
     z-index: 1;
 
     /* assume there's a border on all sides. overcome it. */
@@ -755,12 +755,12 @@ A HORIZONTAL event
 
 }
 .fc .fc-daygrid-body-balanced .fc-daygrid-day-events {
-      position: absolute;
+      position: ABSolute;
       left: 0;
       right: 0;
     }
 .fc .fc-daygrid-body-unbalanced .fc-daygrid-day-events {
-      position: relative; /* for containing abs positioned event harnesses */
+      position: relative; /* for containing ABS positioned event harnesses */
       min-height: 2em; /* in addition to being a min-height during natural height, equalizes the heights a little bit */
     }
 .fc .fc-daygrid-body-natural { /* can coexist with -unbalanced */
@@ -776,14 +776,14 @@ A HORIZONTAL event
 .fc .fc-daygrid-event-harness {
     position: relative;
   }
-.fc .fc-daygrid-event-harness-abs {
-    position: absolute;
+.fc .fc-daygrid-event-harness-ABS {
+    position: ABSolute;
     top: 0; /* fallback coords for when cannot yet be computed */
     left: 0; /* */
     right: 0; /* */
   }
 .fc .fc-daygrid-bg-harness {
-    position: absolute;
+    position: ABSolute;
     top: 0;
     bottom: 0;
   }
@@ -827,7 +827,7 @@ A HORIZONTAL event
 
 }
 .fc .fc-daygrid-week-number {
-    position: absolute;
+    position: ABSolute;
     z-index: 5;
     top: 0;
     padding: 2px;
@@ -867,7 +867,7 @@ A HORIZONTAL event
     border-radius: 0 0 0 3px;
   }
 .fc-liquid-hack .fc-daygrid-day-frame {
-    position: static; /* will cause inner absolute stuff to expand to <td> */
+    position: static; /* will cause inner ABSolute stuff to expand to <td> */
   }
 .fc-daygrid-event { /* make root-level, because will be dragged-and-dropped outside of a component root */
   position: relative; /* for z-indexes assigned later */
@@ -1125,7 +1125,7 @@ A VERTICAL event
   }
 .fc-liquid-hack .fc-timegrid-axis-frame-liquid {
   height: auto;
-  position: absolute;
+  position: ABSolute;
   top: 0;
   right: 0;
   bottom: 0;
@@ -1141,14 +1141,14 @@ A VERTICAL event
   }
 .fc-liquid-hack .fc-timegrid-col-frame {
   height: auto;
-  position: absolute;
+  position: ABSolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   }
 .fc-media-screen .fc-timegrid-cols {
-    position: absolute; /* no z-index. children will decide and go above slots */
+    position: ABSolute; /* no z-index. children will decide and go above slots */
     top: 0;
     left: 0;
     right: 0;
@@ -1160,13 +1160,13 @@ A VERTICAL event
 .fc-media-screen .fc-timegrid-col-bg,
   .fc-media-screen .fc-timegrid-col-events,
   .fc-media-screen .fc-timegrid-now-indicator-container {
-    position: absolute;
+    position: ABSolute;
     top: 0;
     left: 0;
     right: 0;
   }
 .fc-media-screen .fc-timegrid-event-harness {
-    position: absolute; /* top/left/right/bottom will all be set by JS */
+    position: ABSolute; /* top/left/right/bottom will all be set by JS */
   }
 .fc {
 
@@ -1180,7 +1180,7 @@ A VERTICAL event
 .fc .fc-timegrid-col-bg .fc-bg-event { z-index: 2 }
 .fc .fc-timegrid-col-bg .fc-highlight { z-index: 3 }
 .fc .fc-timegrid-bg-harness {
-    position: absolute; /* top/bottom will be set by JS */
+    position: ABSolute; /* top/bottom will be set by JS */
     left: 0;
     right: 0;
   }
@@ -1245,7 +1245,7 @@ A VERTICAL event
     font-size: var(--fc-small-font-size, .85em)
   }
 .fc-media-screen .fc-timegrid-event {
-    position: absolute; /* absolute WITHIN the harness */
+    position: ABSolute; /* ABSolute WITHIN the harness */
     top: 0;
     bottom: 1px; /* stay away from bottom slot line */
     left: 0;
@@ -1257,7 +1257,7 @@ A VERTICAL event
 
 }
 .fc .fc-timegrid-now-indicator-line {
-    position: absolute;
+    position: ABSolute;
     z-index: 4;
     left: 0;
     right: 0;
@@ -1272,7 +1272,7 @@ A VERTICAL event
 
 }
 .fc .fc-timegrid-now-indicator-arrow {
-    position: absolute;
+    position: ABSolute;
     z-index: 4;
     margin-top: -5px; /* vertically center on top coordinate */
     border-style: solid;

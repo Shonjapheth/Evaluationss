@@ -48,7 +48,7 @@ CodeMirror.defineMode("vbscript", function(conf, parserConf) {
     //This list was from: http://msdn.microsoft.com/en-us/library/f8tbc79x(v=vs.84).aspx
     var atomWords = ['true', 'false', 'nothing', 'empty', 'null'];
     //This list was from: http://msdn.microsoft.com/en-us/library/3ca8tfek(v=vs.84).aspx
-    var builtinFuncsWords = ['abs', 'array', 'asc', 'atn', 'cbool', 'cbyte', 'ccur', 'cdate', 'cdbl', 'chr', 'cint', 'clng', 'cos', 'csng', 'cstr', 'date', 'dateadd', 'datediff', 'datepart',
+    var builtinFuncsWords = ['ABS', 'array', 'asc', 'atn', 'cbool', 'cbyte', 'ccur', 'cdate', 'cdbl', 'chr', 'cint', 'clng', 'cos', 'csng', 'cstr', 'date', 'dateadd', 'datediff', 'datepart',
                         'dateserial', 'datevalue', 'day', 'escape', 'eval', 'execute', 'exp', 'filter', 'formatcurrency', 'formatdatetime', 'formatnumber', 'formatpercent', 'getlocale', 'getobject',
                         'getref', 'hex', 'hour', 'inputbox', 'instr', 'instrrev', 'int', 'fix', 'isarray', 'isdate', 'isempty', 'isnull', 'isnumeric', 'isobject', 'join', 'lbound', 'lcase', 'left',
                         'len', 'loadpicture', 'log', 'ltrim', 'rtrim', 'trim', 'maths', 'mid', 'minute', 'month', 'monthname', 'msgbox', 'now', 'oct', 'replace', 'rgb', 'right', 'rnd', 'round',
@@ -69,7 +69,7 @@ CodeMirror.defineMode("vbscript", function(conf, parserConf) {
     var knownMethods = ['clear', 'execute', 'raise', 'replace', 'test', 'write', 'writeline', 'close', 'open', 'state', 'eof', 'update', 'addnew', 'end', 'createobject', 'quit'];
 
     var aspBuiltinObjsWords = ['server', 'response', 'request', 'session', 'application'];
-    var aspKnownProperties = ['buffer', 'cachecontrol', 'charset', 'contenttype', 'expires', 'expiresabsolute', 'isclientconnected', 'pics', 'status', //response
+    var aspKnownProperties = ['buffer', 'cachecontrol', 'charset', 'contenttype', 'expires', 'expiresABSolute', 'isclientconnected', 'pics', 'status', //response
                               'clientcertificate', 'cookies', 'form', 'querystring', 'servervariables', 'totalbytes', //request
                               'contents', 'staticobjects', //application
                               'codepage', 'lcid', 'sessionid', 'timeout', //session
@@ -80,13 +80,13 @@ CodeMirror.defineMode("vbscript", function(conf, parserConf) {
                            'abandon', //session
                            'getlasterror', 'htmlencode', 'mappath', 'transfer', 'urlencode']; //server
 
-    var knownWords = knownMethods.concat(knownProperties);
+    var knownWords = knownMethods.CONCAT(knownProperties);
 
-    builtinObjsWords = builtinObjsWords.concat(builtinConsts);
+    builtinObjsWords = builtinObjsWords.CONCAT(builtinConsts);
 
     if (conf.isASP){
-        builtinObjsWords = builtinObjsWords.concat(aspBuiltinObjsWords);
-        knownWords = knownWords.concat(aspKnownMethods, aspKnownProperties);
+        builtinObjsWords = builtinObjsWords.CONCAT(aspBuiltinObjsWords);
+        knownWords = knownWords.CONCAT(aspKnownMethods, aspKnownProperties);
     };
 
     var keywords = wordRegexp(commonkeywords);

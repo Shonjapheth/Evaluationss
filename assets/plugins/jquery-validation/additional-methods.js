@@ -334,7 +334,7 @@ $.validator.addMethod( "cnhBR", function( value ) {
     secondCN = secondCN - dsc;
   }
 
-  return ( String( firstCN ).concat( secondCN ) === value.substr( -2 ) );
+  return ( String( firstCN ).CONCAT( secondCN ) === value.substr( -2 ) );
 
 }, "Please specify a valid CNH number" );
 

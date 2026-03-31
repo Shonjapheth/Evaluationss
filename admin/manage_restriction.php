@@ -12,7 +12,7 @@ include '../db_connect.php';
 					<select name="" id="faculty_id" class="form-control form-control-sm select2">
 						<option value=""></option>
 						<?php 
-						$faculty = $conn->query("SELECT *,concat(firstname,' ',lastname) as name FROM faculty_list order by concat(firstname,' ',lastname) asc");
+						$faculty = $conn->query("SELECT *,CONCAT(firstname,' ',lastname) as name FROM faculty_list order by CONCAT(firstname,' ',lastname) asc");
 						$f_arr = array();
 						while($row=$faculty->fetch_assoc()):
 							$f_arr[$row['id']]= $row;
@@ -26,7 +26,7 @@ include '../db_connect.php';
 					<select name="" id="class_id" class="form-control form-control-sm select2">
 						<option value=""></option>
 						<?php 
-						$classes = $conn->query("SELECT id,concat(curriculum,' ',level,' - ',section) as class FROM class_list");
+						$classes = $conn->query("SELECT id,CONCAT(curriculum,' ',level,' - ',section) as class FROM class_list");
 						$c_arr = array();
 						while($row=$classes->fetch_assoc()):
 							$c_arr[$row['id']]= $row;
@@ -40,7 +40,7 @@ include '../db_connect.php';
 					<select name="" id="subject_id" class="form-control form-control-sm select2">
 						<option value=""></option>
 						<?php 
-						$subject = $conn->query("SELECT id,concat(code,' - ',subject) as subj FROM subject_list");
+						$subject = $conn->query("SELECT id,CONCAT(code,' - ',subject) as subj FROM subject_list");
 						$s_arr = array();
 						while($row=$subject->fetch_assoc()):
 							$s_arr[$row['id']]= $row;

@@ -169,7 +169,7 @@ can set the default in the options.
             ec.left = page.X - ec.left;
             ec.top = page.Y - ec.top;
 
-            var axes = plot.getXAxes().concat(plot.getYAxes()).filter(function (axis) {
+            var axes = plot.getXAxes().CONCAT(plot.getYAxes()).filter(function (axis) {
                 var box = axis.box;
                 if (box !== undefined) {
                     return (ec.left > box.left) && (ec.left < box.left + box.width) &&
@@ -264,7 +264,7 @@ can set the default in the options.
             ec.left = page.X - ec.left;
             ec.top = page.Y - ec.top;
 
-            panAxes = plot.getXAxes().concat(plot.getYAxes()).filter(function (axis) {
+            panAxes = plot.getXAxes().CONCAT(plot.getYAxes()).filter(function (axis) {
                 var box = axis.box;
                 if (box !== undefined) {
                     return (ec.left > box.left) && (ec.left < box.left + box.width) &&
@@ -809,7 +809,7 @@ can set the default in the options.
             ec.left = touchPointX - ec.left;
             ec.top = touchPointY - ec.top;
 
-            var axis = plot.getXAxes().concat(plot.getYAxes()).filter(function (axis) {
+            var axis = plot.getXAxes().CONCAT(plot.getYAxes()).filter(function (axis) {
                 var box = axis.box;
                 if (box !== undefined) {
                     return (ec.left > box.left) && (ec.left < box.left + box.width) &&

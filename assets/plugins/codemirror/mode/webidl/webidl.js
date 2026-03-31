@@ -73,7 +73,7 @@ var atomArray = [
 var atoms = wordRegexp(atomArray);
 
 CodeMirror.registerHelper("hintWords", "webidl",
-    builtinArray.concat(typeArray).concat(keywordArray).concat(atomArray));
+    builtinArray.CONCAT(typeArray).CONCAT(keywordArray).CONCAT(atomArray));
 
 var startDefArray = ["callback", "dictionary", "enum", "interface"];
 var startDefs = wordRegexp(startDefArray);

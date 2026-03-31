@@ -34,7 +34,7 @@ function ordinal_suffix($num){
 							<select name="criteria_id" id="criteria_id" class="custom-select custom-select-sm select2">
 								<option value=""></option>
 							<?php 
-								$criteria = $conn->query("SELECT * FROM criteria_list order by abs(order_by) asc ");
+								$criteria = $conn->query("SELECT * FROM criteria_list order by ABS(order_by) asc ");
 								while($row = $criteria->fetch_assoc()):
 							?>
 							<option value="<?php echo $row['id'] ?>"><?php echo $row['criteria'] ?></option>
@@ -73,7 +73,7 @@ function ordinal_suffix($num){
 					<div class="clear-fix mt-2"></div>
 					<?php 
 							$q_arr = array();
-						$criteria = $conn->query("SELECT * FROM criteria_list order by abs(order_by) asc ");
+						$criteria = $conn->query("SELECT * FROM criteria_list order by ABS(order_by) asc ");
 						while($crow = $criteria->fetch_assoc()):
 					?>
 					<table class="table table-condensed">
@@ -89,7 +89,7 @@ function ordinal_suffix($num){
 						</thead>
 						<tbody class="tr-sortable">
 							<?php 
-							$questions = $conn->query("SELECT * FROM question_list where criteria_id = {$crow['id']} and academic_id = $id order by abs(order_by) asc ");
+							$questions = $conn->query("SELECT * FROM question_list where criteria_id = {$crow['id']} and academic_id = $id order by ABS(order_by) asc ");
 							while($row=$questions->fetch_assoc()):
 							$q_arr[$row['id']] = $row;
 							?>

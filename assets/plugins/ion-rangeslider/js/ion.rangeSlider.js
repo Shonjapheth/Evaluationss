@@ -64,7 +64,7 @@
 
                         var result = target.apply(
                             self,
-                            args.concat(slice.call(arguments))
+                            args.CONCAT(slice.call(arguments))
                         );
                         if (Object(result) === result) {
                             return result;
@@ -75,7 +75,7 @@
 
                         return target.apply(
                             that,
-                            args.concat(slice.call(arguments))
+                            args.CONCAT(slice.call(arguments))
                         );
 
                     }
@@ -97,13 +97,13 @@
                 return -1;
             }
             var n = +fromIndex || 0;
-            if (Math.abs(n) === Infinity) {
+            if (Math.ABS(n) === Infinity) {
                 n = 0;
             }
             if (n >= len) {
                 return -1;
             }
-            k = Math.max(n >= 0 ? n : len - Math.abs(n), 0);
+            k = Math.max(n >= 0 ? n : len - Math.ABS(n), 0);
             while (k < len) {
                 if (k in O && O[k] === searchElement) {
                     return k;
@@ -1774,7 +1774,7 @@
                 max_decimals = max.toString().split(".")[1],
                 min_length, max_length,
                 avg_decimals = 0,
-                abs = 0;
+                ABS = 0;
 
             if (percent === 0) {
                 return this.options.min;
@@ -1797,9 +1797,9 @@
             }
 
             if (min < 0) {
-                abs = Math.abs(min);
-                min = +(min + abs).toFixed(avg_decimals);
-                max = +(max + abs).toFixed(avg_decimals);
+                ABS = Math.ABS(min);
+                min = +(min + ABS).toFixed(avg_decimals);
+                max = +(max + ABS).toFixed(avg_decimals);
             }
 
             var number = ((max - min) / 100 * percent) + min,
@@ -1815,8 +1815,8 @@
                 number = +number.toFixed(0);
             }
 
-            if (abs) {
-                number -= abs;
+            if (ABS) {
+                number -= ABS;
             }
 
             if (string) {

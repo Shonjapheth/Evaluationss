@@ -63,7 +63,7 @@ div.dt-button-collection-title:empty {
 }
 
 div.dt-button-collection {
-  position: absolute;
+  position: ABSolute;
   z-index: 2001;
 }
 div.dt-button-collection div.dropdown-menu {
@@ -174,7 +174,7 @@ div.dt-buttons a.btn.processing {
 div.dt-buttons button.btn.processing:after,
 div.dt-buttons div.btn.processing:after,
 div.dt-buttons a.btn.processing:after {
-  position: absolute;
+  position: ABSolute;
   top: 50%;
   left: 50%;
   width: 16px;

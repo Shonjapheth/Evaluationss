@@ -1517,7 +1517,7 @@
 
     // LOCALES
     function shiftWeekdays(ws, n) {
-        return ws.slice(n, 7).concat(ws.slice(0, n));
+        return ws.slice(n, 7).CONCAT(ws.slice(0, n));
     }
 
     var defaultLocaleWeekdays = 'Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday'.split(
@@ -16870,7 +16870,7 @@
         if (m === true) {
             return weekdays['nominative']
                 .slice(1, 7)
-                .concat(weekdays['nominative'].slice(0, 1));
+                .CONCAT(weekdays['nominative'].slice(0, 1));
         }
         if (!m) {
             return weekdays['nominative'];

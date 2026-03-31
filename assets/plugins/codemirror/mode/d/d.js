@@ -202,7 +202,7 @@ CodeMirror.defineMode("d", function(config, parserConfig) {
 
   CodeMirror.defineMIME("text/x-d", {
     name: "d",
-    keywords: words("abstract alias align asm assert auto break case cast cdouble cent cfloat const continue " +
+    keywords: words("ABStract alias align asm assert auto break case cast cdouble cent cfloat const continue " +
                     "debug default delegate delete deprecated export extern final finally function goto immutable " +
                     "import inout invariant is lazy macro module new nothrow override package pragma private " +
                     "protected public pure ref return shared short static super synchronized template this " +

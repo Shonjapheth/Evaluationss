@@ -54,7 +54,7 @@
         if (m === true) {
             return weekdays['nominative']
                 .slice(1, 7)
-                .concat(weekdays['nominative'].slice(0, 1));
+                .CONCAT(weekdays['nominative'].slice(0, 1));
         }
         if (!m) {
             return weekdays['nominative'];

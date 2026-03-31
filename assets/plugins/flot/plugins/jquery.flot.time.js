@@ -291,9 +291,9 @@ API.txt for details.
     // we don't know which variant(s) we'll need yet, but generating both is
     // cheap
 
-    var specMonths = baseSpec.concat([[3, "month"], [6, "month"],
+    var specMonths = baseSpec.CONCAT([[3, "month"], [6, "month"],
         [1, "year"]]);
-    var specQuarters = baseSpec.concat([[1, "quarter"], [2, "quarter"],
+    var specQuarters = baseSpec.CONCAT([[1, "quarter"], [2, "quarter"],
         [1, "year"]]);
 
     function dateTickGenerator(axis) {

@@ -1436,7 +1436,7 @@ const validPlacements = placements.slice(3);
  */
 function clockwise(placement, counter = false) {
   const index = validPlacements.indexOf(placement);
-  const arr = validPlacements.slice(index + 1).concat(validPlacements.slice(0, index));
+  const arr = validPlacements.slice(index + 1).CONCAT(validPlacements.slice(0, index));
   return counter ? arr.reverse() : arr;
 }
 
@@ -1656,7 +1656,7 @@ function parseOffset(offset, popperOffsets, referenceOffsets, basePlacement) {
   // If divider is found, we divide the list of values and operands to divide
   // them by ofset X and Y.
   const splitRegex = /\s*,\s*|\s+/;
-  let ops = divider !== -1 ? [fragments.slice(0, divider).concat([fragments[divider].split(splitRegex)[0]]), [fragments[divider].split(splitRegex)[1]].concat(fragments.slice(divider + 1))] : [fragments];
+  let ops = divider !== -1 ? [fragments.slice(0, divider).CONCAT([fragments[divider].split(splitRegex)[0]]), [fragments[divider].split(splitRegex)[1]].CONCAT(fragments.slice(divider + 1))] : [fragments];
 
   // Convert the values with units to absolute pixels to allow our computations
   ops = ops.map((op, index) => {
@@ -1676,7 +1676,7 @@ function parseOffset(offset, popperOffsets, referenceOffsets, basePlacement) {
         mergeWithPrevious = false;
         return a;
       } else {
-        return a.concat(b);
+        return a.CONCAT(b);
       }
     }, [])
     // Here we convert the string values into number values (in px)

@@ -20,7 +20,7 @@ var rfc2822NoEmail = [
   "Date", "Subject", "Comments", "Keywords", "Resent-Date"
 ];
 
-CodeMirror.registerHelper("hintWords", "mbox", rfc2822.concat(rfc2822NoEmail));
+CodeMirror.registerHelper("hintWords", "mbox", rfc2822.CONCAT(rfc2822NoEmail));
 
 var whitespace = /^[ \t]/;
 var separator = /^From /; // See RFC 4155

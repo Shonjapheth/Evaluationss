@@ -140,7 +140,7 @@
     var styles = [];
     if (state.layoutType) styles.push(TOKEN_STYLES[state.layoutType]);
 
-    styles = styles.concat(activeStyles(
+    styles = styles.CONCAT(activeStyles(
       state, "addition", "bold", "cite", "code", "deletion", "em", "footCite",
       "image", "italic", "link", "span", "strong", "sub", "sup", "table", "tableHeading"));
 

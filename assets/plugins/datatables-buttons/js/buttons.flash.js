@@ -100,7 +100,7 @@ var ZeroClipboard_TableTools = {
 	},
 
 	getDOMObjectPosition: function(obj) {
-		// get absolute coordinates for dom element
+		// get ABSolute coordinates for dom element
 		var info = {
 			left: 0,
 			top: 0,
@@ -174,7 +174,7 @@ ZeroClipboard_TableTools.Client.prototype = {
 		// create floating DIV above element
 		this.div = document.createElement('div');
 		var style = this.div.style;
-		style.position = 'absolute';
+		style.position = 'ABSolute';
 		style.left = '0px';
 		style.top = '0px';
 		style.width = (box.width) + 'px';
@@ -199,7 +199,7 @@ ZeroClipboard_TableTools.Client.prototype = {
 		var box = ZeroClipboard_TableTools.getDOMObjectPosition(this.domElement);
 		var style = this.div.style;
 
-		style.position = 'absolute';
+		style.position = 'ABSolute';
 		//style.left = (this.domElement.offsetLeft)+'px';
 		//style.top = this.domElement.offsetTop+'px';
 		style.width = box.width + 'px';
@@ -226,7 +226,7 @@ ZeroClipboard_TableTools.Client.prototype = {
 		if (navigator.userAgent.match(/MSIE/)) {
 			// IE gets an OBJECT tag
 			var protocol = location.href.match(/^https/i) ? 'https://' : 'http://';
-			html += '<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="'+protocol+'download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=10,0,0,0" width="'+width+'" height="'+height+'" id="'+this.movieId+'" align="middle"><param name="allowScriptAccess" value="always" /><param name="allowFullScreen" value="false" /><param name="movie" value="'+ZeroClipboard_TableTools.moviePath+'" /><param name="loop" value="false" /><param name="menu" value="false" /><param name="quality" value="best" /><param name="bgcolor" value="#ffffff" /><param name="flashvars" value="'+flashvars+'"/><param name="wmode" value="transparent"/></object>';
+			html += '<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="'+protocol+'download.macromedia.com/pub/shockwave/cABS/flash/swflash.cab#version=10,0,0,0" width="'+width+'" height="'+height+'" id="'+this.movieId+'" align="middle"><param name="allowScriptAccess" value="always" /><param name="allowFullScreen" value="false" /><param name="movie" value="'+ZeroClipboard_TableTools.moviePath+'" /><param name="loop" value="false" /><param name="menu" value="false" /><param name="quality" value="best" /><param name="bgcolor" value="#ffffff" /><param name="flashvars" value="'+flashvars+'"/><param name="wmode" value="transparent"/></object>';
 		}
 		else {
 			// all other browsers get an EMBED tag
@@ -472,7 +472,7 @@ window.ZeroClipboard_TableTools = ZeroClipboard_TableTools;
 /**
  * If a Buttons instance is initlaised before it is placed into the DOM, Flash
  * won't be able to bind to it, so we need to wait until it is available, this
- * method abstracts that out.
+ * method ABStracts that out.
  *
  * @param {ZeroClipboard} flash ZeroClipboard instance
  * @param {jQuery} node  Button

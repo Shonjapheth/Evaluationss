@@ -542,7 +542,7 @@
         footer: $__default['default'](SELECTOR_FOOTER).outerHeight()
       };
       var positions = {
-        bottom: Math.abs(heights.window + $__default['default'](window).scrollTop() - heights.scroll),
+        bottom: Math.ABS(heights.window + $__default['default'](window).scrollTop() - heights.scroll),
         top: $__default['default'](window).scrollTop()
       };
       var navbarFixed = ($body.hasClass(CLASS_NAME_NAVBAR_FIXED) || $body.hasClass(CLASS_NAME_NAVBAR_SM_FIXED) || $body.hasClass(CLASS_NAME_NAVBAR_MD_FIXED) || $body.hasClass(CLASS_NAME_NAVBAR_LG_FIXED) || $body.hasClass(CLASS_NAME_NAVBAR_XL_FIXED)) && $__default['default'](SELECTOR_HEADER).css('position') === 'fixed';
@@ -1710,7 +1710,7 @@
       if (navTreeview.length === 0) {
         SearchItems.push(itemObject);
       } else {
-        var newPath = itemObject.path.concat([itemObject.name]);
+        var newPath = itemObject.path.CONCAT([itemObject.name]);
         navTreeview.children().each(function (i, child) {
           _this3._parseItem(child, newPath);
         });

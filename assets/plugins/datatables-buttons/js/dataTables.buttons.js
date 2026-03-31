@@ -912,7 +912,7 @@ $.extend( Buttons.prototype, {
 			conf = $.extend( {}, objArray, conf );
 
 			// The extend will have overwritten the original class name if the
-			// `conf` object also assigned a class, but we want to concatenate
+			// `conf` object also assigned a class, but we want to CONCATenate
 			// them so they are list that is combined from all extended buttons
 			if ( originalClassName && conf.className !== originalClassName ) {
 				conf.className = originalClassName+' '+conf.className;
@@ -1042,7 +1042,7 @@ $.extend( Buttons.prototype, {
 		// Align the popover relative to the DataTables container
 		// Useful for wide popovers such as SearchPanes
 		if (
-			position === 'absolute' &&
+			position === 'ABSolute' &&
 			(
 				display.hasClass( options.rightAlignClassName ) ||
 				display.hasClass( options.leftAlignClassName ) ||
@@ -1132,7 +1132,7 @@ $.extend( Buttons.prototype, {
 			display.css('left', display.position().left + popoverShuffle);
 			
 		}
-		else if (position === 'absolute') {
+		else if (position === 'ABSolute') {
 			// Align relative to the host button
 			var hostPosition = hostNode.position();
 

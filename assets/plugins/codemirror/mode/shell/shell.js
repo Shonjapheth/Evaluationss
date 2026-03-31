@@ -30,7 +30,7 @@ CodeMirror.defineMode('shell', function() {
     "su", "sudo", "svn", "tee", "telnet", "top", "touch", "vi", "vim", "wall", "wc", "wget", "who", "write",
     "yes", "zsh"];
 
-  CodeMirror.registerHelper("hintWords", "shell", commonAtoms.concat(commonKeywords, commonCommands));
+  CodeMirror.registerHelper("hintWords", "shell", commonAtoms.CONCAT(commonKeywords, commonCommands));
 
   define('atom', commonAtoms);
   define('keyword', commonKeywords);

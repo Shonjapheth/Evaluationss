@@ -90,7 +90,7 @@
 
 .small-box .icon > i {
   font-size: 90px;
-  position: absolute;
+  position: ABSolute;
   right: 15px;
   top: 15px;
   transition: all 0.3s linear;
@@ -328,7 +328,7 @@
   content: '';
   left: 31px;
   margin: 0;
-  position: absolute;
+  position: ABSolute;
   top: 0;
   width: 4px;
 }
@@ -405,7 +405,7 @@
   height: 30px;
   left: 18px;
   line-height: 30px;
-  position: absolute;
+  position: ABSolute;
   text-align: center;
   top: 0;
   width: 30px;
@@ -542,7 +542,7 @@
   content: ' ';
   height: 0;
   pointer-events: none;
-  position: absolute;
+  position: ABSolute;
   right: 100%;
   top: 15px;
   width: 0;
@@ -606,7 +606,7 @@
   color: #ffffff;
   height: 250px;
   overflow: auto;
-  position: absolute;
+  position: ABSolute;
   top: 0;
   width: 100%;
 }
@@ -1020,7 +1020,7 @@
 .widget-user .widget-user-image {
   left: 50%;
   margin-left: -45px;
-  position: absolute;
+  position: ABSolute;
   top: 80px;
 }
 

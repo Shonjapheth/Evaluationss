@@ -3370,7 +3370,7 @@ var Debugger = function (_Extension) {
 
       var logMessage = '#' + this.eventCounter + ': Colorpicker#' + this.colorpicker.id + ' [' + eventName + ']';
 
-      (_console = console).debug.apply(_console, [logMessage].concat(args));
+      (_console = console).debug.apply(_console, [logMessage].CONCAT(args));
 
       /**
        * Whenever the debugger logs an event, this other event is emitted.
@@ -4876,18 +4876,18 @@ Color.prototype = {
 	string: function (places) {
 		var self = this.model in colorString.to ? this : this.rgb();
 		self = self.round(typeof places === 'number' ? places : 1);
-		var args = self.valpha === 1 ? self.color : self.color.concat(this.valpha);
+		var args = self.valpha === 1 ? self.color : self.color.CONCAT(this.valpha);
 		return colorString.to[self.model](args);
 	},
 
 	percentString: function (places) {
 		var self = this.rgb().round(typeof places === 'number' ? places : 1);
-		var args = self.valpha === 1 ? self.color : self.color.concat(this.valpha);
+		var args = self.valpha === 1 ? self.color : self.color.CONCAT(this.valpha);
 		return colorString.to.rgb.percent(args);
 	},
 
 	array: function () {
-		return this.valpha === 1 ? this.color.slice() : this.color.concat(this.valpha);
+		return this.valpha === 1 ? this.color.slice() : this.color.CONCAT(this.valpha);
 	},
 
 	object: function () {
@@ -4934,12 +4934,12 @@ Color.prototype = {
 
 	round: function (places) {
 		places = Math.max(places || 0, 0);
-		return new Color(this.color.map(roundToPlace(places)).concat(this.valpha), this.model);
+		return new Color(this.color.map(roundToPlace(places)).CONCAT(this.valpha), this.model);
 	},
 
 	alpha: function (val) {
 		if (arguments.length) {
-			return new Color(this.color.concat(Math.max(0, Math.min(1, val))), this.model);
+			return new Color(this.color.CONCAT(Math.max(0, Math.min(1, val))), this.model);
 		}
 
 		return this.valpha;
@@ -5154,7 +5154,7 @@ Object.keys(convert).forEach(function (model) {
 		}
 
 		var newAlpha = typeof arguments[channels] === 'number' ? channels : this.valpha;
-		return new Color(assertArray(convert[this.model][model].raw(this.color)).concat(newAlpha), model);
+		return new Color(assertArray(convert[this.model][model].raw(this.color)).CONCAT(newAlpha), model);
 	};
 
 	// 'static' construction methods
@@ -5479,7 +5479,7 @@ function hexDouble(num) {
 
 var isArrayish = __webpack_require__(19);
 
-var concat = Array.prototype.concat;
+var CONCAT = Array.prototype.CONCAT;
 var slice = Array.prototype.slice;
 
 var swizzle = module.exports = function swizzle(args) {
@@ -5489,8 +5489,8 @@ var swizzle = module.exports = function swizzle(args) {
 		var arg = args[i];
 
 		if (isArrayish(arg)) {
-			// http://jsperf.com/javascript-array-concat-vs-push/98
-			results = concat.call(results, slice.call(arg));
+			// http://jsperf.com/javascript-array-CONCAT-vs-push/98
+			results = CONCAT.call(results, slice.call(arg));
 		} else {
 			results.push(arg);
 		}

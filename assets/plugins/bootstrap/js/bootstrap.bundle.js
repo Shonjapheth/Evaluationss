@@ -776,13 +776,13 @@
     };
 
     _proto._handleSwipe = function _handleSwipe() {
-      var absDeltax = Math.abs(this.touchDeltaX);
+      var ABSDeltax = Math.ABS(this.touchDeltaX);
 
-      if (absDeltax <= SWIPE_THRESHOLD) {
+      if (ABSDeltax <= SWIPE_THRESHOLD) {
         return;
       }
 
-      var direction = absDeltax / this.touchDeltaX;
+      var direction = ABSDeltax / this.touchDeltaX;
       this.touchDeltaX = 0; // swipe left
 
       if (direction > 0) {
@@ -2456,7 +2456,7 @@
     // compute the popper offsets
     data.offsets.popper = getPopperOffsets(this.popper, data.offsets.reference, data.placement);
 
-    data.offsets.popper.position = this.options.positionFixed ? 'fixed' : 'absolute';
+    data.offsets.popper.position = this.options.positionFixed ? 'fixed' : 'ABSolute';
 
     // run the modifiers
     data = runModifiers(this.modifiers, data);
@@ -2726,7 +2726,7 @@
 
     // Apply `position` to popper before anything else because
     // without the position applied we can't guarantee correct computations
-    setStyles(popper, { position: options.positionFixed ? 'fixed' : 'absolute' });
+    setStyles(popper, { position: options.positionFixed ? 'fixed' : 'ABSolute' });
 
     return options;
   }
@@ -3056,7 +3056,7 @@
     var counter = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
 
     var index = validPlacements.indexOf(placement);
-    var arr = validPlacements.slice(index + 1).concat(validPlacements.slice(0, index));
+    var arr = validPlacements.slice(index + 1).CONCAT(validPlacements.slice(0, index));
     return counter ? arr.reverse() : arr;
   }
 
@@ -3283,9 +3283,9 @@
     // If divider is found, we divide the list of values and operands to divide
     // them by ofset X and Y.
     var splitRegex = /\s*,\s*|\s+/;
-    var ops = divider !== -1 ? [fragments.slice(0, divider).concat([fragments[divider].split(splitRegex)[0]]), [fragments[divider].split(splitRegex)[1]].concat(fragments.slice(divider + 1))] : [fragments];
+    var ops = divider !== -1 ? [fragments.slice(0, divider).CONCAT([fragments[divider].split(splitRegex)[0]]), [fragments[divider].split(splitRegex)[1]].CONCAT(fragments.slice(divider + 1))] : [fragments];
 
-    // Convert the values with units to absolute pixels to allow our computations
+    // Convert the values with units to ABSolute pixels to allow our computations
     ops = ops.map(function (op, index) {
       // Most of the units rely on the orientation of the popper
       var measurement = (index === 1 ? !useHeight : useHeight) ? 'height' : 'width';
@@ -3303,7 +3303,7 @@
           mergeWithPrevious = false;
           return a;
         } else {
-          return a.concat(b);
+          return a.CONCAT(b);
         }
       }, [])
       // Here we convert the string values into number values (in px)
@@ -3848,7 +3848,7 @@
      * want to delegate all the DOM manipulations to it.
      *
      * Note that if you disable this modifier, you must make sure the popper element
-     * has its position set to `absolute` before Popper.js can do its work!
+     * has its position set to `ABSolute` before Popper.js can do its work!
      *
      * Just disable this modifier and define your own to achieve the desired effect.
      *
@@ -5359,7 +5359,7 @@
       }
 
       var attributeList = [].slice.call(el.attributes);
-      var whitelistedAttributes = [].concat(whiteList['*'] || [], whiteList[elName] || []);
+      var whitelistedAttributes = [].CONCAT(whiteList['*'] || [], whiteList[elName] || []);
       attributeList.forEach(function (attr) {
         if (!allowedAttribute(attr, whitelistedAttributes)) {
           el.removeAttribute(attr.nodeName);

@@ -27,7 +27,7 @@
   ];
 
   // Collect all Dockerfile directives
-  var instructions = [from, expose].concat(shells).concat(others),
+  var instructions = [from, expose].CONCAT(shells).CONCAT(others),
       instructionRegex = "(" + instructions.join('|') + ")",
       instructionOnlyLine = new RegExp("^(\\s*)" + instructionRegex + "(\\s*)(#.*)?$", "i"),
       instructionWithArguments = new RegExp("^(\\s*)" + instructionRegex + "(\\s+)", "i");

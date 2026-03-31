@@ -251,7 +251,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
         paperproto,
         appendChild = "appendChild",
         apply = "apply",
-        concat = "concat",
+        CONCAT = "CONCAT",
         //taken from Modernizr touch test: https://github.com/Modernizr/Modernizr/blob/master/feature-detects/touchevents.js#L40
         supportsTouch = ('ontouchstart' in window) || window.TouchEvent || window.DocumentTouch && document instanceof DocumentTouch,
         E = "",
@@ -1218,14 +1218,14 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
                     b && params.push(+b);
                 });
                 if (name == "m" && params.length > 2) {
-                    data.push([b][concat](params.splice(0, 2)));
+                    data.push([b][CONCAT](params.splice(0, 2)));
                     name = "l";
                     b = b == "m" ? "l" : "L";
                 }
                 if (name == "r") {
-                    data.push([b][concat](params));
+                    data.push([b][CONCAT](params));
                 } else while (params.length >= paramCounts[name]) {
-                    data.push([b][concat](params.splice(0, paramCounts[name])));
+                    data.push([b][CONCAT](params.splice(0, paramCounts[name])));
                     if (!paramCounts[name]) {
                         break;
                     }
@@ -1263,7 +1263,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
                 c.replace(pathValues, function (a, b) {
                     b && params.push(+b);
                 });
-                data.push([b][concat](params));
+                data.push([b][CONCAT](params));
             });
         }
         data.toString = R._path2string;
@@ -1546,11 +1546,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
             xy = {},
             res = justCount ? 0 : [];
         for (var i = 0; i < n1 + 1; i++) {
-            var p = R.findDotsAtSegment.apply(R, bez1.concat(i / n1));
+            var p = R.findDotsAtSegment.apply(R, bez1.CONCAT(i / n1));
             dots1.push({x: p.x, y: p.y, t: i / n1});
         }
         for (i = 0; i < n2 + 1; i++) {
-            p = R.findDotsAtSegment.apply(R, bez2.concat(i / n2));
+            p = R.findDotsAtSegment.apply(R, bez2.CONCAT(i / n2));
             dots2.push({x: p.x, y: p.y, t: i / n2});
         }
         for (i = 0; i < n1; i++) {
@@ -1628,7 +1628,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
                 y1 = y1m = pi[2];
             } else {
                 if (pi[0] == "C") {
-                    bez1 = [x1, y1].concat(pi.slice(1));
+                    bez1 = [x1, y1].CONCAT(pi.slice(1));
                     x1 = bez1[6];
                     y1 = bez1[7];
                 } else {
@@ -1643,7 +1643,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
                         y2 = y2m = pj[2];
                     } else {
                         if (pj[0] == "C") {
-                            bez2 = [x2, y2].concat(pj.slice(1));
+                            bez2 = [x2, y2].CONCAT(pj.slice(1));
                             x2 = bez2[6];
                             y2 = bez2[7];
                         } else {
@@ -1661,7 +1661,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
                                 intr[k].bez1 = bez1;
                                 intr[k].bez2 = bez2;
                             }
-                            res = res.concat(intr);
+                            res = res.CONCAT(intr);
                         }
                     }
                 }
@@ -1736,8 +1736,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
                 Y.push(y);
             } else {
                 var dim = curveDim(x, y, p[1], p[2], p[3], p[4], p[5], p[6]);
-                X = X[concat](dim.min.x, dim.max.x);
-                Y = Y[concat](dim.min.y, dim.max.y);
+                X = X[CONCAT](dim.min.x, dim.max.x);
+                Y = Y[CONCAT](dim.min.y, dim.max.y);
                 x = p[5];
                 y = p[6];
             }
@@ -1893,13 +1893,13 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
                             r[1] = +pa[1] + x;
                             break;
                         case "R":
-                            var dots = [x, y][concat](pa.slice(1));
+                            var dots = [x, y][CONCAT](pa.slice(1));
                             for (var j = 2, jj = dots.length; j < jj; j++) {
                                 dots[j] = +dots[j] + x;
                                 dots[++j] = +dots[j] + y;
                             }
                             res.pop();
-                            res = res[concat](catmullRom2bezier(dots, crz));
+                            res = res[CONCAT](catmullRom2bezier(dots, crz));
                             break;
                         case "M":
                             mx = +pa[1] + x;
@@ -1910,10 +1910,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
                             }
                     }
                 } else if (pa[0] == "R") {
-                    dots = [x, y][concat](pa.slice(1));
+                    dots = [x, y][CONCAT](pa.slice(1));
                     res.pop();
-                    res = res[concat](catmullRom2bezier(dots, crz));
-                    r = ["R"][concat](pa.slice(-2));
+                    res = res[CONCAT](catmullRom2bezier(dots, crz));
+                    r = ["R"][CONCAT](pa.slice(-2));
                 } else {
                     for (var k = 0, kk = pa.length; k < kk; k++) {
                         r[k] = pa[k];
@@ -2036,9 +2036,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
             m2[0] = 2 * m1[0] - m2[0];
             m2[1] = 2 * m1[1] - m2[1];
             if (recursive) {
-                return [m2, m3, m4][concat](res);
+                return [m2, m3, m4][CONCAT](res);
             } else {
-                res = [m2, m3, m4][concat](res).join()[split](",");
+                res = [m2, m3, m4][CONCAT](res).join()[split](",");
                 var newres = [];
                 for (var i = 0, ii = res.length; i < ii; i++) {
                     newres[i] = i % 2 ? rotate(res[i - 1], res[i], rad).y : rotate(res[i], res[i + 1], rad).x;
@@ -2117,7 +2117,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
                             d.Y = path[2];
                             break;
                         case "A":
-                            path = ["C"][concat](a2c[apply](0, [d.x, d.y][concat](path.slice(1))));
+                            path = ["C"][CONCAT](a2c[apply](0, [d.x, d.y][CONCAT](path.slice(1))));
                             break;
                         case "S":
                             if (pcom == "C" || pcom == "S") { // In "S" case we have to take into account, if the previous command is C/S.
@@ -2128,7 +2128,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
                                 nx = d.x;
                                 ny = d.y;
                             }
-                            path = ["C", nx, ny][concat](path.slice(1));
+                            path = ["C", nx, ny][CONCAT](path.slice(1));
                             break;
                         case "T":
                             if (pcom == "Q" || pcom == "T") { // In "T" case we have to take into account, if the previous command is Q/T.
@@ -2139,24 +2139,24 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
                                 d.qx = d.x;
                                 d.qy = d.y;
                             }
-                            path = ["C"][concat](q2c(d.x, d.y, d.qx, d.qy, path[1], path[2]));
+                            path = ["C"][CONCAT](q2c(d.x, d.y, d.qx, d.qy, path[1], path[2]));
                             break;
                         case "Q":
                             d.qx = path[1];
                             d.qy = path[2];
-                            path = ["C"][concat](q2c(d.x, d.y, path[1], path[2], path[3], path[4]));
+                            path = ["C"][CONCAT](q2c(d.x, d.y, path[1], path[2], path[3], path[4]));
                             break;
                         case "L":
-                            path = ["C"][concat](l2c(d.x, d.y, path[1], path[2]));
+                            path = ["C"][CONCAT](l2c(d.x, d.y, path[1], path[2]));
                             break;
                         case "H":
-                            path = ["C"][concat](l2c(d.x, d.y, path[1], d.y));
+                            path = ["C"][CONCAT](l2c(d.x, d.y, path[1], d.y));
                             break;
                         case "V":
-                            path = ["C"][concat](l2c(d.x, d.y, d.x, path[1]));
+                            path = ["C"][CONCAT](l2c(d.x, d.y, d.x, path[1]));
                             break;
                         case "Z":
-                            path = ["C"][concat](l2c(d.x, d.y, d.X, d.Y));
+                            path = ["C"][CONCAT](l2c(d.x, d.y, d.X, d.Y));
                             break;
                     }
                     return path;
@@ -2168,7 +2168,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
                         while (pi.length) {
                             pcoms1[i]="A"; // if created multiple C:s, their original seg is saved
                             p2 && (pcoms2[i]="A"); // the same as above
-                            pp.splice(i++, 0, ["C"][concat](pi.splice(0, 6)));
+                            pp.splice(i++, 0, ["C"][CONCAT](pi.splice(0, 6)));
                         }
                         pp.splice(i, 1);
                         ii = mmax(p.length, p2 && p2.length || 0);
@@ -4314,7 +4314,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
                                 }
                                 break;
                             default:
-                                var from2 = [][concat](from[attr]);
+                                var from2 = [][CONCAT](from[attr]);
                                 now = [];
                                 i = that.paper.customAttributes[attr].length;
                                 while (i--) {
@@ -4653,8 +4653,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
                             to[attr] = values;
                             break;
                         default:
-                            values = [][concat](params[attr]);
-                            from2 = [][concat](from[attr]);
+                            values = [][CONCAT](params[attr]);
+                            from2 = [][CONCAT](from[attr]);
                             diff[attr] = [];
                             i = element.paper.customAttributes[attr].length;
                             while (i--) {
@@ -5423,7 +5423,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
      | paper.path(Raphael.format("M{0},{1}h{2}v{3}h{4}z", x, y, width, height, -width));
     \*/
     R.format = function (token, params) {
-        var args = R.is(params, array) ? [0][concat](params) : arguments;
+        var args = R.is(params, array) ? [0][CONCAT](params) : arguments;
         token && R.is(token, string) && args.length - 1 && (token = token.replace(formatrg, function (str, i) {
             return args[++i] == null ? E : args[i];
         }));
@@ -6317,7 +6317,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
             cx = bbox.x + bbox.width / 2;
             cy = bbox.y + bbox.height / 2;
         }
-        this.transform(this._.transform.concat([["r", deg, cx, cy]]));
+        this.transform(this._.transform.CONCAT([["r", deg, cx, cy]]));
         return this;
     };
     /*\
@@ -6353,7 +6353,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
         }
         cx = cx == null ? bbox.x + bbox.width / 2 : cx;
         cy = cy == null ? bbox.y + bbox.height / 2 : cy;
-        this.transform(this._.transform.concat([["s", sx, sy, cx, cy]]));
+        this.transform(this._.transform.CONCAT([["s", sx, sy, cx, cy]]));
         return this;
     };
     /*\
@@ -6377,7 +6377,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
         }
         dx = toFloat(dx[0]) || 0;
         dy = +dy || 0;
-        this.transform(this._.transform.concat([["t", dx, dy]]));
+        this.transform(this._.transform.CONCAT([["t", dx, dy]]));
         return this;
     };
     /*\
@@ -6656,7 +6656,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
             eve("raphael.attr." + key + "." + this.id, this, params[key]);
         }
         for (key in this.paper.customAttributes) if (this.paper.customAttributes[has](key) && params[has](key) && R.is(this.paper.customAttributes[key], "function")) {
-            var par = this.paper.customAttributes[key].apply(this, [].concat(params[key]));
+            var par = this.paper.customAttributes[key].apply(this, [].CONCAT(params[key]));
             this.attrs[key] = params[key];
             for (var subkey in par) if (par[has](subkey)) {
                 params[subkey] = par[subkey];
@@ -7510,7 +7510,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
             cy = bbox.y + bbox.height / 2;
         }
         this._.dirtyT = 1;
-        this.transform(this._.transform.concat([["r", deg, cx, cy]]));
+        this.transform(this._.transform.CONCAT([["r", deg, cx, cy]]));
         return this;
     };
     elproto.translate = function (dx, dy) {
@@ -7527,7 +7527,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
             this._.bbox.x += dx;
             this._.bbox.y += dy;
         }
-        this.transform(this._.transform.concat([["t", dx, dy]]));
+        this.transform(this._.transform.CONCAT([["t", dx, dy]]));
         return this;
     };
     elproto.scale = function (sx, sy, cx, cy) {
@@ -7551,7 +7551,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
         cx = cx == null ? bbox.x + bbox.width / 2 : cx;
         cy = cy == null ? bbox.y + bbox.height / 2 : cy;
 
-        this.transform(this._.transform.concat([["s", sx, sy, cx, cy]]));
+        this.transform(this._.transform.CONCAT([["s", sx, sy, cx, cy]]));
         this._.dirtyT = 1;
         return this;
     };
@@ -7657,7 +7657,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
         }
         if (params) {
             for (key in this.paper.customAttributes) if (this.paper.customAttributes[has](key) && params[has](key) && R.is(this.paper.customAttributes[key], "function")) {
-                var par = this.paper.customAttributes[key].apply(this, [].concat(params[key]));
+                var par = this.paper.customAttributes[key].apply(this, [].CONCAT(params[key]));
                 this.attrs[key] = params[key];
                 for (var subkey in par) if (par[has](subkey)) {
                     params[subkey] = par[subkey];

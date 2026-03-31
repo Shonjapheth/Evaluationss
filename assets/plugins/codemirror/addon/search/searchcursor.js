@@ -50,7 +50,7 @@
     for (var line = start.line, last = doc.lastLine(); line <= last;) {
       // This grows the search buffer in exponentially-sized chunks
       // between matches, so that nearby matches are fast and don't
-      // require concatenating the whole document (in case we're
+      // require CONCATenating the whole document (in case we're
       // searching for something that has tons of matches), but at the
       // same time, the amount of retries is limited.
       for (var i = 0; i < chunk; i++) {

@@ -572,7 +572,7 @@ var Dropzone = /*#__PURE__*/function (_Emitter) {
         fallback: function fallback() {
           // This code should pass in IE7... :(
           var messageElement;
-          this.element.className = "".concat(this.element.className, " dz-browser-not-supported");
+          this.element.className = "".CONCAT(this.element.className, " dz-browser-not-supported");
 
           var _iterator2 = _createForOfIteratorHelper(this.element.getElementsByTagName("div")),
               _step2;
@@ -665,7 +665,7 @@ var Dropzone = /*#__PURE__*/function (_Emitter) {
                 width = height * srcRatio;
               }
             } else {
-              throw new Error("Unknown resizeMethod '".concat(resizeMethod, "'"));
+              throw new Error("Unknown resizeMethod '".CONCAT(resizeMethod, "'"));
             }
           }
 
@@ -786,7 +786,7 @@ var Dropzone = /*#__PURE__*/function (_Emitter) {
             }
 
             if (this.options.addRemoveLinks) {
-              file._removeLink = Dropzone.createElement("<a class=\"dz-remove\" href=\"javascript:undefined;\" data-dz-remove>".concat(this.options.dictRemoveFile, "</a>"));
+              file._removeLink = Dropzone.createElement("<a class=\"dz-remove\" href=\"javascript:undefined;\" data-dz-remove>".CONCAT(this.options.dictRemoveFile, "</a>"));
               file.previewElement.appendChild(file._removeLink);
             }
 
@@ -908,7 +908,7 @@ var Dropzone = /*#__PURE__*/function (_Emitter) {
             try {
               for (_iterator8.s(); !(_step8 = _iterator8.n()).done;) {
                 var node = _step8.value;
-                node.nodeName === 'PROGRESS' ? node.value = progress : node.style.width = "".concat(progress, "%");
+                node.nodeName === 'PROGRESS' ? node.value = progress : node.style.width = "".CONCAT(progress, "%");
               }
             } catch (err) {
               _iterator8.e(err);
@@ -1148,7 +1148,7 @@ var Dropzone = /*#__PURE__*/function (_Emitter) {
       }
 
       if (this.element.classList.contains("dropzone") && !this.element.querySelector(".dz-message")) {
-        this.element.appendChild(Dropzone.createElement("<div class=\"dz-default dz-message\"><button class=\"dz-button\" type=\"button\">".concat(this.options.dictDefaultMessage, "</button></div>")));
+        this.element.appendChild(Dropzone.createElement("<div class=\"dz-default dz-message\"><button class=\"dz-button\" type=\"button\">".CONCAT(this.options.dictDefaultMessage, "</button></div>")));
       }
 
       if (this.clickableElements.length) {
@@ -1391,7 +1391,7 @@ var Dropzone = /*#__PURE__*/function (_Emitter) {
       if (typeof this.options.paramName === "function") {
         return this.options.paramName(n);
       } else {
-        return "".concat(this.options.paramName).concat(this.options.uploadMultiple ? "[".concat(n, "]") : "");
+        return "".CONCAT(this.options.paramName).CONCAT(this.options.uploadMultiple ? "[".CONCAT(n, "]") : "");
       }
     } // If @options.renameFile is a function,
     // the function will be used to rename the file.name before appending it to the formData
@@ -1421,14 +1421,14 @@ var Dropzone = /*#__PURE__*/function (_Emitter) {
       var fieldsString = "<div class=\"dz-fallback\">";
 
       if (this.options.dictFallbackText) {
-        fieldsString += "<p>".concat(this.options.dictFallbackText, "</p>");
+        fieldsString += "<p>".CONCAT(this.options.dictFallbackText, "</p>");
       }
 
-      fieldsString += "<input type=\"file\" name=\"".concat(this._getParamName(0), "\" ").concat(this.options.uploadMultiple ? 'multiple="multiple"' : undefined, " /><input type=\"submit\" value=\"Upload!\"></div>");
+      fieldsString += "<input type=\"file\" name=\"".CONCAT(this._getParamName(0), "\" ").CONCAT(this.options.uploadMultiple ? 'multiple="multiple"' : undefined, " /><input type=\"submit\" value=\"Upload!\"></div>");
       var fields = Dropzone.createElement(fieldsString);
 
       if (this.element.tagName !== "FORM") {
-        form = Dropzone.createElement("<form action=\"".concat(this.options.url, "\" enctype=\"multipart/form-data\" method=\"").concat(this.options.method, "\"></form>"));
+        form = Dropzone.createElement("<form action=\"".CONCAT(this.options.url, "\" enctype=\"multipart/form-data\" method=\"").CONCAT(this.options.method, "\"></form>"));
         form.appendChild(fields);
       } else {
         // Make sure that the enctype and method attributes are set properly
@@ -1554,7 +1554,7 @@ var Dropzone = /*#__PURE__*/function (_Emitter) {
         selectedSize = Math.round(10 * selectedSize) / 10; // Cutting of digits
       }
 
-      return "<strong>".concat(selectedSize, "</strong> ").concat(this.options.dictFileSizeUnits[selectedUnit]);
+      return "<strong>".CONCAT(selectedSize, "</strong> ").CONCAT(this.options.dictFileSizeUnits[selectedUnit]);
     } // Adds or removes the `dz-max-files-reached` class from the form.
 
   }, {
@@ -1709,11 +1709,11 @@ var Dropzone = /*#__PURE__*/function (_Emitter) {
                       return;
                     }
 
-                    file.fullPath = "".concat(path, "/").concat(file.name);
+                    file.fullPath = "".CONCAT(path, "/").CONCAT(file.name);
                     return _this6.addFile(file);
                   });
                 } else if (entry.isDirectory) {
-                  _this6._addFilesFromDirectory(entry, "".concat(path, "/").concat(entry.name));
+                  _this6._addFilesFromDirectory(entry, "".CONCAT(path, "/").CONCAT(entry.name));
                 }
               } // Recursively call readEntries() again, since browser only handle
               // the first 100 entries.
@@ -2402,7 +2402,7 @@ var Dropzone = /*#__PURE__*/function (_Emitter) {
       };
 
       xhr.ontimeout = function () {
-        _this16._handleUploadError(files, xhr, "Request timedout after ".concat(_this16.options.timeout / 1000, " seconds"));
+        _this16._handleUploadError(files, xhr, "Request timedout after ".CONCAT(_this16.options.timeout / 1000, " seconds"));
       };
 
       xhr.onerror = function () {
@@ -3035,7 +3035,7 @@ Dropzone.getElement = function (el, name) {
   }
 
   if (element == null) {
-    throw new Error("Invalid `".concat(name, "` option provided. Please provide a CSS selector or a plain HTML element."));
+    throw new Error("Invalid `".CONCAT(name, "` option provided. Please provide a CSS selector or a plain HTML element."));
   }
 
   return element;
@@ -3085,7 +3085,7 @@ Dropzone.getElements = function (els, name) {
   }
 
   if (elements == null || !elements.length) {
-    throw new Error("Invalid `".concat(name, "` option provided. Please provide a CSS selector, a plain HTML element or a list of those."));
+    throw new Error("Invalid `".CONCAT(name, "` option provided. Please provide a CSS selector, a plain HTML element or a list of those."));
   }
 
   return elements;
@@ -3293,7 +3293,7 @@ var ExifRestore = /*#__PURE__*/function () {
       var rawImage = this.decode64(origFileBase64.replace('data:image/jpeg;base64,', ''));
       var segments = this.slice2Segments(rawImage);
       var image = this.exifManipulation(resizedFileBase64, segments);
-      return "data:image/jpeg;base64,".concat(this.encode64(image));
+      return "data:image/jpeg;base64,".CONCAT(this.encode64(image));
     }
   }, {
     key: "exifManipulation",
@@ -3330,8 +3330,8 @@ var ExifRestore = /*#__PURE__*/function () {
       var mae = buf.slice(0, separatePoint);
       var ato = buf.slice(separatePoint);
       var array = mae;
-      array = array.concat(exifArray);
-      array = array.concat(ato);
+      array = array.CONCAT(exifArray);
+      array = array.CONCAT(ato);
       return array;
     }
   }, {

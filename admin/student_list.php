@@ -22,11 +22,11 @@
 					<?php
 					$i = 1;
 					$class= array();
-					$classes = $conn->query("SELECT id,concat(curriculum,' ',level,' - ',section) as `class` FROM class_list");
+					$classes = $conn->query("SELECT id,CONCAT(curriculum,' ',level,' - ',section) as `class` FROM class_list");
 					while($row=$classes->fetch_assoc()){
 						$class[$row['id']] = $row['class'];
 					}
-					$qry = $conn->query("SELECT *,concat(firstname,' ',lastname) as name FROM student_list order by concat(firstname,' ',lastname) asc");
+					$qry = $conn->query("SELECT *,CONCAT(firstname,' ',lastname) as name FROM student_list order by CONCAT(firstname,' ',lastname) asc");
 					while($row= $qry->fetch_assoc()):
 					?>
 					<tr>

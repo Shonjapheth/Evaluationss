@@ -62,7 +62,7 @@ class Action
 	function login2()
 	{
 		extract($_POST);
-		$qry = $conn->query("SELECT *,concat(lastname,', ',firstname,' ',middlename) as name FROM students where student_code = '" . $student_code . "' ");
+		$qry = $conn->query("SELECT *,CONCAT(lastname,', ',firstname,' ',middlename) as name FROM students where student_code = '" . $student_code . "' ");
 		if ($qry->num_rows > 0) {
 			foreach ($qry->fetch(PDO::FETCH_ASSOC) as $key => $value) {
 				if ($key != 'password' && !is_numeric($key))
@@ -403,7 +403,7 @@ class Action
 		}
 
 		if (empty($id)) {
-			$lastOrder = $conn->query("SELECT * FROM criteria_list order by abs(order_by) desc limit 1");
+			$lastOrder = $conn->query("SELECT * FROM criteria_list order by ABS(order_by) desc limit 1");
 			$lastOrder = $lastOrder->num_rows > 0 ? $lastOrder->fetch(PDO::FETCH_ASSOC)['order_by'] + 1 : 0;
 			$data .= ", order_by='$lastOrder' ";
 			$save = $conn->query("INSERT INTO criteria_list set $data");
@@ -449,7 +449,7 @@ class Action
 		}
 
 		if (empty($id)) {
-			$lastOrder = $conn->query("SELECT * FROM question_list where academic_id = $academic_id order by abs(order_by) desc limit 1");
+			$lastOrder = $conn->query("SELECT * FROM question_list where academic_id = $academic_id order by ABS(order_by) desc limit 1");
 			$lastOrder = $lastOrder->num_rows > 0 ? $lastOrder->fetch(PDO::FETCH_ASSOC)['order_by'] + 1 : 0;
 			$data .= ", order_by='$lastOrder' ";
 			$save = $conn->query("INSERT INTO question_list set $data");
@@ -687,7 +687,7 @@ class Action
 	{
 		extract($_POST);
 		$data = array();
-		$get = $conn->query("SELECT c.id,concat(c.curriculum,' ',c.level,' - ',c.section) as class,s.id as sid,concat(s.code,' - ',s.subject) as subj FROM restriction_list r inner join class_list c on c.id = r.class_id inner join subject_list s on s.id = r.subject_id where r.faculty_id = {$fid} and academic_id = {$_SESSION['academic']['id']} ");
+		$get = $conn->query("SELECT c.id,CONCAT(c.curriculum,' ',c.level,' - ',c.section) as class,s.id as sid,CONCAT(s.code,' - ',s.subject) as subj FROM restriction_list r inner join class_list c on c.id = r.class_id inner join subject_list s on s.id = r.subject_id where r.faculty_id = {$fid} and academic_id = {$_SESSION['academic']['id']} ");
 		while ($row = $get->fetch_assoc()) {
 			$data[] = $row;
 		}

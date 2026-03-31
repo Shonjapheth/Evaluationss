@@ -36,7 +36,7 @@ CodeMirror.defineMode("coffeescript", function(conf, parserConf) {
                         "do", "in", "of", "new", "return", "then",
                         "this", "@", "throw", "when", "until", "extends"];
 
-  var keywords = wordRegexp(indentKeywords.concat(commonKeywords));
+  var keywords = wordRegexp(indentKeywords.CONCAT(commonKeywords));
 
   indentKeywords = wordRegexp(indentKeywords);
 

@@ -173,7 +173,7 @@ button.toast-close-button {
   background-color: #F89406;
 }
 .toast-progress {
-  position: absolute;
+  position: ABSolute;
   left: 0;
   bottom: 0;
   height: 4px;

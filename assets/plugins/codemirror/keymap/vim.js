@@ -417,8 +417,8 @@
     var upperCaseAlphabet = makeKeyRange(65, 26);
     var lowerCaseAlphabet = makeKeyRange(97, 26);
     var numbers = makeKeyRange(48, 10);
-    var validMarks = [].concat(upperCaseAlphabet, lowerCaseAlphabet, numbers, ['<', '>']);
-    var validRegisters = [].concat(upperCaseAlphabet, lowerCaseAlphabet, numbers, ['-', '"', '.', ':', '_', '/']);
+    var validMarks = [].CONCAT(upperCaseAlphabet, lowerCaseAlphabet, numbers, ['<', '>']);
+    var validRegisters = [].CONCAT(upperCaseAlphabet, lowerCaseAlphabet, numbers, ['-', '"', '.', ':', '_', '/']);
 
     function isLine(cm, line) {
       return line >= cm.firstLine() && line <= cm.lastLine();
@@ -1023,9 +1023,9 @@
     }
     InputState.prototype.pushRepeatDigit = function(n) {
       if (!this.operator) {
-        this.prefixRepeat = this.prefixRepeat.concat(n);
+        this.prefixRepeat = this.prefixRepeat.CONCAT(n);
       } else {
-        this.motionRepeat = this.motionRepeat.concat(n);
+        this.motionRepeat = this.motionRepeat.CONCAT(n);
       }
     };
     InputState.prototype.getRepeat = function() {
@@ -4978,7 +4978,7 @@
             numPart[i] = numPart[i].input;
           }
         } else if (!number) { textPart.sort(compareFn); }
-        text = (!reverse) ? textPart.concat(numPart) : numPart.concat(textPart);
+        text = (!reverse) ? textPart.CONCAT(numPart) : numPart.CONCAT(textPart);
         if (unique) { // Remove duplicate lines
           var textOld = text;
           var lastLine;

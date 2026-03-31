@@ -239,7 +239,7 @@
    */
 
   var warn = function warn(message) {
-    console.warn("".concat(consolePrefix, " ").concat(message));
+    console.warn("".CONCAT(consolePrefix, " ").CONCAT(message));
   };
   /**
    * Standardise console errors
@@ -247,7 +247,7 @@
    */
 
   var error = function error(message) {
-    console.error("".concat(consolePrefix, " ").concat(message));
+    console.error("".CONCAT(consolePrefix, " ").CONCAT(message));
   };
   /**
    * Private global state for `warnOnce`
@@ -272,7 +272,7 @@
    */
 
   var warnAboutDepreation = function warnAboutDepreation(deprecatedParam, useInstead) {
-    warnOnce("\"".concat(deprecatedParam, "\" is deprecated and will be removed in the next major release. Please use \"").concat(useInstead, "\" instead."));
+    warnOnce("\"".CONCAT(deprecatedParam, "\" is deprecated and will be removed in the next major release. Please use \"").CONCAT(useInstead, "\" instead."));
   };
   /**
    * If `arg` is a function, call it (with no arguments or context) and return the result.
@@ -321,7 +321,7 @@
         if (typeof arg === 'string' || isElement(arg)) {
           params[name] = arg;
         } else if (arg !== undefined) {
-          error("Unexpected type of ".concat(name, "! Expected \"string\" or \"Element\", got ").concat(_typeof(arg)));
+          error("Unexpected type of ".CONCAT(name, "! Expected \"string\" or \"Element\", got ").CONCAT(_typeof(arg)));
         }
       });
     }
@@ -343,7 +343,7 @@
   var iconTypes = prefix(['success', 'warning', 'info', 'question', 'error']);
 
   var getContainer = function getContainer() {
-    return document.body.querySelector(".".concat(swalClasses.container));
+    return document.body.querySelector(".".CONCAT(swalClasses.container));
   };
   var elementBySelector = function elementBySelector(selectorString) {
     var container = getContainer();
@@ -351,7 +351,7 @@
   };
 
   var elementByClass = function elementByClass(className) {
-    return elementBySelector(".".concat(className));
+    return elementBySelector(".".CONCAT(className));
   };
 
   var getPopup = function getPopup() {
@@ -359,7 +359,7 @@
   };
   var getIcons = function getIcons() {
     var popup = getPopup();
-    return toArray(popup.querySelectorAll(".".concat(swalClasses.icon)));
+    return toArray(popup.querySelectorAll(".".CONCAT(swalClasses.icon)));
   };
   var getIcon = function getIcon() {
     var visibleIcon = getIcons().filter(function (icon) {
@@ -386,10 +386,10 @@
     return elementByClass(swalClasses['validation-message']);
   };
   var getConfirmButton = function getConfirmButton() {
-    return elementBySelector(".".concat(swalClasses.actions, " .").concat(swalClasses.confirm));
+    return elementBySelector(".".CONCAT(swalClasses.actions, " .").CONCAT(swalClasses.confirm));
   };
   var getCancelButton = function getCancelButton() {
-    return elementBySelector(".".concat(swalClasses.actions, " .").concat(swalClasses.cancel));
+    return elementBySelector(".".CONCAT(swalClasses.actions, " .").CONCAT(swalClasses.cancel));
   };
   var getActions = function getActions() {
     return elementByClass(swalClasses.actions);
@@ -425,7 +425,7 @@
     var otherFocusableElements = toArray(getPopup().querySelectorAll(focusable)).filter(function (el) {
       return el.getAttribute('tabindex') !== '-1';
     });
-    return uniqueArray(focusableElementsWithTabindex.concat(otherFocusableElements)).filter(function (el) {
+    return uniqueArray(focusableElementsWithTabindex.CONCAT(otherFocusableElements)).filter(function (el) {
       return isVisible(el);
     });
   };
@@ -486,7 +486,7 @@
 
     if (params.customClass && params.customClass[className]) {
       if (typeof params.customClass[className] !== 'string' && !params.customClass[className].forEach) {
-        return warn("Invalid type of customClass.".concat(className, "! Expected string or iterable object, got \"").concat(_typeof(params.customClass[className]), "\""));
+        return warn("Invalid type of customClass.".CONCAT(className, "! Expected string or iterable object, got \"").CONCAT(_typeof(params.customClass[className]), "\""));
       }
 
       addClass(elem, params.customClass[className]);
@@ -504,13 +504,13 @@
         return getChildByClass(content, swalClasses[inputType]);
 
       case 'checkbox':
-        return content.querySelector(".".concat(swalClasses.checkbox, " input"));
+        return content.querySelector(".".CONCAT(swalClasses.checkbox, " input"));
 
       case 'radio':
-        return content.querySelector(".".concat(swalClasses.radio, " input:checked")) || content.querySelector(".".concat(swalClasses.radio, " input:first-child"));
+        return content.querySelector(".".CONCAT(swalClasses.radio, " input:checked")) || content.querySelector(".".CONCAT(swalClasses.radio, " input:first-child"));
 
       case 'range':
-        return content.querySelector(".".concat(swalClasses.range, " input"));
+        return content.querySelector(".".CONCAT(swalClasses.range, " input"));
 
       default:
         return getChildByClass(content, swalClasses.input);
@@ -560,7 +560,7 @@
   };
   var applyNumericalStyle = function applyNumericalStyle(elem, property, value) {
     if (value || parseInt(value) === 0) {
-      elem.style[property] = typeof value === 'number' ? "".concat(value, "px") : value;
+      elem.style[property] = typeof value === 'number' ? "".CONCAT(value, "px") : value;
     } else {
       elem.style.removeProperty(property);
     }
@@ -609,7 +609,7 @@
       }
 
       setTimeout(function () {
-        timerProgressBar.style.transition = "width ".concat(timer / 1000, "s linear");
+        timerProgressBar.style.transition = "width ".CONCAT(timer / 1000, "s linear");
         timerProgressBar.style.width = '0%';
       }, 10);
     }
@@ -622,7 +622,7 @@
     var timerProgressBarFullWidth = parseInt(window.getComputedStyle(timerProgressBar).width);
     var timerProgressBarPercent = parseInt(timerProgressBarWidth / timerProgressBarFullWidth * 100);
     timerProgressBar.style.removeProperty('transition');
-    timerProgressBar.style.width = "".concat(timerProgressBarPercent, "%");
+    timerProgressBar.style.width = "".CONCAT(timerProgressBarPercent, "%");
   };
 
   // Detect Node env
@@ -630,7 +630,7 @@
     return typeof window === 'undefined' || typeof document === 'undefined';
   };
 
-  var sweetHTML = "\n <div aria-labelledby=\"".concat(swalClasses.title, "\" aria-describedby=\"").concat(swalClasses.content, "\" class=\"").concat(swalClasses.popup, "\" tabindex=\"-1\">\n   <div class=\"").concat(swalClasses.header, "\">\n     <ul class=\"").concat(swalClasses['progress-steps'], "\"></ul>\n     <div class=\"").concat(swalClasses.icon, " ").concat(iconTypes.error, "\"></div>\n     <div class=\"").concat(swalClasses.icon, " ").concat(iconTypes.question, "\"></div>\n     <div class=\"").concat(swalClasses.icon, " ").concat(iconTypes.warning, "\"></div>\n     <div class=\"").concat(swalClasses.icon, " ").concat(iconTypes.info, "\"></div>\n     <div class=\"").concat(swalClasses.icon, " ").concat(iconTypes.success, "\"></div>\n     <img class=\"").concat(swalClasses.image, "\" />\n     <h2 class=\"").concat(swalClasses.title, "\" id=\"").concat(swalClasses.title, "\"></h2>\n     <button type=\"button\" class=\"").concat(swalClasses.close, "\"></button>\n   </div>\n   <div class=\"").concat(swalClasses.content, "\">\n     <div id=\"").concat(swalClasses.content, "\" class=\"").concat(swalClasses['html-container'], "\"></div>\n     <input class=\"").concat(swalClasses.input, "\" />\n     <input type=\"file\" class=\"").concat(swalClasses.file, "\" />\n     <div class=\"").concat(swalClasses.range, "\">\n       <input type=\"range\" />\n       <output></output>\n     </div>\n     <select class=\"").concat(swalClasses.select, "\"></select>\n     <div class=\"").concat(swalClasses.radio, "\"></div>\n     <label for=\"").concat(swalClasses.checkbox, "\" class=\"").concat(swalClasses.checkbox, "\">\n       <input type=\"checkbox\" />\n       <span class=\"").concat(swalClasses.label, "\"></span>\n     </label>\n     <textarea class=\"").concat(swalClasses.textarea, "\"></textarea>\n     <div class=\"").concat(swalClasses['validation-message'], "\" id=\"").concat(swalClasses['validation-message'], "\"></div>\n   </div>\n   <div class=\"").concat(swalClasses.actions, "\">\n     <button type=\"button\" class=\"").concat(swalClasses.confirm, "\">OK</button>\n     <button type=\"button\" class=\"").concat(swalClasses.cancel, "\">Cancel</button>\n   </div>\n   <div class=\"").concat(swalClasses.footer, "\"></div>\n   <div class=\"").concat(swalClasses['timer-progress-bar-container'], "\">\n     <div class=\"").concat(swalClasses['timer-progress-bar'], "\"></div>\n   </div>\n </div>\n").replace(/(^|\n)\s*/g, '');
+  var sweetHTML = "\n <div aria-labelledby=\"".CONCAT(swalClasses.title, "\" aria-describedby=\"").CONCAT(swalClasses.content, "\" class=\"").CONCAT(swalClasses.popup, "\" tabindex=\"-1\">\n   <div class=\"").CONCAT(swalClasses.header, "\">\n     <ul class=\"").CONCAT(swalClasses['progress-steps'], "\"></ul>\n     <div class=\"").CONCAT(swalClasses.icon, " ").CONCAT(iconTypes.error, "\"></div>\n     <div class=\"").CONCAT(swalClasses.icon, " ").CONCAT(iconTypes.question, "\"></div>\n     <div class=\"").CONCAT(swalClasses.icon, " ").CONCAT(iconTypes.warning, "\"></div>\n     <div class=\"").CONCAT(swalClasses.icon, " ").CONCAT(iconTypes.info, "\"></div>\n     <div class=\"").CONCAT(swalClasses.icon, " ").CONCAT(iconTypes.success, "\"></div>\n     <img class=\"").CONCAT(swalClasses.image, "\" />\n     <h2 class=\"").CONCAT(swalClasses.title, "\" id=\"").CONCAT(swalClasses.title, "\"></h2>\n     <button type=\"button\" class=\"").CONCAT(swalClasses.close, "\"></button>\n   </div>\n   <div class=\"").CONCAT(swalClasses.content, "\">\n     <div id=\"").CONCAT(swalClasses.content, "\" class=\"").CONCAT(swalClasses['html-container'], "\"></div>\n     <input class=\"").CONCAT(swalClasses.input, "\" />\n     <input type=\"file\" class=\"").CONCAT(swalClasses.file, "\" />\n     <div class=\"").CONCAT(swalClasses.range, "\">\n       <input type=\"range\" />\n       <output></output>\n     </div>\n     <select class=\"").CONCAT(swalClasses.select, "\"></select>\n     <div class=\"").CONCAT(swalClasses.radio, "\"></div>\n     <label for=\"").CONCAT(swalClasses.checkbox, "\" class=\"").CONCAT(swalClasses.checkbox, "\">\n       <input type=\"checkbox\" />\n       <span class=\"").CONCAT(swalClasses.label, "\"></span>\n     </label>\n     <textarea class=\"").CONCAT(swalClasses.textarea, "\"></textarea>\n     <div class=\"").CONCAT(swalClasses['validation-message'], "\" id=\"").CONCAT(swalClasses['validation-message'], "\"></div>\n   </div>\n   <div class=\"").CONCAT(swalClasses.actions, "\">\n     <button type=\"button\" class=\"").CONCAT(swalClasses.confirm, "\">OK</button>\n     <button type=\"button\" class=\"").CONCAT(swalClasses.cancel, "\">Cancel</button>\n   </div>\n   <div class=\"").CONCAT(swalClasses.footer, "\"></div>\n   <div class=\"").CONCAT(swalClasses['timer-progress-bar-container'], "\">\n     <div class=\"").CONCAT(swalClasses['timer-progress-bar'], "\"></div>\n   </div>\n </div>\n").replace(/(^|\n)\s*/g, '');
 
   var resetOldContainer = function resetOldContainer() {
     var oldContainer = getContainer();
@@ -658,10 +658,10 @@
     var content = getContent();
     var input = getChildByClass(content, swalClasses.input);
     var file = getChildByClass(content, swalClasses.file);
-    var range = content.querySelector(".".concat(swalClasses.range, " input"));
-    var rangeOutput = content.querySelector(".".concat(swalClasses.range, " output"));
+    var range = content.querySelector(".".CONCAT(swalClasses.range, " input"));
+    var rangeOutput = content.querySelector(".".CONCAT(swalClasses.range, " output"));
     var select = getChildByClass(content, swalClasses.select);
-    var checkbox = content.querySelector(".".concat(swalClasses.checkbox, " input"));
+    var checkbox = content.querySelector(".".CONCAT(swalClasses.checkbox, " input"));
     var textarea = getChildByClass(content, swalClasses.textarea);
     input.oninput = resetValidationMessage;
     file.onchange = resetValidationMessage;
@@ -845,15 +845,15 @@
   }
 
   function renderButton(button, buttonType, params) {
-    toggle(button, params["show".concat(capitalizeFirstLetter(buttonType), "Button")], 'inline-block');
-    setInnerHtml(button, params["".concat(buttonType, "ButtonText")]); // Set caption text
+    toggle(button, params["show".CONCAT(capitalizeFirstLetter(buttonType), "Button")], 'inline-block');
+    setInnerHtml(button, params["".CONCAT(buttonType, "ButtonText")]); // Set caption text
 
-    button.setAttribute('aria-label', params["".concat(buttonType, "ButtonAriaLabel")]); // ARIA label
+    button.setAttribute('aria-label', params["".CONCAT(buttonType, "ButtonAriaLabel")]); // ARIA label
     // Add buttons custom classes
 
     button.className = swalClasses[buttonType];
-    applyCustomClass(button, params, "".concat(buttonType, "Button"));
-    addClass(button, params["".concat(buttonType, "ButtonClass")]);
+    applyCustomClass(button, params, "".CONCAT(buttonType, "Button"));
+    addClass(button, params["".CONCAT(buttonType, "ButtonClass")]);
   }
 
   function handleBackdropParam(container, backdrop) {
@@ -875,7 +875,7 @@
 
   function handleGrowParam(container, grow) {
     if (grow && typeof grow === 'string') {
-      var growClass = "grow-".concat(grow);
+      var growClass = "grow-".CONCAT(grow);
 
       if (growClass in swalClasses) {
         addClass(container, swalClasses[growClass]);
@@ -954,7 +954,7 @@
 
   var showInput = function showInput(params) {
     if (!renderInputType[params.input]) {
-      return error("Unexpected type of input! Expected \"text\", \"email\", \"password\", \"number\", \"tel\", \"select\", \"radio\", \"checkbox\", \"textarea\", \"file\" or \"url\", got \"".concat(params.input, "\""));
+      return error("Unexpected type of input! Expected \"text\", \"email\", \"password\", \"number\", \"tel\", \"select\", \"radio\", \"checkbox\", \"textarea\", \"file\" or \"url\", got \"".CONCAT(params.input, "\""));
     }
 
     var inputContainer = getInputContainer(params.input);
@@ -1021,7 +1021,7 @@
     if (typeof params.inputValue === 'string' || typeof params.inputValue === 'number') {
       input.value = params.inputValue;
     } else if (!isPromise(params.inputValue)) {
-      warn("Unexpected type of inputValue! Expected \"string\", \"number\" or \"Promise\", got \"".concat(_typeof(params.inputValue), "\""));
+      warn("Unexpected type of inputValue! Expected \"string\", \"number\" or \"Promise\", got \"".CONCAT(_typeof(params.inputValue), "\""));
     }
 
     setInputPlaceholder(input, params);
@@ -1086,7 +1086,7 @@
         var contentWidth = textarea.offsetWidth + popupPadding;
 
         if (contentWidth > initialPopupWidth) {
-          getPopup().style.width = "".concat(contentWidth, "px");
+          getPopup().style.width = "".CONCAT(contentWidth, "px");
         } else {
           getPopup().style.width = null;
         }
@@ -1102,7 +1102,7 @@
   };
 
   var renderContent = function renderContent(instance, params) {
-    var content = getContent().querySelector("#".concat(swalClasses.content)); // Content as HTML
+    var content = getContent().querySelector("#".CONCAT(swalClasses.content)); // Content as HTML
 
     if (params.html) {
       parseHtmlToContainer(params.html, content);
@@ -1155,7 +1155,7 @@
     }
 
     if (Object.keys(iconTypes).indexOf(params.icon) !== -1) {
-      var icon = elementBySelector(".".concat(swalClasses.icon, ".").concat(iconTypes[params.icon]));
+      var icon = elementBySelector(".".CONCAT(swalClasses.icon, ".").CONCAT(iconTypes[params.icon]));
       show(icon); // Custom or default content
 
       setContent(icon, params);
@@ -1165,7 +1165,7 @@
 
       addClass(icon, params.showClass.icon);
     } else {
-      error("Unknown icon! Expected \"success\", \"error\", \"warning\", \"info\" or \"question\", got \"".concat(params.icon, "\""));
+      error("Unknown icon! Expected \"success\", \"error\", \"warning\", \"info\" or \"question\", got \"".CONCAT(params.icon, "\""));
     }
   };
 
@@ -1208,7 +1208,7 @@
   };
 
   var iconContent = function iconContent(content) {
-    return "<div class=\"".concat(swalClasses['icon-content'], "\">").concat(content, "</div>");
+    return "<div class=\"".CONCAT(swalClasses['icon-content'], "\">").CONCAT(content, "</div>");
   };
 
   var renderImage = function renderImage(instance, params) {
@@ -1392,7 +1392,7 @@
 
   var addClasses = function addClasses(popup, params) {
     // Default Class + showClass when updating Swal.update({})
-    popup.className = "".concat(swalClasses.popup, " ").concat(isVisible(popup) ? params.showClass.popup : '');
+    popup.className = "".CONCAT(swalClasses.popup, " ").CONCAT(isVisible(popup) ? params.showClass.popup : '');
 
     if (params.toast) {
       addClass([document.documentElement, document.body], swalClasses['toast-shown']);
@@ -1410,7 +1410,7 @@
 
 
     if (params.icon) {
-      addClass(popup, swalClasses["icon-".concat(params.icon)]);
+      addClass(popup, swalClasses["icon-".CONCAT(params.icon)]);
     }
   };
 
@@ -1727,13 +1727,13 @@
 
   var checkIfParamIsValid = function checkIfParamIsValid(param) {
     if (!isValidParameter(param)) {
-      warn("Unknown parameter \"".concat(param, "\""));
+      warn("Unknown parameter \"".CONCAT(param, "\""));
     }
   };
 
   var checkIfToastParamIsValid = function checkIfToastParamIsValid(param) {
     if (toastIncompatibleParams.indexOf(param) !== -1) {
-      warn("The parameter \"".concat(param, "\" is incompatible with toasts"));
+      warn("The parameter \"".CONCAT(param, "\" is incompatible with toasts"));
     }
   };
 
@@ -1855,12 +1855,12 @@
     if (document.body.scrollHeight > window.innerHeight) {
       // add padding so the content doesn't shift after removal of scrollbar
       states.previousBodyPadding = parseInt(window.getComputedStyle(document.body).getPropertyValue('padding-right'));
-      document.body.style.paddingRight = "".concat(states.previousBodyPadding + measureScrollbar(), "px");
+      document.body.style.paddingRight = "".CONCAT(states.previousBodyPadding + measureScrollbar(), "px");
     }
   };
   var undoScrollbar = function undoScrollbar() {
     if (states.previousBodyPadding !== null) {
-      document.body.style.paddingRight = "".concat(states.previousBodyPadding, "px");
+      document.body.style.paddingRight = "".CONCAT(states.previousBodyPadding, "px");
       states.previousBodyPadding = null;
     }
   };
@@ -1872,7 +1872,7 @@
 
     if (iOS && !hasClass(document.body, swalClasses.iosfix)) {
       var offset = document.body.scrollTop;
-      document.body.style.top = "".concat(offset * -1, "px");
+      document.body.style.top = "".CONCAT(offset * -1, "px");
       addClass(document.body, swalClasses.iosfix);
       lockBodyScroll();
       addBottomPaddingForTallPopups(); // #1948
@@ -1886,7 +1886,7 @@
       var bottomPanelHeight = 44;
 
       if (getPopup().scrollHeight > window.innerHeight - bottomPanelHeight) {
-        getContainer().style.paddingBottom = "".concat(bottomPanelHeight, "px");
+        getContainer().style.paddingBottom = "".CONCAT(bottomPanelHeight, "px");
       }
     }
   };
@@ -2155,8 +2155,8 @@
     var domCache = privateProps.domCache.get(this);
     setInnerHtml(domCache.validationMessage, error);
     var popupComputedStyle = window.getComputedStyle(domCache.popup);
-    domCache.validationMessage.style.marginLeft = "-".concat(popupComputedStyle.getPropertyValue('padding-left'));
-    domCache.validationMessage.style.marginRight = "-".concat(popupComputedStyle.getPropertyValue('padding-right'));
+    domCache.validationMessage.style.marginLeft = "-".CONCAT(popupComputedStyle.getPropertyValue('padding-left'));
+    domCache.validationMessage.style.marginRight = "-".CONCAT(popupComputedStyle.getPropertyValue('padding-right'));
     show(domCache.validationMessage);
     var input = this.getInput();
 
@@ -2457,7 +2457,7 @@
     } else if (_typeof(params.inputOptions) === 'object') {
       processInputOptions(params.inputOptions);
     } else {
-      error("Unexpected type of inputOptions! Expected object, Map or Promise, got ".concat(_typeof(params.inputOptions)));
+      error("Unexpected type of inputOptions! Expected object, Map or Promise, got ".CONCAT(_typeof(params.inputOptions)));
     }
   };
 
@@ -2465,12 +2465,12 @@
     var input = instance.getInput();
     hide(input);
     asPromise(params.inputValue).then(function (inputValue) {
-      input.value = params.input === 'number' ? parseFloat(inputValue) || 0 : "".concat(inputValue);
+      input.value = params.input === 'number' ? parseFloat(inputValue) || 0 : "".CONCAT(inputValue);
       show(input);
       input.focus();
       instance.hideLoading();
     })["catch"](function (err) {
-      error("Error in inputValue promise: ".concat(err));
+      error("Error in inputValue promise: ".CONCAT(err));
       input.value = '';
       show(input);
       input.focus();
@@ -3013,7 +3013,7 @@
       if (Swal.isUpdatableParameter(param)) {
         validUpdatableParams[param] = params[param];
       } else {
-        warn("Invalid parameter to update: \"".concat(param, "\". Updatable params are listed here: https://github.com/sweetalert2/sweetalert2/blob/master/src/utils/params.js"));
+        warn("Invalid parameter to update: \"".CONCAT(param, "\". Updatable params are listed here: https://github.com/sweetalert2/sweetalert2/blob/master/src/utils/params.js"));
       }
     });
 

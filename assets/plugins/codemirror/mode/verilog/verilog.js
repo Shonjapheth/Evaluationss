@@ -620,7 +620,7 @@ CodeMirror.defineMode("verilog", function(config, parserConfig) {
               style = "tlv-default";
             }
           } else if (stream.match(/^\t+/)) {
-            // Highlight tabs, which are illegal.
+            // Highlight tABS, which are illegal.
             style = "tlv-tab";
           } else if (stream.match(/^[\[\]{}\(\);\:]+/)) {
             // [:], (), {}, ;.

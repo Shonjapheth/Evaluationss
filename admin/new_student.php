@@ -24,7 +24,7 @@
 							<select name="class_id" id="class_id" class="form-control form-control-sm select2">
 								<option value=""></option>
 								<?php 
-								$classes = $conn->query("SELECT id,concat(curriculum,' ',level,' - ',section) as class FROM class_list");
+								$classes = $conn->query("SELECT id,CONCAT(curriculum,' ',level,' - ',section) as class FROM class_list");
 								while($row=$classes->fetch_assoc()):
 								?>
 								<option value="<?php echo $row['id'] ?>" <?php echo isset($class_id) && $class_id == $row['id'] ? "selected" : "" ?>><?php echo $row['class'] ?></option>

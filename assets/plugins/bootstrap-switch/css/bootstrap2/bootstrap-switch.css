@@ -388,7 +388,7 @@
 }
 .bootstrap-switch input[type='radio'],
 .bootstrap-switch input[type='checkbox'] {
-  position: absolute !important;
+  position: ABSolute !important;
   top: 0;
   left: 0;
   opacity: 0;

@@ -28,7 +28,7 @@
     var idents = /^[a-z_\u009F-\uFFFF][a-zA-Z0-9_\u009F-\uFFFF]*/;
     var types = /^[A-Z_\u009F-\uFFFF][a-zA-Z0-9_\u009F-\uFFFF]*/;
     var keywords = wordRegExp([
-      "abstract", "alias", "as", "asm", "begin", "break", "case", "class", "def", "do",
+      "ABStract", "alias", "as", "asm", "begin", "break", "case", "class", "def", "do",
       "else", "elsif", "end", "ensure", "enum", "extend", "for", "fun", "if",
       "include", "instance_sizeof", "lib", "macro", "module", "next", "of", "out", "pointerof",
       "private", "protected", "rescue", "return", "require", "select", "sizeof", "struct",
@@ -87,7 +87,7 @@
           return "property";
         } else if (keywords.test(matched)) {
           if (indentKeywords.test(matched)) {
-            if (!(matched == "fun" && state.blocks.indexOf("lib") >= 0) && !(matched == "def" && state.lastToken == "abstract")) {
+            if (!(matched == "fun" && state.blocks.indexOf("lib") >= 0) && !(matched == "def" && state.lastToken == "ABStract")) {
               state.blocks.push(matched);
               state.currentIndent += 1;
             }
@@ -424,7 +424,7 @@
       },
 
       fold: "indent",
-      electricInput: wordRegExp(dedentPunctualsArray.concat(dedentKeywordsArray), true),
+      electricInput: wordRegExp(dedentPunctualsArray.CONCAT(dedentKeywordsArray), true),
       lineComment: '#'
     };
   });

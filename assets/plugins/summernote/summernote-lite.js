@@ -406,7 +406,7 @@ var isSupportAmd = typeof define === 'function' && __webpack_require__(2); // es
 var genericFontFamilies = ['sans-serif', 'serif', 'monospace', 'cursive', 'fantasy'];
 
 function validFontName(fontName) {
-  return external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.inArray(fontName.toLowerCase(), genericFontFamilies) === -1 ? "'".concat(fontName, "'") : fontName;
+  return external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.inArray(fontName.toLowerCase(), genericFontFamilies) === -1 ? "'".CONCAT(fontName, "'") : fontName;
 }
 
 function env_isFontInstalled(fontName) {
@@ -2126,7 +2126,7 @@ function isCustomStyleTag(node) {
   blank: blankHTML,
 
   /** @property {String} emptyPara */
-  emptyPara: "<p>".concat(blankHTML, "</p>"),
+  emptyPara: "<p>".CONCAT(blankHTML, "</p>"),
   makePredByNodeName: makePredByNodeName,
   isEditable: isEditable,
   isControlSizing: isControlSizing,
@@ -3095,7 +3095,7 @@ var range_WrappedRange = /*#__PURE__*/function () {
       if (topAncestor) {
         // siblings not in paragraph
         var inlineSiblings = dom.listPrev(topAncestor, dom.isParaInline).reverse();
-        inlineSiblings = inlineSiblings.concat(dom.listNext(topAncestor.nextSibling, dom.isParaInline)); // wrap with paragraph
+        inlineSiblings = inlineSiblings.CONCAT(dom.listNext(topAncestor.nextSibling, dom.isParaInline)); // wrap with paragraph
 
         if (inlineSiblings.length) {
           var para = dom.wrap(lists.head(inlineSiblings), 'p');
@@ -4112,7 +4112,7 @@ var Bullet_Bullet = /*#__PURE__*/function () {
       if (lists.find(paras, dom.isPurePara)) {
         var wrappedParas = [];
         external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.each(clustereds, function (idx, paras) {
-          wrappedParas = wrappedParas.concat(_this3.wrapList(paras, listName));
+          wrappedParas = wrappedParas.CONCAT(_this3.wrapList(paras, listName));
         });
         paras = wrappedParas; // list to paragraph or change list style
       } else {
@@ -4232,7 +4232,7 @@ var Bullet_Bullet = /*#__PURE__*/function () {
 
           var rootLists = lists.compact([headList, middleList, lastList]);
           external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.each(rootLists, function (idx, rootList) {
-            var listNodes = [rootList].concat(dom.listDescendant(rootList, dom.isList));
+            var listNodes = [rootList].CONCAT(dom.listDescendant(rootList, dom.isList));
             external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.each(listNodes.reverse(), function (idx, listNode) {
               if (!dom.nodeLength(listNode)) {
                 dom.remove(listNode, true);
@@ -4241,7 +4241,7 @@ var Bullet_Bullet = /*#__PURE__*/function () {
           });
         }
 
-        releasedParas = releasedParas.concat(paras);
+        releasedParas = releasedParas.CONCAT(paras);
       });
       return releasedParas;
     }
@@ -4407,7 +4407,7 @@ var Typing_Typing = /*#__PURE__*/function () {
             nextPara = dom.splitTree(splitRoot, rng.getStartPoint()); // not a blockquote, just insert the paragraph
 
             var emptyAnchors = dom.listDescendant(splitRoot, dom.isEmptyAnchor);
-            emptyAnchors = emptyAnchors.concat(dom.listDescendant(nextPara, dom.isEmptyAnchor));
+            emptyAnchors = emptyAnchors.CONCAT(dom.listDescendant(nextPara, dom.isEmptyAnchor));
             external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.each(emptyAnchors, function (idx, anchor) {
               dom.remove(anchor);
             }); // replace empty heading, pre or custom-made styleTag with P tag
@@ -6588,7 +6588,7 @@ var Codeview_CodeView = /*#__PURE__*/function () {
         value = value.replace(this.options.codeviewFilterRegex, ''); // allow specific iframe tag
 
         if (this.options.codeviewIframeFilter) {
-          var whitelist = this.options.codeviewIframeWhitelistSrc.concat(this.options.codeviewIframeWhitelistSrcBase);
+          var whitelist = this.options.codeviewIframeWhitelistSrc.CONCAT(this.options.codeviewIframeWhitelistSrcBase);
           value = value.replace(/(<iframe.*?>.*?(?:<\/iframe>)?)/gi, function (tag) {
             // remove if src attribute is duplicated
             if (/<.+src(?==?('|"|\s)?)[\s\S]+src(?=('|"|\s)?)[^>]*?>/i.test(tag)) {
@@ -8372,7 +8372,7 @@ var LinkDialog_LinkDialog = /*#__PURE__*/function () {
     key: "initialize",
     value: function initialize() {
       var $container = this.options.dialogsInBody ? this.$body : this.options.container;
-      var body = ['<div class="form-group note-form-group">', "<label for=\"note-dialog-link-txt-".concat(this.options.id, "\" class=\"note-form-label\">").concat(this.lang.link.textToDisplay, "</label>"), "<input id=\"note-dialog-link-txt-".concat(this.options.id, "\" class=\"note-link-text form-control note-form-control note-input\" type=\"text\"/>"), '</div>', '<div class="form-group note-form-group">', "<label for=\"note-dialog-link-url-".concat(this.options.id, "\" class=\"note-form-label\">").concat(this.lang.link.url, "</label>"), "<input id=\"note-dialog-link-url-".concat(this.options.id, "\" class=\"note-link-url form-control note-form-control note-input\" type=\"text\" value=\"http://\"/>"), '</div>', !this.options.disableLinkTarget ? external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('<div/>').append(this.ui.checkbox({
+      var body = ['<div class="form-group note-form-group">', "<label for=\"note-dialog-link-txt-".CONCAT(this.options.id, "\" class=\"note-form-label\">").CONCAT(this.lang.link.textToDisplay, "</label>"), "<input id=\"note-dialog-link-txt-".CONCAT(this.options.id, "\" class=\"note-link-text form-control note-form-control note-input\" type=\"text\"/>"), '</div>', '<div class="form-group note-form-group">', "<label for=\"note-dialog-link-url-".CONCAT(this.options.id, "\" class=\"note-form-label\">").CONCAT(this.lang.link.url, "</label>"), "<input id=\"note-dialog-link-url-".CONCAT(this.options.id, "\" class=\"note-link-url form-control note-form-control note-input\" type=\"text\" value=\"http://\"/>"), '</div>', !this.options.disableLinkTarget ? external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('<div/>').append(this.ui.checkbox({
         className: 'sn-checkbox-open-in-new-window',
         text: this.lang.link.openInNewWindow,
         checked: true
@@ -8382,7 +8382,7 @@ var LinkDialog_LinkDialog = /*#__PURE__*/function () {
         checked: true
       }).render()).html()].join('');
       var buttonClass = 'btn btn-primary note-btn note-btn-primary note-link-btn';
-      var footer = "<input type=\"button\" href=\"#\" class=\"".concat(buttonClass, "\" value=\"").concat(this.lang.link.insert, "\" disabled>");
+      var footer = "<input type=\"button\" href=\"#\" class=\"".CONCAT(buttonClass, "\" value=\"").CONCAT(this.lang.link.insert, "\" disabled>");
       this.$dialog = this.ui.dialog({
         className: 'link-dialog',
         title: this.lang.link.insert,
@@ -8657,13 +8657,13 @@ var ImageDialog_ImageDialog = /*#__PURE__*/function () {
       if (this.options.maximumImageFileSize) {
         var unit = Math.floor(Math.log(this.options.maximumImageFileSize) / Math.log(1024));
         var readableSize = (this.options.maximumImageFileSize / Math.pow(1024, unit)).toFixed(2) * 1 + ' ' + ' KMGTP'[unit] + 'B';
-        imageLimitation = "<small>".concat(this.lang.image.maximumFileSize + ' : ' + readableSize, "</small>");
+        imageLimitation = "<small>".CONCAT(this.lang.image.maximumFileSize + ' : ' + readableSize, "</small>");
       }
 
       var $container = this.options.dialogsInBody ? this.$body : this.options.container;
       var body = ['<div class="form-group note-form-group note-group-select-from-files">', '<label for="note-dialog-image-file-' + this.options.id + '" class="note-form-label">' + this.lang.image.selectFromFiles + '</label>', '<input id="note-dialog-image-file-' + this.options.id + '" class="note-image-input form-control-file note-form-control note-input" ', ' type="file" name="files" accept="image/*" multiple="multiple"/>', imageLimitation, '</div>', '<div class="form-group note-group-image-url">', '<label for="note-dialog-image-url-' + this.options.id + '" class="note-form-label">' + this.lang.image.url + '</label>', '<input id="note-dialog-image-url-' + this.options.id + '" class="note-image-url form-control note-form-control note-input" type="text"/>', '</div>'].join('');
       var buttonClass = 'btn btn-primary note-btn note-btn-primary note-image-btn';
-      var footer = "<input type=\"button\" href=\"#\" class=\"".concat(buttonClass, "\" value=\"").concat(this.lang.image.insert, "\" disabled>");
+      var footer = "<input type=\"button\" href=\"#\" class=\"".CONCAT(buttonClass, "\" value=\"").CONCAT(this.lang.image.insert, "\" disabled>");
       this.$dialog = this.ui.dialog({
         title: this.lang.image.insert,
         fade: this.options.dialogsFade,
@@ -8992,9 +8992,9 @@ var VideoDialog_VideoDialog = /*#__PURE__*/function () {
     key: "initialize",
     value: function initialize() {
       var $container = this.options.dialogsInBody ? this.$body : this.options.container;
-      var body = ['<div class="form-group note-form-group row-fluid">', "<label for=\"note-dialog-video-url-".concat(this.options.id, "\" class=\"note-form-label\">").concat(this.lang.video.url, " <small class=\"text-muted\">").concat(this.lang.video.providers, "</small></label>"), "<input id=\"note-dialog-video-url-".concat(this.options.id, "\" class=\"note-video-url form-control note-form-control note-input\" type=\"text\"/>"), '</div>'].join('');
+      var body = ['<div class="form-group note-form-group row-fluid">', "<label for=\"note-dialog-video-url-".CONCAT(this.options.id, "\" class=\"note-form-label\">").CONCAT(this.lang.video.url, " <small class=\"text-muted\">").CONCAT(this.lang.video.providers, "</small></label>"), "<input id=\"note-dialog-video-url-".CONCAT(this.options.id, "\" class=\"note-video-url form-control note-form-control note-input\" type=\"text\"/>"), '</div>'].join('');
       var buttonClass = 'btn btn-primary note-btn note-btn-primary note-video-btn';
-      var footer = "<input type=\"button\" href=\"#\" class=\"".concat(buttonClass, "\" value=\"").concat(this.lang.video.insert, "\" disabled>");
+      var footer = "<input type=\"button\" href=\"#\" class=\"".CONCAT(buttonClass, "\" value=\"").CONCAT(this.lang.video.insert, "\" disabled>");
       this.$dialog = this.ui.dialog({
         title: this.lang.video.insert,
         fade: this.options.dialogsFade,

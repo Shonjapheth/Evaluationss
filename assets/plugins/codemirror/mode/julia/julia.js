@@ -50,7 +50,7 @@ CodeMirror.defineMode("julia", function(config, parserConf) {
 
   var builtinsList = ["true", "false", "nothing", "NaN", "Inf"];
 
-  CodeMirror.registerHelper("hintWords", "julia", keywordsList.concat(builtinsList));
+  CodeMirror.registerHelper("hintWords", "julia", keywordsList.CONCAT(builtinsList));
 
   var openers = wordRegexp(openersList);
   var closers = wordRegexp(closersList);

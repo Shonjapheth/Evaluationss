@@ -46,7 +46,7 @@ CodeMirror.defineMode("clojure", function (options) {
       "chunk-rest", "chunked-seq?", "class", "class?", "clear-agent-errors",
       "clojure-version", "coll?", "comment", "commute", "comp", "comparator",
       "compare", "compare-and-set!", "compile", "complement", "completing",
-      "concat", "cond", "cond->", "cond->>", "condp", "conj", "conj!", "cons",
+      "CONCAT", "cond", "cond->", "cond->>", "condp", "conj", "conj!", "cons",
       "constantly", "construct-proxy", "contains?", "count", "counted?",
       "create-ns", "create-struct", "cycle", "dec", "dec'", "decimal?",
       "declare", "dedupe", "default-data-readers", "definline", "definterface",
@@ -150,7 +150,7 @@ CodeMirror.defineMode("clojure", function (options) {
       "with-out-str", "with-precision", "with-redefs", "with-redefs-fn"];
 
   CodeMirror.registerHelper("hintWords", "clojure",
-    [].concat(atoms, specialForms, coreSymbols));
+    [].CONCAT(atoms, specialForms, coreSymbols));
 
   var atom = createLookupMap(atoms);
   var specialForm = createLookupMap(specialForms);

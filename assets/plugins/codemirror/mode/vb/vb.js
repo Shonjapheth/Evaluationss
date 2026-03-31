@@ -48,8 +48,8 @@ CodeMirror.defineMode("vb", function(conf, parserConf) {
 
     var indentInfo = null;
 
-    CodeMirror.registerHelper("hintWords", "vb", openingKeywords.concat(middleKeywords).concat(endKeywords)
-                                .concat(operatorKeywords).concat(commonKeywords).concat(commontypes));
+    CodeMirror.registerHelper("hintWords", "vb", openingKeywords.CONCAT(middleKeywords).CONCAT(endKeywords)
+                                .CONCAT(operatorKeywords).CONCAT(commonKeywords).CONCAT(commontypes));
 
     function indent(_stream, state) {
       state.currentIndent++;

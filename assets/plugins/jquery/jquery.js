@@ -54,7 +54,7 @@ var slice = arr.slice;
 var flat = arr.flat ? function( array ) {
 	return arr.flat.call( array );
 } : function( array ) {
-	return arr.concat.apply( [], array );
+	return arr.CONCAT.apply( [], array );
 };
 
 
@@ -2649,7 +2649,7 @@ function matcherFromTokens( tokens ) {
 					// If the preceding token was a descendant combinator, insert an implicit any-element `*`
 					tokens
 						.slice( 0, i - 1 )
-						.concat( { value: tokens[ i - 2 ].type === " " ? "*" : "" } )
+						.CONCAT( { value: tokens[ i - 2 ].type === " " ? "*" : "" } )
 					).replace( rtrim, "$1" ),
 					matcher,
 					i < j && matcherFromTokens( tokens.slice( i, j ) ),
@@ -7309,7 +7309,7 @@ function genFx( type, includeWidth ) {
 
 function createTween( value, prop, animation ) {
 	var tween,
-		collection = ( Animation.tweeners[ prop ] || [] ).concat( Animation.tweeners[ "*" ] ),
+		collection = ( Animation.tweeners[ prop ] || [] ).CONCAT( Animation.tweeners[ "*" ] ),
 		index = 0,
 		length = collection.length;
 	for ( ; index < length; index++ ) {
@@ -9029,7 +9029,7 @@ var
 	transports = {},
 
 	// Avoid comment-prolog char sequence (#10098); must appease lint and evade compression
-	allTypes = "*/".concat( "*" ),
+	allTypes = "*/".CONCAT( "*" ),
 
 	// Anchor tag for parsing the document origin
 	originAnchor = document.createElement( "a" );
@@ -9444,7 +9444,7 @@ jQuery.extend( {
 							while ( ( match = rheaders.exec( responseHeadersString ) ) ) {
 								responseHeaders[ match[ 1 ].toLowerCase() + " " ] =
 									( responseHeaders[ match[ 1 ].toLowerCase() + " " ] || [] )
-										.concat( match[ 2 ] );
+										.CONCAT( match[ 2 ] );
 							}
 						}
 						match = responseHeaders[ key.toLowerCase() + " " ];
@@ -10768,7 +10768,7 @@ jQuery.proxy = function( fn, context ) {
 	// Simulated bind
 	args = slice.call( arguments, 2 );
 	proxy = function() {
-		return fn.apply( context || this, args.concat( slice.call( arguments ) ) );
+		return fn.apply( context || this, args.CONCAT( slice.call( arguments ) ) );
 	};
 
 	// Set the guid of unique handler to the same of original handler, so it can be removed
@@ -10816,8 +10816,8 @@ jQuery.trim = function( text ) {
 
 
 
-// Register as a named AMD module, since jQuery can be concatenated with other
-// files that may use define, but not via a proper concatenation script that
+// Register as a named AMD module, since jQuery can be CONCATenated with other
+// files that may use define, but not via a proper CONCATenation script that
 // understands anonymous AMD modules. A named AMD is safest and most robust
 // way to register. Lowercase jquery is used because AMD module names are
 // derived from file names, and jQuery is normally delivered in a lowercase

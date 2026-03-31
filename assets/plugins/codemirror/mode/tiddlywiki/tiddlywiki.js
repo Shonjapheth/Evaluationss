@@ -35,7 +35,7 @@ CodeMirror.defineMode("tiddlywiki", function () {
     "allTags": true, "closeAll": true, "list": true,
     "newJournal": true, "newTiddler": true,
     "permaview": true, "saveChanges": true,
-    "search": true, "slider": true, "tabs": true,
+    "search": true, "slider": true, "tABS": true,
     "tag": true, "tagging": true, "tags": true,
     "tiddler": true, "timeline": true,
     "today": true, "version": true, "option": true,

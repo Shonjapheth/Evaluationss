@@ -67,7 +67,7 @@ DataTable.Buttons.jszip = function (_) {
  * FileSaver.js dependency
  */
 
-/*jslint bitwise: true, indent: 4, laxbreak: true, laxcomma: true, smarttabs: true, plusplus: true */
+/*jslint bitwise: true, indent: 4, laxbreak: true, laxcomma: true, smarttABS: true, plusplus: true */
 
 var _saveAs = (function(view) {
 	"use strict";
@@ -108,7 +108,7 @@ var _saveAs = (function(view) {
 			setTimeout(revoker, arbitrary_revoke_timeout);
 		}
 		, dispatch = function(filesaver, event_types, event) {
-			event_types = [].concat(event_types);
+			event_types = [].CONCAT(event_types);
 			var i = event_types.length;
 			while (i--) {
 				var listener = filesaver["on" + event_types[i]];
@@ -168,7 +168,7 @@ var _saveAs = (function(view) {
 					} else {
 						var opened = view.open(object_url, "_blank");
 						if (!opened) {
-							// Apple does not allow window.open, see https://developer.apple.com/library/safari/documentation/Tools/Conceptual/SafariExtensionGuide/WorkingwithWindowsandTabs/WorkingwithWindowsandTabs.html
+							// Apple does not allow window.open, see https://developer.apple.com/library/safari/documentation/Tools/Conceptual/SafariExtensionGuide/WorkingwithWindowsandTABS/WorkingwithWindowsandTABS.html
 							view.location.href = object_url;
 						}
 					}

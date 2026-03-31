@@ -30,7 +30,7 @@
   position: relative; }
 
 .colorpicker-popup {
-  position: absolute;
+  position: ABSolute;
   top: 100%;
   left: 0;
   float: left;
@@ -69,7 +69,7 @@
   border-right: 7px solid transparent;
   border-bottom: 7px solid #ccc;
   border-bottom-color: rgba(0, 0, 0, 0.2);
-  position: absolute;
+  position: ABSolute;
   top: -7px;
   left: auto;
   right: 6px; }
@@ -80,7 +80,7 @@
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
   border-bottom: 6px solid #ffffff;
-  position: absolute;
+  position: ABSolute;
   top: -6px;
   left: auto;
   right: 7px; }
@@ -116,7 +116,7 @@
     border: 1px solid #000;
     -webkit-box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.8);
             box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.8);
-    position: absolute;
+    position: ABSolute;
     top: 0;
     left: 0;
     margin: -3px 0 0 -3px; }
@@ -132,7 +132,7 @@
   margin-bottom: 6px; }
 
 .colorpicker-alpha-color {
-  position: absolute;
+  position: ABSolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -149,7 +149,7 @@
   height: 4px;
   background: rgba(255, 255, 255, 0.8);
   border: 1px solid rgba(0, 0, 0, 0.4);
-  position: absolute;
+  position: ABSolute;
   top: 0;
   left: 0;
   margin-left: -2px;
@@ -207,7 +207,7 @@
 
 .colorpicker-input-addon:before {
   content: "";
-  position: absolute;
+  position: ABSolute;
   width: 16px;
   height: 16px;
   display: inline-block;
@@ -246,7 +246,7 @@
 
 .colorpicker.colorpicker-horizontal .colorpicker-hue .colorpicker-guide,
 .colorpicker.colorpicker-horizontal .colorpicker-alpha .colorpicker-guide {
-  position: absolute;
+  position: ABSolute;
   display: block;
   bottom: -2px;
   left: 0;
@@ -317,7 +317,7 @@
   left: 0;
   right: auto;
   z-index: 2;
-  position: absolute; }
+  position: ABSolute; }
 
 .colorpicker.colorpicker-disabled .colorpicker-guide {
   display: none; }
@@ -329,7 +329,7 @@
   background-position: 0 0, 5px 5px; }
 
 .colorpicker-preview > div {
-  position: absolute;
+  position: ABSolute;
   left: 0;
   top: 0;
   width: 100%;
@@ -361,7 +361,7 @@
   background-position: 0 0, 5px 5px; }
 
 .colorpicker-swatch--inner {
-  position: absolute;
+  position: ABSolute;
   top: 0;
   left: 0;
   width: 100%;

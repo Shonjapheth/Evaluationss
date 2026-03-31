@@ -74,7 +74,7 @@
     max-width: unset;
   }
   #viewer_modal .btn-close {
-    position: absolute;
+    position: ABSolute;
     z-index: 999999;
     /*right: -4.5em;*/
     background: unset;

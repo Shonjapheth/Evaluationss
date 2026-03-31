@@ -103,7 +103,7 @@
           if (_this.$element.attr('id')) {
             classes.push('id-' + _this.$element.attr('id'));
           }
-          return classes.map(_this._getClass.bind(_this)).concat([_this.options.baseClass], _this._getClasses(_this.options.wrapperClass)).join(' ');
+          return classes.map(_this._getClass.bind(_this)).CONCAT([_this.options.baseClass], _this._getClasses(_this.options.wrapperClass)).join(' ');
         }
       });
       this.$container = $('<div>', { class: this._getClass('container') });

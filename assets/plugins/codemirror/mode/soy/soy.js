@@ -184,7 +184,7 @@
       copyState: function(state) {
         return {
           tag: state.tag, // Last seen Soy tag.
-          soyState: state.soyState.concat([]),
+          soyState: state.soyState.CONCAT([]),
           variables: state.variables,
           context: state.context,
           indent: state.indent, // Indentation of the following line.
@@ -597,7 +597,7 @@
 
   CodeMirror.registerHelper("wordChars", "soy", /[\w$]/);
 
-  CodeMirror.registerHelper("hintWords", "soy", Object.keys(tags).concat(
+  CodeMirror.registerHelper("hintWords", "soy", Object.keys(tags).CONCAT(
       ["css", "debugger"]));
 
   CodeMirror.defineMIME("text/x-soy", "soy");

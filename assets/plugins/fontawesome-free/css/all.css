@@ -70,7 +70,7 @@
 
 .fa-li {
   left: -2em;
-  position: absolute;
+  position: ABSolute;
   text-align: center;
   width: 2em;
   line-height: inherit; }
@@ -174,7 +174,7 @@
 .fa-stack-1x,
 .fa-stack-2x {
   left: 0;
-  position: absolute;
+  position: ABSolute;
   text-align: center;
   width: 100%; }
 
@@ -4540,7 +4540,7 @@ readers do not read off random characters that represent icons */
   margin: -1px;
   overflow: hidden;
   padding: 0;
-  position: absolute;
+  position: ABSolute;
   width: 1px; }
 
 .sr-only-focusable:active, .sr-only-focusable:focus {

@@ -153,7 +153,7 @@
                 var proto = LEXICON.p;
                 var aArgs = Array[proto].slice.call(arguments, 2);
                 var fNOP = function () { };
-                var fBound = function () { return func.apply(this instanceof fNOP ? this : thisObj, aArgs.concat(Array[proto].slice.call(arguments))); };
+                var fBound = function () { return func.apply(this instanceof fNOP ? this : thisObj, aArgs.CONCAT(Array[proto].slice.call(arguments))); };
 
                 if (func[proto])
                     fNOP[proto] = func[proto]; // Function.prototype doesn't have a prototype property
@@ -1639,7 +1639,7 @@
 
                                                 //split it into a array which contains all possible values for example: ["y:yes", "n:no", "m:maybe"]
                                                 restrictedStringValuesSplit = currType.split(restrictedStringsSplit);
-                                                errorRestrictedStrings = errorRestrictedStrings.concat(restrictedStringValuesSplit);
+                                                errorRestrictedStrings = errorRestrictedStrings.CONCAT(restrictedStringValuesSplit);
                                                 for (v = 0; v < restrictedStringValuesSplit[LEXICON.l]; v++) {
                                                     //split the possible values into their possibiliteis for example: ["y", "yes"] -> the first is always the mainPossibility
                                                     restrictedStringValuesPossibilitiesSplit = restrictedStringValuesSplit[v].split(restrictedStringsPossibilitiesSplit);
@@ -2292,7 +2292,7 @@
                 var _mutationObserverContentCallback;
                 var _mutationObserversConnected;
                 var _mutationObserverAttrsTextarea = ['wrap', 'cols', 'rows'];
-                var _mutationObserverAttrsHost = [LEXICON.i, LEXICON.c, LEXICON.s, 'open'].concat(_viewportAttrsFromTarget);
+                var _mutationObserverAttrsHost = [LEXICON.i, LEXICON.c, LEXICON.s, 'open'].CONCAT(_viewportAttrsFromTarget);
 
                 //events:	
                 var _destroyEvents = [];
@@ -2643,7 +2643,7 @@
                                         // if old class value contains _classNameHostElementForeign and new class value doesn't
                                         if (oldMutationVal.indexOf(_classNameHostElementForeign) > -1 && newClassVal.indexOf(_classNameHostElementForeign) < 0) {
                                             hostClassNameRegex = createHostClassNameRegExp(true);
-                                            _hostElementNative.className = newClassVal.split(_strSpace).concat(oldMutationVal.split(_strSpace).filter(function (name) {
+                                            _hostElementNative.className = newClassVal.split(_strSpace).CONCAT(oldMutationVal.split(_strSpace).filter(function (name) {
                                                 return name.match(hostClassNameRegex);
                                             })).join(_strSpace);
                                             doUpdate = doUpdateForce = true;
@@ -2978,7 +2978,7 @@
                     var checks = [
                         {
                             _elem: _hostElement,
-                            _attrs: _mutationObserverAttrsHost.concat(':visible')
+                            _attrs: _mutationObserverAttrsHost.CONCAT(':visible')
                         },
                         {
                             _elem: _isTextarea ? _targetElement : undefined,
@@ -3230,7 +3230,7 @@
                     //freezeResizeObserver(_sizeAutoObserverElement, true);
 
                     var checkCacheAutoForce = function () {
-                        return checkCache.apply(this, [].slice.call(arguments).concat([force]));
+                        return checkCache.apply(this, [].slice.call(arguments).CONCAT([force]));
                     };
 
                     //save current scroll offset
@@ -5356,7 +5356,7 @@
                  * Generates a string which represents a HTML div with the given classes or attributes.
                  * @param classesOrAttrs The class of the div as string or a object which represents the attributes of the div. (The class attribute can also be written as "className".)
                  * @param content The content of the div as string.
-                 * @returns {string} The concated string which represents a HTML div and its content.
+                 * @returns {string} The CONCATed string which represents a HTML div and its content.
                  */
                 function generateDiv(classesOrAttrs, content) {
                     return '<div ' + (classesOrAttrs ? type(classesOrAttrs) == TYPES.s ?
@@ -5483,7 +5483,7 @@
                  * jQuery extend method shortcut with a appended "true" as first argument.
                  */
                 function extendDeep() {
-                    return FRAMEWORK.extend.apply(this, [true].concat([].slice.call(arguments)));
+                    return FRAMEWORK.extend.apply(this, [true].CONCAT([].slice.call(arguments)));
                 }
 
                 /**

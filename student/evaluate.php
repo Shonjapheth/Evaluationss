@@ -20,7 +20,7 @@ if(isset($_GET['fid']))
 $faculty_id = $_GET['fid'];
 if(isset($_GET['sid']))
 $subject_id = $_GET['sid'];
-$restriction = $conn->query("SELECT r.id,s.id as sid,f.id as fid,concat(f.firstname,' ',f.lastname) as faculty,s.code,s.subject FROM restriction_list r inner join faculty_list f on f.id = r.faculty_id inner join subject_list s on s.id = r.subject_id where academic_id ={$_SESSION['academic']['id']} and class_id = {$_SESSION['login_class_id']} and r.id not in (SELECT restriction_id from evaluation_list where academic_id ={$_SESSION['academic']['id']} and student_id = {$_SESSION['login_id']} ) ");
+$restriction = $conn->query("SELECT r.id,s.id as sid,f.id as fid,CONCAT(f.firstname,' ',f.lastname) as faculty,s.code,s.subject FROM restriction_list r inner join faculty_list f on f.id = r.faculty_id inner join subject_list s on s.id = r.subject_id where academic_id ={$_SESSION['academic']['id']} and class_id = {$_SESSION['login_class_id']} and r.id not in (SELECT restriction_id from evaluation_list where academic_id ={$_SESSION['academic']['id']} and student_id = {$_SESSION['login_id']} ) ");
 ?>
 
 <div class="col-lg-12">
@@ -61,7 +61,7 @@ $restriction = $conn->query("SELECT r.id,s.id as sid,f.id as fid,concat(f.firstn
 					<div class="clear-fix mt-2"></div>
 					<?php 
 							$q_arr = array();
-						$criteria = $conn->query("SELECT * FROM criteria_list where id in (SELECT criteria_id FROM question_list where academic_id = {$_SESSION['academic']['id']} ) order by abs(order_by) asc ");
+						$criteria = $conn->query("SELECT * FROM criteria_list where id in (SELECT criteria_id FROM question_list where academic_id = {$_SESSION['academic']['id']} ) order by ABS(order_by) asc ");
 						while($crow = $criteria->fetch_assoc()):
 					?>
 					<table class="table table-condensed">
@@ -77,7 +77,7 @@ $restriction = $conn->query("SELECT r.id,s.id as sid,f.id as fid,concat(f.firstn
 						</thead>
 						<tbody class="tr-sortable">
 							<?php 
-							$questions = $conn->query("SELECT * FROM question_list where criteria_id = {$crow['id']} and academic_id = {$_SESSION['academic']['id']} order by abs(order_by) asc ");
+							$questions = $conn->query("SELECT * FROM question_list where criteria_id = {$crow['id']} and academic_id = {$_SESSION['academic']['id']} order by ABS(order_by) asc ");
 							while($row=$questions->fetch_assoc()):
 							$q_arr[$row['id']] = $row;
 							?>

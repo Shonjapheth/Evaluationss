@@ -68,7 +68,7 @@
         return "comment";
       }
 
-      // Number Literals // SIS/RLM - MUMPS permits canonic number followed by concatenate operator
+      // Number Literals // SIS/RLM - MUMPS permits canonic number followed by CONCATenate operator
       if (stream.match(/^[-+]?\d+(\.\d+)?([eE][-+]?\d+)?/))
         return "number";
 

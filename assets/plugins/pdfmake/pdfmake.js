@@ -498,9 +498,9 @@ module.exports = function (options, source) {
 	         *
 	         * @example
 	         *
-	         *     wordArray1.concat(wordArray2);
+	         *     wordArray1.CONCAT(wordArray2);
 	         */
-	        concat: function (wordArray) {
+	        CONCAT: function (wordArray) {
 	            // Shortcuts
 	            var thisWords = this.words;
 	            var thatWords = wordArray.words;
@@ -809,7 +809,7 @@ module.exports = function (options, source) {
 	            }
 
 	            // Append
-	            this._data.concat(data);
+	            this._data.CONCAT(data);
 	            this._nDataBytes += data.sigBytes;
 	        },
 
@@ -1724,7 +1724,7 @@ Buffer.isEncoding = function isEncoding (encoding) {
   }
 }
 
-Buffer.concat = function concat (list, length) {
+Buffer.CONCAT = function CONCAT (list, length) {
   if (!isArray(list)) {
     throw new TypeError('"list" argument must be an Array of Buffers')
   }
@@ -3563,7 +3563,7 @@ module.exports = !fails(function () {
 	            var padding = WordArray.create(paddingWords, nPaddingBytes);
 
 	            // Add padding
-	            data.concat(padding);
+	            data.CONCAT(padding);
 	        },
 
 	        /**
@@ -3744,7 +3744,7 @@ module.exports = !fails(function () {
 
 	            // Format
 	            if (salt) {
-	                var wordArray = WordArray.create([0x53616c74, 0x65645f5f]).concat(salt).concat(ciphertext);
+	                var wordArray = WordArray.create([0x53616c74, 0x65645f5f]).CONCAT(salt).CONCAT(ciphertext);
 	            } else {
 	                var wordArray = ciphertext;
 	            }
@@ -5005,7 +5005,7 @@ function cleanUpNextTick() {
     }
     draining = false;
     if (currentQueue.length) {
-        queue = currentQueue.concat(queue);
+        queue = currentQueue.CONCAT(queue);
     } else {
         queueIndex = -1;
     }
@@ -5323,7 +5323,7 @@ Duplex.prototype._destroy = function (err, cb) {
 	                    hasher.reset();
 	                }
 
-	                derivedKey.concat(block);
+	                derivedKey.CONCAT(block);
 	            }
 	            derivedKey.sigBytes = keySize * 4;
 
@@ -5516,7 +5516,7 @@ module.exports = false;
 var internalObjectKeys = __webpack_require__(201);
 var enumBugKeys = __webpack_require__(142);
 
-var hiddenKeys = enumBugKeys.concat('length', 'prototype');
+var hiddenKeys = enumBugKeys.CONCAT('length', 'prototype');
 
 // `Object.getOwnPropertyNames` method
 // https://tc39.github.io/ecma262/#sec-object.getownpropertynames
@@ -7216,7 +7216,7 @@ var keys = __webpack_require__(272);
 var hasSymbols = typeof Symbol === 'function' && typeof Symbol('foo') === 'symbol';
 
 var toStr = Object.prototype.toString;
-var concat = Array.prototype.concat;
+var CONCAT = Array.prototype.CONCAT;
 var origDefineProperty = Object.defineProperty;
 
 var isFunction = function (fn) {
@@ -7258,7 +7258,7 @@ var defineProperties = function (object, map) {
 	var predicates = arguments.length > 2 ? arguments[2] : {};
 	var props = keys(map);
 	if (hasSymbols) {
-		props = concat.call(props, Object.getOwnPropertySymbols(map));
+		props = CONCAT.call(props, Object.getOwnPropertySymbols(map));
 	}
 	for (var i = 0; i < props.length; i += 1) {
 		defineProperty(object, props[i], map[props[i]], predicates[props[i]]);
@@ -7748,7 +7748,7 @@ if (R && typeof R.ownKeys === 'function') {
 } else if (Object.getOwnPropertySymbols) {
   ReflectOwnKeys = function ReflectOwnKeys(target) {
     return Object.getOwnPropertyNames(target)
-      .concat(Object.getOwnPropertySymbols(target));
+      .CONCAT(Object.getOwnPropertySymbols(target));
   };
 } else {
   ReflectOwnKeys = function ReflectOwnKeys(target) {
@@ -8701,7 +8701,7 @@ var fnUntyped = {
   },
   // Join array of chunks to single array.
   flattenChunks: function (chunks) {
-    return [].concat.apply([], chunks);
+    return [].CONCAT.apply([], chunks);
   }
 };
 
@@ -9100,7 +9100,7 @@ module.exports = function (it) {
 var id = 0;
 var px = Math.random();
 module.exports = function (key) {
-  return 'Symbol('.concat(key === undefined ? '' : key, ')_', (++id + px).toString(36));
+  return 'Symbol('.CONCAT(key === undefined ? '' : key, ')_', (++id + px).toString(36));
 };
 
 
@@ -12229,7 +12229,7 @@ exports.callbackify = callbackify;
 	            // Compute HMAC
 	            var innerHash = hasher.finalize(messageUpdate);
 	            hasher.reset();
-	            var hmac = hasher.finalize(this._oKey.clone().concat(innerHash));
+	            var hmac = hasher.finalize(this._oKey.clone().CONCAT(innerHash));
 
 	            return hmac;
 	        }
@@ -12377,7 +12377,7 @@ iconv.encode = function encode(str, encoding, options) {
     var res = encoder.write(str);
     var trail = encoder.end();
     
-    return (trail && trail.length > 0) ? Buffer.concat([res, trail]) : res;
+    return (trail && trail.length > 0) ? Buffer.CONCAT([res, trail]) : res;
 }
 
 iconv.decode = function decode(buf, encoding, options) {
@@ -13117,8 +13117,8 @@ function normalizeTextArray(array, styleContextStack) {
 	function flatten(array) {
 		return array.reduce(function (prev, cur) {
 			var current = isArray(cur.text) ? flatten(cur.text) : cur;
-			var more = [].concat(current).some(Array.isArray);
-			return prev.concat(more ? flatten(current) : current);
+			var more = [].CONCAT(current).some(Array.isArray);
+			return prev.CONCAT(more ? flatten(current) : current);
 		}, []);
 	}
 
@@ -13586,7 +13586,7 @@ var $defineProperty = function defineProperty(O, P, Attributes) {
 var $defineProperties = function defineProperties(O, Properties) {
   anObject(O);
   var properties = toIndexedObject(Properties);
-  var keys = objectKeys(properties).concat($getOwnPropertySymbols(properties));
+  var keys = objectKeys(properties).CONCAT($getOwnPropertySymbols(properties));
   $forEach(keys, function (key) {
     if (!DESCRIPTORS || $propertyIsEnumerable.call(properties, key)) $defineProperty(O, key, properties[key]);
   });
@@ -14031,10 +14031,10 @@ var MAXIMUM_ALLOWED_INDEX_EXCEEDED = 'Maximum allowed index exceeded';
 var IS_CONCAT_SPREADABLE_SUPPORT = V8_VERSION >= 51 || !fails(function () {
   var array = [];
   array[IS_CONCAT_SPREADABLE] = false;
-  return array.concat()[0] !== array;
+  return array.CONCAT()[0] !== array;
 });
 
-var SPECIES_SUPPORT = arrayMethodHasSpeciesSupport('concat');
+var SPECIES_SUPPORT = arrayMethodHasSpeciesSupport('CONCAT');
 
 var isConcatSpreadable = function (O) {
   if (!isObject(O)) return false;
@@ -14044,11 +14044,11 @@ var isConcatSpreadable = function (O) {
 
 var FORCED = !IS_CONCAT_SPREADABLE_SUPPORT || !SPECIES_SUPPORT;
 
-// `Array.prototype.concat` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.concat
+// `Array.prototype.CONCAT` method
+// https://tc39.github.io/ecma262/#sec-array.prototype.CONCAT
 // with adding support of @@isConcatSpreadable and @@species
 $({ target: 'Array', proto: true, forced: FORCED }, {
-  concat: function concat(arg) { // eslint-disable-line no-unused-vars
+  CONCAT: function CONCAT(arg) { // eslint-disable-line no-unused-vars
     var O = toObject(this);
     var A = arraySpeciesCreate(O, 0);
     var n = 0;
@@ -14713,7 +14713,7 @@ fixRegExpWellKnownSymbolLogic('replace', 2, function (REPLACE, nativeReplace, ma
         for (var j = 1; j < result.length; j++) captures.push(maybeToString(result[j]));
         var namedCaptures = result.groups;
         if (functionalReplace) {
-          var replacerArgs = [matched].concat(captures, position, S);
+          var replacerArgs = [matched].CONCAT(captures, position, S);
           if (namedCaptures !== undefined) replacerArgs.push(namedCaptures);
           var replacement = String(replaceValue.apply(undefined, replacerArgs));
         } else {
@@ -16221,7 +16221,7 @@ function fromList(n, state) {
   var ret;
   if (state.objectMode) ret = state.buffer.shift();else if (!n || n >= state.length) {
     // read it all, truncate the list
-    if (state.decoder) ret = state.buffer.join('');else if (state.buffer.length === 1) ret = state.buffer.head.data;else ret = state.buffer.concat(state.length);
+    if (state.decoder) ret = state.buffer.join('');else if (state.buffer.length === 1) ret = state.buffer.head.data;else ret = state.buffer.CONCAT(state.length);
     state.buffer.clear();
   } else {
     // read part of list
@@ -16871,7 +16871,7 @@ function zlibBuffer(engine, buffer, callback) {
     if (nread >= kMaxLength) {
       err = new RangeError(kRangeErrorMessage);
     } else {
-      buf = Buffer.concat(buffers, nread);
+      buf = Buffer.CONCAT(buffers, nread);
     }
 
     buffers = [];
@@ -17179,7 +17179,7 @@ Zlib.prototype._processChunk = function (chunk, flushFlag, cb) {
       throw new RangeError(kRangeErrorMessage);
     }
 
-    var buf = Buffer.concat(buffers, nread);
+    var buf = Buffer.CONCAT(buffers, nread);
     _close(this);
 
     return buf;
@@ -18779,7 +18779,7 @@ module.exports = Array.isArray || function isArray(arg) {
 
 // 19.1.2.7 / 15.2.3.4 Object.getOwnPropertyNames(O)
 var $keys = __webpack_require__(258);
-var hiddenKeys = __webpack_require__(182).concat('length', 'prototype');
+var hiddenKeys = __webpack_require__(182).CONCAT('length', 'prototype');
 
 exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
   return $keys(O, hiddenKeys);
@@ -21871,7 +21871,7 @@ Document.prototype._flushDoc = function (doc, callback) {
 		}
 	});
 	doc.on('end', function () {
-		result = Buffer.concat(chunks);
+		result = Buffer.CONCAT(chunks);
 		callback(result, doc._pdfMakePages);
 	});
 	doc.end();
@@ -23339,7 +23339,7 @@ var PDFNameTree = /*#__PURE__*/function () {
       if (sortedKeys.length > 1) {
         var first = sortedKeys[0],
             last = sortedKeys[sortedKeys.length - 1];
-        out.push("  /Limits ".concat(PDFObject.convert([new String(first), new String(last)])));
+        out.push("  /Limits ".CONCAT(PDFObject.convert([new String(first), new String(last)])));
       }
 
       out.push('  /Names [');
@@ -23350,7 +23350,7 @@ var PDFNameTree = /*#__PURE__*/function () {
       try {
         for (var _iterator = sortedKeys[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
           var key = _step.value;
-          out.push("    ".concat(PDFObject.convert(new String(key)), " ").concat(PDFObject.convert(this._items[key])));
+          out.push("    ".CONCAT(PDFObject.convert(new String(key)), " ").CONCAT(PDFObject.convert(this._items[key])));
         }
       } catch (err) {
         _didIteratorError = true;
@@ -23419,7 +23419,7 @@ var PDFObject = /*#__PURE__*/function () {
       var encryptFn = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null; // String literals are converted to the PDF name type
 
       if (typeof object === 'string') {
-        return "/".concat(object); // String objects are converted to PDF strings (UTF-16)
+        return "/".CONCAT(object); // String objects are converted to PDF strings (UTF-16)
       } else if (object instanceof String) {
         var string = object; // Detect if this is a unicode string
 
@@ -23436,7 +23436,7 @@ var PDFObject = /*#__PURE__*/function () {
         var stringBuffer;
 
         if (isUnicode) {
-          stringBuffer = swapBytes(Buffer.from("\uFEFF".concat(string), 'utf16le'));
+          stringBuffer = swapBytes(Buffer.from("\uFEFF".CONCAT(string), 'utf16le'));
         } else {
           stringBuffer = Buffer.from(string.valueOf(), 'ascii');
         } // Encrypt the string when necessary
@@ -23452,13 +23452,13 @@ var PDFObject = /*#__PURE__*/function () {
         string = string.replace(escapableRe, function (c) {
           return escapable[c];
         });
-        return "(".concat(string, ")"); // Buffers are converted to PDF hex strings
+        return "(".CONCAT(string, ")"); // Buffers are converted to PDF hex strings
       } else if (Buffer.isBuffer(object)) {
-        return "<".concat(object.toString('hex'), ">");
+        return "<".CONCAT(object.toString('hex'), ">");
       } else if (object instanceof PDFAbstractReference || object instanceof PDFNameTree) {
         return object.toString();
       } else if (object instanceof Date) {
-        var _string = "D:".concat(pad(object.getUTCFullYear(), 4)) + pad(object.getUTCMonth() + 1, 2) + pad(object.getUTCDate(), 2) + pad(object.getUTCHours(), 2) + pad(object.getUTCMinutes(), 2) + pad(object.getUTCSeconds(), 2) + 'Z'; // Encrypt the string when necessary
+        var _string = "D:".CONCAT(pad(object.getUTCFullYear(), 4)) + pad(object.getUTCMonth() + 1, 2) + pad(object.getUTCDate(), 2) + pad(object.getUTCHours(), 2) + pad(object.getUTCMinutes(), 2) + pad(object.getUTCSeconds(), 2) + 'Z'; // Encrypt the string when necessary
 
 
         if (encryptFn) {
@@ -23469,18 +23469,18 @@ var PDFObject = /*#__PURE__*/function () {
           });
         }
 
-        return "(".concat(_string, ")");
+        return "(".CONCAT(_string, ")");
       } else if (Array.isArray(object)) {
         var items = object.map(function (e) {
           return PDFObject.convert(e, encryptFn);
         }).join(' ');
-        return "[".concat(items, "]");
+        return "[".CONCAT(items, "]");
       } else if ({}.toString.call(object) === '[object Object]') {
         var out = ['<<'];
 
         for (var key in object) {
           var val = object[key];
-          out.push("/".concat(key, " ").concat(PDFObject.convert(val, encryptFn)));
+          out.push("/".CONCAT(key, " ").CONCAT(PDFObject.convert(val, encryptFn)));
         }
 
         out.push('>>');
@@ -23488,7 +23488,7 @@ var PDFObject = /*#__PURE__*/function () {
       } else if (typeof object === 'number') {
         return PDFObject.number(object);
       } else {
-        return "".concat(object);
+        return "".CONCAT(object);
       }
     }
   }, {
@@ -23498,7 +23498,7 @@ var PDFObject = /*#__PURE__*/function () {
         return Math.round(n * 1e6) / 1e6;
       }
 
-      throw new Error("unsupported number: ".concat(n));
+      throw new Error("unsupported number: ".CONCAT(n));
     }
   }]);
 
@@ -23562,7 +23562,7 @@ var PDFReference = /*#__PURE__*/function (_PDFAbstractReference) {
       var encryptFn = this.document._security ? this.document._security.getEncryptFn(this.id, this.gen) : null;
 
       if (this.buffer.length) {
-        this.buffer = Buffer.concat(this.buffer);
+        this.buffer = Buffer.CONCAT(this.buffer);
 
         if (this.compress) {
           this.buffer = _zlib.default.deflateSync(this.buffer);
@@ -23575,7 +23575,7 @@ var PDFReference = /*#__PURE__*/function (_PDFAbstractReference) {
         this.data.Length = this.buffer.length;
       }
 
-      this.document._write("".concat(this.id, " ").concat(this.gen, " obj"));
+      this.document._write("".CONCAT(this.id, " ").CONCAT(this.gen, " obj"));
 
       this.document._write(PDFObject.convert(this.data, encryptFn));
 
@@ -23596,7 +23596,7 @@ var PDFReference = /*#__PURE__*/function (_PDFAbstractReference) {
   }, {
     key: "toString",
     value: function toString() {
-      return "".concat(this.id, " ").concat(this.gen, " R");
+      return "".CONCAT(this.id, " ").CONCAT(this.gen, " R");
     }
   }]);
 
@@ -24216,14 +24216,14 @@ var PDFSecurity = /*#__PURE__*/function () {
     key: "generateFileID",
     value: function generateFileID() {
       var info = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-      var infoStr = "".concat(info.CreationDate.getTime(), "\n");
+      var infoStr = "".CONCAT(info.CreationDate.getTime(), "\n");
 
       for (var key in info) {
         if (!info.hasOwnProperty(key)) {
           continue;
         }
 
-        infoStr += "".concat(key, ": ").concat(info[key], "\n");
+        infoStr += "".CONCAT(key, ": ").CONCAT(info[key], "\n");
       }
 
       return wordArrayToBuffer(_cryptoJs.default.MD5(infoStr));
@@ -24407,7 +24407,7 @@ var PDFSecurity = /*#__PURE__*/function () {
       var digest;
 
       if (this.version < 5) {
-        digest = this.encryptionKey.clone().concat(_cryptoJs.default.lib.WordArray.create([(obj & 0xff) << 24 | (obj & 0xff00) << 8 | obj >> 8 & 0xff00 | gen & 0xff, (gen & 0xff00) << 16], 5));
+        digest = this.encryptionKey.clone().CONCAT(_cryptoJs.default.lib.WordArray.create([(obj & 0xff) << 24 | (obj & 0xff00) << 8 | obj >> 8 & 0xff00 | gen & 0xff, (gen & 0xff00) << 16], 5));
       }
 
       if (this.version === 1 || this.version === 2) {
@@ -24422,7 +24422,7 @@ var PDFSecurity = /*#__PURE__*/function () {
       var key;
 
       if (this.version === 4) {
-        key = _cryptoJs.default.MD5(digest.concat(_cryptoJs.default.lib.WordArray.create([0x73416c54], 4)));
+        key = _cryptoJs.default.MD5(digest.CONCAT(_cryptoJs.default.lib.WordArray.create([0x73416c54], 4)));
       } else {
         key = this.encryptionKey;
       }
@@ -24434,7 +24434,7 @@ var PDFSecurity = /*#__PURE__*/function () {
         iv: iv
       };
       return function (buffer) {
-        return wordArrayToBuffer(iv.clone().concat(_cryptoJs.default.AES.encrypt(_cryptoJs.default.lib.WordArray.create(buffer), key, options).ciphertext));
+        return wordArrayToBuffer(iv.clone().CONCAT(_cryptoJs.default.AES.encrypt(_cryptoJs.default.lib.WordArray.create(buffer), key, options).ciphertext));
       };
     }
   }, {
@@ -24516,7 +24516,7 @@ function getUserPasswordR2(encryptionKey) {
 function getUserPasswordR3R4(documentId, encryptionKey) {
   var key = encryptionKey.clone();
 
-  var cipher = _cryptoJs.default.MD5(processPasswordR2R3R4().concat(_cryptoJs.default.lib.WordArray.create(documentId)));
+  var cipher = _cryptoJs.default.MD5(processPasswordR2R3R4().CONCAT(_cryptoJs.default.lib.WordArray.create(documentId)));
 
   for (var i = 0; i < 20; i++) {
     var xorRound = Math.ceil(key.sigBytes / 4);
@@ -24528,7 +24528,7 @@ function getUserPasswordR3R4(documentId, encryptionKey) {
     cipher = _cryptoJs.default.RC4.encrypt(cipher, key).ciphertext;
   }
 
-  return cipher.concat(_cryptoJs.default.lib.WordArray.create(null, 16));
+  return cipher.CONCAT(_cryptoJs.default.lib.WordArray.create(null, 16));
 }
 
 function getOwnerPasswordR2R3R4(r, keyBits, paddedUserPassword, paddedOwnerPassword) {
@@ -24558,7 +24558,7 @@ function getOwnerPasswordR2R3R4(r, keyBits, paddedUserPassword, paddedOwnerPassw
 }
 
 function getEncryptionKeyR2R3R4(r, keyBits, documentId, paddedUserPassword, ownerPasswordEntry, permissions) {
-  var key = paddedUserPassword.clone().concat(ownerPasswordEntry).concat(_cryptoJs.default.lib.WordArray.create([lsbFirstWord(permissions)], 4)).concat(_cryptoJs.default.lib.WordArray.create(documentId));
+  var key = paddedUserPassword.clone().CONCAT(ownerPasswordEntry).CONCAT(_cryptoJs.default.lib.WordArray.create([lsbFirstWord(permissions)], 4)).CONCAT(_cryptoJs.default.lib.WordArray.create(documentId));
   var round = r >= 3 ? 51 : 1;
 
   for (var i = 0; i < round; i++) {
@@ -24572,11 +24572,11 @@ function getEncryptionKeyR2R3R4(r, keyBits, documentId, paddedUserPassword, owne
 function getUserPasswordR5(processedUserPassword, generateRandomWordArray) {
   var validationSalt = generateRandomWordArray(8);
   var keySalt = generateRandomWordArray(8);
-  return _cryptoJs.default.SHA256(processedUserPassword.clone().concat(validationSalt)).concat(validationSalt).concat(keySalt);
+  return _cryptoJs.default.SHA256(processedUserPassword.clone().CONCAT(validationSalt)).CONCAT(validationSalt).CONCAT(keySalt);
 }
 
 function getUserEncryptionKeyR5(processedUserPassword, userKeySalt, encryptionKey) {
-  var key = _cryptoJs.default.SHA256(processedUserPassword.clone().concat(userKeySalt));
+  var key = _cryptoJs.default.SHA256(processedUserPassword.clone().CONCAT(userKeySalt));
 
   var options = {
     mode: _cryptoJs.default.mode.CBC,
@@ -24589,11 +24589,11 @@ function getUserEncryptionKeyR5(processedUserPassword, userKeySalt, encryptionKe
 function getOwnerPasswordR5(processedOwnerPassword, userPasswordEntry, generateRandomWordArray) {
   var validationSalt = generateRandomWordArray(8);
   var keySalt = generateRandomWordArray(8);
-  return _cryptoJs.default.SHA256(processedOwnerPassword.clone().concat(validationSalt).concat(userPasswordEntry)).concat(validationSalt).concat(keySalt);
+  return _cryptoJs.default.SHA256(processedOwnerPassword.clone().CONCAT(validationSalt).CONCAT(userPasswordEntry)).CONCAT(validationSalt).CONCAT(keySalt);
 }
 
 function getOwnerEncryptionKeyR5(processedOwnerPassword, ownerKeySalt, userPasswordEntry, encryptionKey) {
-  var key = _cryptoJs.default.SHA256(processedOwnerPassword.clone().concat(ownerKeySalt).concat(userPasswordEntry));
+  var key = _cryptoJs.default.SHA256(processedOwnerPassword.clone().CONCAT(ownerKeySalt).CONCAT(userPasswordEntry));
 
   var options = {
     mode: _cryptoJs.default.mode.CBC,
@@ -24608,7 +24608,7 @@ function getEncryptionKeyR5(generateRandomWordArray) {
 }
 
 function getEncryptedPermissionsR5(permissions, encryptionKey, generateRandomWordArray) {
-  var cipher = _cryptoJs.default.lib.WordArray.create([lsbFirstWord(permissions), 0xffffffff, 0x54616462], 12).concat(generateRandomWordArray(4));
+  var cipher = _cryptoJs.default.lib.WordArray.create([lsbFirstWord(permissions), 0xffffffff, 0x54616462], 12).CONCAT(generateRandomWordArray(4));
 
   var options = {
     mode: _cryptoJs.default.mode.ECB,
@@ -24771,7 +24771,7 @@ var PDFGradient = /*#__PURE__*/function () {
         fn.end();
       }
 
-      this.id = "Sh".concat(++this.doc._gradCount);
+      this.id = "Sh".CONCAT(++this.doc._gradCount);
       var shader = this.shader(fn);
       shader.end();
       var pattern = this.doc.ref({
@@ -24831,7 +24831,7 @@ var PDFGradient = /*#__PURE__*/function () {
           }
         });
         form.write('/Pattern cs /Sh1 scn');
-        form.end("".concat(pageBBox.join(' '), " re f"));
+        form.end("".CONCAT(pageBBox.join(' '), " re f"));
         var gstate = this.doc.ref({
           Type: 'ExtGState',
           SMask: {
@@ -24860,7 +24860,7 @@ var PDFGradient = /*#__PURE__*/function () {
           }
         });
         opacityPattern.write('/Gs1 gs /Pattern cs /Sh1 scn');
-        opacityPattern.end("".concat(pageBBox.join(' '), " re f"));
+        opacityPattern.end("".CONCAT(pageBBox.join(' '), " re f"));
         this.doc.page.patterns[this.id] = opacityPattern;
       } else {
         this.doc.page.patterns[this.id] = pattern;
@@ -24894,7 +24894,7 @@ var PDFGradient = /*#__PURE__*/function () {
         this.embed(m);
       }
 
-      return this.doc.addContent("/".concat(this.id, " ").concat(op));
+      return this.doc.addContent("/".CONCAT(this.id, " ").CONCAT(op));
     }
   }]);
 
@@ -25047,14 +25047,14 @@ var ColorMixin = {
       this._setColorSpace(space, stroke);
 
       color = color.join(' ');
-      this.addContent("".concat(color, " ").concat(op));
+      this.addContent("".CONCAT(color, " ").CONCAT(op));
     }
 
     return true;
   },
   _setColorSpace: function _setColorSpace(space, stroke) {
     var op = stroke ? 'CS' : 'cs';
-    return this.addContent("/".concat(space, " ").concat(op));
+    return this.addContent("/".CONCAT(space, " ").CONCAT(op));
   },
   fillColor: function fillColor(color, opacity) {
     var set = this._setColor(color, false);
@@ -25107,7 +25107,7 @@ var ColorMixin = {
       strokeOpacity = Math.max(0, Math.min(1, strokeOpacity));
     }
 
-    var key = "".concat(fillOpacity, "_").concat(strokeOpacity);
+    var key = "".CONCAT(fillOpacity, "_").CONCAT(strokeOpacity);
 
     if (this._opacityRegistry[key]) {
       var _this$_opacityRegistr = _slicedToArray(this._opacityRegistry[key], 2);
@@ -25130,12 +25130,12 @@ var ColorMixin = {
       dictionary = this.ref(dictionary);
       dictionary.end();
       var id = ++this._opacityCount;
-      name = "Gs".concat(id);
+      name = "Gs".CONCAT(id);
       this._opacityRegistry[key] = [dictionary, name];
     }
 
     this.page.ext_gstates[name] = dictionary;
-    return this.addContent("/".concat(name, " gs"));
+    return this.addContent("/".CONCAT(name, " gs"));
   },
   linearGradient: function linearGradient(x1, y1, x2, y2) {
     return new PDFLinearGradient$1(this, x1, y1, x2, y2);
@@ -25753,7 +25753,7 @@ var VectorMixin = {
     return this.addContent('h');
   },
   lineWidth: function lineWidth(w) {
-    return this.addContent("".concat(number$1(w), " w"));
+    return this.addContent("".CONCAT(number$1(w), " w"));
   },
   _CAP_STYLES: {
     BUTT: 0,
@@ -25765,7 +25765,7 @@ var VectorMixin = {
       c = this._CAP_STYLES[c.toUpperCase()];
     }
 
-    return this.addContent("".concat(c, " J"));
+    return this.addContent("".CONCAT(c, " J"));
   },
   _JOIN_STYLES: {
     MITER: 0,
@@ -25777,10 +25777,10 @@ var VectorMixin = {
       j = this._JOIN_STYLES[j.toUpperCase()];
     }
 
-    return this.addContent("".concat(j, " j"));
+    return this.addContent("".CONCAT(j, " j"));
   },
   miterLimit: function miterLimit(m) {
-    return this.addContent("".concat(number$1(m), " M"));
+    return this.addContent("".CONCAT(number$1(m), " M"));
   },
   dash: function dash(length) {
     var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
@@ -25795,29 +25795,29 @@ var VectorMixin = {
     });
 
     if (!valid) {
-      throw new Error("dash(".concat(JSON.stringify(originalLength), ", ").concat(JSON.stringify(options), ") invalid, lengths must be numeric and greater than zero"));
+      throw new Error("dash(".CONCAT(JSON.stringify(originalLength), ", ").CONCAT(JSON.stringify(options), ") invalid, lengths must be numeric and greater than zero"));
     }
 
     length = length.map(number$1).join(' ');
-    return this.addContent("[".concat(length, "] ").concat(number$1(options.phase || 0), " d"));
+    return this.addContent("[".CONCAT(length, "] ").CONCAT(number$1(options.phase || 0), " d"));
   },
   undash: function undash() {
     return this.addContent('[] 0 d');
   },
   moveTo: function moveTo(x, y) {
-    return this.addContent("".concat(number$1(x), " ").concat(number$1(y), " m"));
+    return this.addContent("".CONCAT(number$1(x), " ").CONCAT(number$1(y), " m"));
   },
   lineTo: function lineTo(x, y) {
-    return this.addContent("".concat(number$1(x), " ").concat(number$1(y), " l"));
+    return this.addContent("".CONCAT(number$1(x), " ").CONCAT(number$1(y), " l"));
   },
   bezierCurveTo: function bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y) {
-    return this.addContent("".concat(number$1(cp1x), " ").concat(number$1(cp1y), " ").concat(number$1(cp2x), " ").concat(number$1(cp2y), " ").concat(number$1(x), " ").concat(number$1(y), " c"));
+    return this.addContent("".CONCAT(number$1(cp1x), " ").CONCAT(number$1(cp1y), " ").CONCAT(number$1(cp2x), " ").CONCAT(number$1(cp2y), " ").CONCAT(number$1(x), " ").CONCAT(number$1(y), " c"));
   },
   quadraticCurveTo: function quadraticCurveTo(cpx, cpy, x, y) {
-    return this.addContent("".concat(number$1(cpx), " ").concat(number$1(cpy), " ").concat(number$1(x), " ").concat(number$1(y), " v"));
+    return this.addContent("".CONCAT(number$1(cpx), " ").CONCAT(number$1(cpy), " ").CONCAT(number$1(x), " ").CONCAT(number$1(y), " v"));
   },
   rect: function rect(x, y, w, h) {
-    return this.addContent("".concat(number$1(x), " ").concat(number$1(y), " ").concat(number$1(w), " ").concat(number$1(h), " re"));
+    return this.addContent("".CONCAT(number$1(x), " ").CONCAT(number$1(y), " ").CONCAT(number$1(w), " ").CONCAT(number$1(h), " re"));
   },
   roundedRect: function roundedRect(x, y, w, h, r) {
     if (r == null) {
@@ -25949,7 +25949,7 @@ var VectorMixin = {
       this.fillColor(color);
     }
 
-    return this.addContent("f".concat(this._windingRule(rule)));
+    return this.addContent("f".CONCAT(this._windingRule(rule)));
   },
   stroke: function stroke(color) {
     if (color) {
@@ -25980,10 +25980,10 @@ var VectorMixin = {
       this.strokeColor(strokeColor);
     }
 
-    return this.addContent("B".concat(this._windingRule(rule)));
+    return this.addContent("B".CONCAT(this._windingRule(rule)));
   },
   clip: function clip(rule) {
-    return this.addContent("W".concat(this._windingRule(rule), " n"));
+    return this.addContent("W".CONCAT(this._windingRule(rule), " n"));
   },
   transform: function transform(m11, m12, m21, m22, dx, dy) {
     // keep track of the current transformation matrix
@@ -26006,7 +26006,7 @@ var VectorMixin = {
     var values = [m11, m12, m21, m22, dx, dy].map(function (v) {
       return number$1(v);
     }).join(' ');
-    return this.addContent("".concat(values, " cm"));
+    return this.addContent("".CONCAT(values, " cm"));
   },
   translate: function translate(x, y) {
     return this.transform(1, 0, 0, 1, x, y);
@@ -26389,7 +26389,7 @@ var StandardFont = /*#__PURE__*/function (_PDFFont) {
     key: "encode",
     value: function encode(text) {
       var encoded = this.font.encodeText(text);
-      var glyphs = this.font.glyphsForString("".concat(text));
+      var glyphs = this.font.glyphsForString("".CONCAT(text));
       var advances = this.font.advancesForGlyphs(glyphs);
       var positions = [];
 
@@ -26409,7 +26409,7 @@ var StandardFont = /*#__PURE__*/function (_PDFFont) {
   }, {
     key: "widthOfString",
     value: function widthOfString(string, size) {
-      var glyphs = this.font.glyphsForString("".concat(string));
+      var glyphs = this.font.glyphsForString("".CONCAT(string));
       var advances = this.font.advancesForGlyphs(glyphs);
       var width = 0;
       var _iteratorNormalCompletion = true;
@@ -26450,7 +26450,7 @@ var StandardFont = /*#__PURE__*/function (_PDFFont) {
 }(PDFFont);
 
 var toHex = function toHex(num) {
-  return "0000".concat(num.toString(16)).slice(-4);
+  return "0000".CONCAT(num.toString(16)).slice(-4);
 };
 
 var EmbeddedFont = /*#__PURE__*/function (_PDFFont) {
@@ -26541,8 +26541,8 @@ var EmbeddedFont = /*#__PURE__*/function (_PDFFont) {
           var run = this.layoutCached(text.slice(last, ++index));
 
           if (!onlyWidth) {
-            glyphs = glyphs.concat(run.glyphs);
-            positions = positions.concat(run.positions);
+            glyphs = glyphs.CONCAT(run.glyphs);
+            positions = positions.CONCAT(run.positions);
           }
 
           advanceWidth += run.advanceWidth;
@@ -26570,7 +26570,7 @@ var EmbeddedFont = /*#__PURE__*/function (_PDFFont) {
       for (var i = 0; i < glyphs.length; i++) {
         var glyph = glyphs[i];
         var gid = this.subset.includeGlyph(glyph.id);
-        res.push("0000".concat(gid.toString(16)).slice(-4));
+        res.push("0000".CONCAT(gid.toString(16)).slice(-4));
 
         if (this.widths[gid] == null) {
           this.widths[gid] = glyph.advanceWidth * this.scale;
@@ -26732,7 +26732,7 @@ var EmbeddedFont = /*#__PURE__*/function (_PDFFont) {
             }
           }
 
-          entries.push("<".concat(encoded.join(' '), ">"));
+          entries.push("<".CONCAT(encoded.join(' '), ">"));
         }
       } catch (err) {
         _didIteratorError = true;
@@ -26749,7 +26749,7 @@ var EmbeddedFont = /*#__PURE__*/function (_PDFFont) {
         }
       }
 
-      cmap.end("/CIDInit /ProcSet findresource begin\n12 dict begin\nbegincmap\n/CIDSystemInfo <<\n  /Registry (Adobe)\n  /Ordering (UCS)\n  /Supplement 0\n>> def\n/CMapName /Adobe-Identity-UCS def\n/CMapType 2 def\n1 begincodespacerange\n<0000><ffff>\nendcodespacerange\n1 beginbfrange\n<0000> <".concat(toHex(entries.length - 1), "> [").concat(entries.join(' '), "]\nendbfrange\nendcmap\nCMapName currentdict /CMap defineresource pop\nend\nend"));
+      cmap.end("/CIDInit /ProcSet findresource begin\n12 dict begin\nbegincmap\n/CIDSystemInfo <<\n  /Registry (Adobe)\n  /Ordering (UCS)\n  /Supplement 0\n>> def\n/CMapName /Adobe-Identity-UCS def\n/CMapType 2 def\n1 begincodespacerange\n<0000><ffff>\nendcodespacerange\n1 beginbfrange\n<0000> <".CONCAT(toHex(entries.length - 1), "> [").CONCAT(entries.join(' '), "]\nendbfrange\nendcmap\nCMapName currentdict /CMap defineresource pop\nend\nend"));
       return cmap;
     }
   }]);
@@ -26842,7 +26842,7 @@ var FontsMixin = {
     } // load the font
 
 
-    var id = "F".concat(++this._fontCount);
+    var id = "F".CONCAT(++this._fontCount);
     this._font = PDFFontFactory.open(this, src, family, id); // check for existing font familes with the same name already in the PDF
     // useful if the font was passed as a buffer
 
@@ -27262,7 +27262,7 @@ var TextMixin = {
   _text: function _text(text, x, y, options, lineCallback) {
     options = this._initOptions(x, y, options); // Convert text to a string
 
-    text = text == null ? '' : "".concat(text); // if the wordSpacing option is specified, remove multiple consecutive spaces
+    text = text == null ? '' : "".CONCAT(text); // if the wordSpacing option is specified, remove multiple consecutive spaces
 
     if (options.wordSpacing) {
       text = text.replace(/\s{2,}/g, ' ');
@@ -27375,13 +27375,13 @@ var TextMixin = {
     var label = function label(n) {
       switch (listType) {
         case 'numbered':
-          return "".concat(n, ".");
+          return "".CONCAT(n, ".");
 
         case 'lettered':
           var letter = String.fromCharCode((n - 1) % 26 + 65);
           var times = Math.floor((n - 1) / 26 + 1);
           var text = Array(times + 1).join(letter);
-          return "".concat(text, ".");
+          return "".CONCAT(text, ".");
       }
     };
 
@@ -27496,7 +27496,7 @@ var TextMixin = {
     var _this3 = this;
 
     var dy, encoded, i, positions, textWidth, words;
-    text = "".concat(text).replace(/\n/g, '');
+    text = "".CONCAT(text).replace(/\n/g, '');
 
     if (text.length === 0) {
       return;
@@ -27635,19 +27635,19 @@ var TextMixin = {
 
     this.addContent('BT'); // text position
 
-    this.addContent("1 0 0 1 ".concat(number$2(x), " ").concat(number$2(y), " Tm")); // font and font size
+    this.addContent("1 0 0 1 ".CONCAT(number$2(x), " ").CONCAT(number$2(y), " Tm")); // font and font size
 
-    this.addContent("/".concat(this._font.id, " ").concat(number$2(this._fontSize), " Tf")); // rendering mode
+    this.addContent("/".CONCAT(this._font.id, " ").CONCAT(number$2(this._fontSize), " Tf")); // rendering mode
 
     var mode = options.fill && options.stroke ? 2 : options.stroke ? 1 : 0;
 
     if (mode) {
-      this.addContent("".concat(mode, " Tr"));
+      this.addContent("".CONCAT(mode, " Tr"));
     } // Character spacing
 
 
     if (characterSpacing) {
-      this.addContent("".concat(number$2(characterSpacing), " Tc"));
+      this.addContent("".CONCAT(number$2(characterSpacing), " Tc"));
     } // Add the actual text
     // If we have a word spacing value, we need to encode each word separately
     // since the normal Tw operator only works on character code 32, which isn't
@@ -27673,8 +27673,8 @@ var TextMixin = {
               encodedWord = _this$_font$encode2[0],
               positionsWord = _this$_font$encode2[1];
 
-          encoded = encoded.concat(encodedWord);
-          positions = positions.concat(positionsWord); // add the word spacing to the end of the word
+          encoded = encoded.CONCAT(encodedWord);
+          positions = positions.CONCAT(positionsWord); // add the word spacing to the end of the word
           // clone object because of cache
 
           var space = {};
@@ -27720,7 +27720,7 @@ var TextMixin = {
       if (last < cur) {
         var hex = encoded.slice(last, cur).join('');
         var advance = positions[cur - 1].xAdvance - positions[cur - 1].advanceWidth;
-        commands.push("<".concat(hex, "> ").concat(number$2(-advance)));
+        commands.push("<".CONCAT(hex, "> ").CONCAT(number$2(-advance)));
       }
 
       return last = cur;
@@ -27731,7 +27731,7 @@ var TextMixin = {
       addSegment(i);
 
       if (commands.length > 0) {
-        _this3.addContent("[".concat(commands.join(' '), "] TJ"));
+        _this3.addContent("[".CONCAT(commands.join(' '), "] TJ"));
 
         return commands.length = 0;
       }
@@ -27746,13 +27746,13 @@ var TextMixin = {
         // Flush the current buffer
         flush(i); // Move the text position and flush just the current character
 
-        this.addContent("1 0 0 1 ".concat(number$2(x + pos.xOffset * scale), " ").concat(number$2(y + pos.yOffset * scale), " Tm"));
+        this.addContent("1 0 0 1 ".CONCAT(number$2(x + pos.xOffset * scale), " ").CONCAT(number$2(y + pos.yOffset * scale), " Tm"));
         flush(i + 1);
         hadOffset = true;
       } else {
         // If the last character had an offset, reset the text position
         if (hadOffset) {
-          this.addContent("1 0 0 1 ".concat(number$2(x), " ").concat(number$2(y), " Tm"));
+          this.addContent("1 0 0 1 ".CONCAT(number$2(x), " ").CONCAT(number$2(y), " Tm"));
           hadOffset = false;
         } // Group segments that don't have any advance adjustments
 
@@ -28209,7 +28209,7 @@ var ImagesMixin = {
 
     this.save();
     this.transform(w, 0, 0, -h, x, y + h);
-    this.addContent("/".concat(image.label, " Do"));
+    this.addContent("/".CONCAT(image.label, " Do"));
     this.restore();
     return this;
   },
@@ -28221,7 +28221,7 @@ var ImagesMixin = {
     }
 
     if (!image) {
-      image = PDFImage.open(src, "I".concat(++this._imageCount));
+      image = PDFImage.open(src, "I".CONCAT(++this._imageCount));
 
       if (typeof src === 'string') {
         this._imageRegistry[src] = image;
@@ -28302,7 +28302,7 @@ var AnnotationsMixin = {
         });
         options.A.end();
       } else {
-        throw new Error("The document has no page ".concat(url));
+        throw new Error("The document has no page ".CONCAT(url));
       }
     } else {
       // Link to an external url
@@ -28546,7 +28546,7 @@ var AcroFormMixin = {
     var data = {
       Fields: [],
       NeedAppearances: true,
-      DA: new String("/".concat(this._font.id, " 0 Tf 0 g")),
+      DA: new String("/".CONCAT(this._font.id, " 0 Tf 0 g")),
       DR: {
         Font: {}
       }
@@ -28725,7 +28725,7 @@ var AcroFormMixin = {
     } else if (type === 'list') {
       opts.FT = 'Ch';
     } else {
-      throw new Error("Invalid form annotation type '".concat(type, "'"));
+      throw new Error("Invalid form annotation type '".CONCAT(type, "'"));
     }
 
     return opts;
@@ -28744,8 +28744,8 @@ var AcroFormMixin = {
         params = FORMAT_SPECIAL[f.type];
       } else {
         var format = f.type.charAt(0).toUpperCase() + f.type.slice(1);
-        fnKeystroke = "AF".concat(format, "_Keystroke");
-        fnFormat = "AF".concat(format, "_Format");
+        fnKeystroke = "AF".CONCAT(format, "_Keystroke");
+        fnFormat = "AF".CONCAT(format, "_Format");
 
         if (f.type === 'date') {
           fnKeystroke += 'Ex';
@@ -28765,11 +28765,11 @@ var AcroFormMixin = {
       opts.AA = opts.AA ? opts.AA : {};
       opts.AA.K = {
         S: 'JavaScript',
-        JS: new String("".concat(fnKeystroke, "(").concat(params, ");"))
+        JS: new String("".CONCAT(fnKeystroke, "(").CONCAT(params, ");"))
       };
       opts.AA.F = {
         S: 'JavaScript',
-        JS: new String("".concat(fnFormat, "(").concat(params, ");"))
+        JS: new String("".CONCAT(fnFormat, "(").CONCAT(params, ");"))
       };
     }
 
@@ -28846,7 +28846,7 @@ var AcroFormMixin = {
         Font: {}
       };
       options.DR.Font[this._font.id] = this._font.ref();
-      options.DA = new String("/".concat(this._font.id, " 0 Tf 0 g"));
+      options.DA = new String("/".CONCAT(this._font.id, " 0 Tf 0 g"));
     }
 
     return options;
@@ -29000,7 +29000,7 @@ var PDFDocument = /*#__PURE__*/function (_stream$Readable) {
     _this._security = PDFSecurity.create(_assertThisInitialized(_this), options); // Write the header
     // PDF version
 
-    _this._write("%PDF-".concat(_this.version)); // 4 binary chars, as recommended by the spec
+    _this._write("%PDF-".CONCAT(_this.version)); // 4 binary chars, as recommended by the spec
 
 
     _this._write('%\xFF\xFF\xFF\xFF'); // Add the first page
@@ -29058,7 +29058,7 @@ var PDFDocument = /*#__PURE__*/function (_stream$Readable) {
       var page;
 
       if (!(page = this._pageBuffer[n - this._pageBufferStart])) {
-        throw new Error("switchToPage(".concat(n, ") out of bounds, current buffer covers pages ").concat(this._pageBufferStart, " to ").concat(this._pageBufferStart + this._pageBuffer.length - 1));
+        throw new Error("switchToPage(".CONCAT(n, ") out of bounds, current buffer covers pages ").CONCAT(this._pageBufferStart, " to ").CONCAT(this._pageBufferStart + this._pageBuffer.length - 1));
       }
 
       return this.page = page;
@@ -29233,7 +29233,7 @@ var PDFDocument = /*#__PURE__*/function (_stream$Readable) {
 
       this._write('xref');
 
-      this._write("0 ".concat(this._offsets.length + 1));
+      this._write("0 ".CONCAT(this._offsets.length + 1));
 
       this._write('0000000000 65535 f ');
 
@@ -29244,7 +29244,7 @@ var PDFDocument = /*#__PURE__*/function (_stream$Readable) {
       try {
         for (var _iterator2 = this._offsets[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
           var offset = _step2.value;
-          offset = "0000000000".concat(offset).slice(-10);
+          offset = "0000000000".CONCAT(offset).slice(-10);
 
           this._write(offset + ' 00000 n ');
         } // trailer
@@ -29281,7 +29281,7 @@ var PDFDocument = /*#__PURE__*/function (_stream$Readable) {
 
       this._write('startxref');
 
-      this._write("".concat(xRefOffset));
+      this._write("".CONCAT(xRefOffset));
 
       this._write('%%EOF'); // end the stream
 
@@ -29339,7 +29339,7 @@ var anObject = __webpack_require__(16);
 module.exports = getBuiltIn('Reflect', 'ownKeys') || function ownKeys(it) {
   var keys = getOwnPropertyNamesModule.f(anObject(it));
   var getOwnPropertySymbols = getOwnPropertySymbolsModule.f;
-  return getOwnPropertySymbols ? keys.concat(getOwnPropertySymbols(it)) : keys;
+  return getOwnPropertySymbols ? keys.CONCAT(getOwnPropertySymbols(it)) : keys;
 };
 
 
@@ -29795,7 +29795,7 @@ module.exports = !nativeAssign || fails(function () {
   var propertyIsEnumerable = propertyIsEnumerableModule.f;
   while (argumentsLength > index) {
     var S = IndexedObject(arguments[index++]);
-    var keys = getOwnPropertySymbols ? objectKeys(S).concat(getOwnPropertySymbols(S)) : objectKeys(S);
+    var keys = getOwnPropertySymbols ? objectKeys(S).CONCAT(getOwnPropertySymbols(S)) : objectKeys(S);
     var length = keys.length;
     var j = 0;
     var key;
@@ -30233,7 +30233,7 @@ module.exports = function () {
     }return ret;
   };
 
-  BufferList.prototype.concat = function concat(n) {
+  BufferList.prototype.CONCAT = function CONCAT(n) {
     if (this.length === 0) return Buffer.alloc(0);
     if (this.length === 1) return this.head.data;
     var ret = Buffer.allocUnsafe(n >>> 0);
@@ -37603,7 +37603,7 @@ module.exports = {
 	                    }
 	                }
 
-	                derivedKey.concat(block);
+	                derivedKey.CONCAT(block);
 	                blockIndexWords[0]++;
 	            }
 	            derivedKey.sigBytes = keySize * 4;
@@ -38046,8 +38046,8 @@ module.exports = {
 	        var nPaddingBytes = blockSizeBytes - data.sigBytes % blockSizeBytes;
 
 	        // Pad
-	        data.concat(CryptoJS.lib.WordArray.random(nPaddingBytes - 1)).
-	             concat(CryptoJS.lib.WordArray.create([nPaddingBytes << 24], 1));
+	        data.CONCAT(CryptoJS.lib.WordArray.random(nPaddingBytes - 1)).
+	             CONCAT(CryptoJS.lib.WordArray.create([nPaddingBytes << 24], 1));
 	    },
 
 	    unpad: function (data) {
@@ -38082,7 +38082,7 @@ module.exports = {
 	CryptoJS.pad.Iso97971 = {
 	    pad: function (data, blockSize) {
 	        // Add 0x80 byte
-	        data.concat(CryptoJS.lib.WordArray.create([0x80000000], 1));
+	        data.CONCAT(CryptoJS.lib.WordArray.create([0x80000000], 1));
 
 	        // Zero pad the rest
 	        CryptoJS.pad.ZeroPadding.pad(data, blockSize);
@@ -41439,7 +41439,7 @@ var DeltaSet = new r.Struct({
     return t.parent.regionIndexCount - t.parent.shortDeltaCount;
   }),
   deltas: function deltas(t) {
-    return t.shortDeltas.concat(t.regionDeltas);
+    return t.shortDeltas.CONCAT(t.regionDeltas);
   }
 });
 
@@ -46034,7 +46034,7 @@ var AATMorxProcessor = (_class$2 = function () {
       glyphIndex++;
     }
 
-    (_glyphs = this.glyphs).splice.apply(_glyphs, [glyphIndex, 0].concat(insertions));
+    (_glyphs = this.glyphs).splice.apply(_glyphs, [glyphIndex, 0].CONCAT(insertions));
   };
 
   AATMorxProcessor.prototype.processGlyphInsertion = function processGlyphInsertion(glyph, entry, index) {
@@ -46225,12 +46225,12 @@ function swap(glyphs, rangeA, rangeB) {
     end.reverse();
   }
 
-  var start = glyphs.splice.apply(glyphs, [rangeA[0], rangeA[1]].concat(end));
+  var start = glyphs.splice.apply(glyphs, [rangeA[0], rangeA[1]].CONCAT(end));
   if (reverseA) {
     start.reverse();
   }
 
-  glyphs.splice.apply(glyphs, [rangeB[0] - (rangeA[1] - 1), 0].concat(start));
+  glyphs.splice.apply(glyphs, [rangeB[0] - (rangeA[1] - 1), 0].CONCAT(start));
   return glyphs;
 }
 
@@ -46585,7 +46585,7 @@ var DefaultShaper = (_temp = _class$4 = function () {
 
   DefaultShaper.planPreprocessing = function planPreprocessing(plan) {
     plan.add({
-      global: [].concat(VARIATION_FEATURES, DIRECTIONAL_FEATURES[plan.direction]),
+      global: [].CONCAT(VARIATION_FEATURES, DIRECTIONAL_FEATURES[plan.direction]),
       local: FRACTIONAL_FEATURES
     });
   };
@@ -46595,7 +46595,7 @@ var DefaultShaper = (_temp = _class$4 = function () {
   };
 
   DefaultShaper.planPostprocessing = function planPostprocessing(plan, userFeatures) {
-    plan.add([].concat(COMMON_FEATURES, HORIZONTAL_FEATURES));
+    plan.add([].CONCAT(COMMON_FEATURES, HORIZONTAL_FEATURES));
     plan.setFeatureOverrides(userFeatures);
   };
 
@@ -47794,7 +47794,7 @@ function decompose(glyphs, i, font) {
     insert.push(tjmo);
   }
 
-  glyphs.splice.apply(glyphs, [i, 1].concat(insert));
+  glyphs.splice.apply(glyphs, [i, 1].CONCAT(insert));
   return i + insert.length - 1;
 }
 
@@ -48178,7 +48178,7 @@ var IndicShaper = (_temp$2 = _class$6 = function (_DefaultShaper) {
           return new GlyphInfo(plan.font, g.id, [c], glyphs[i].features);
         });
 
-        glyphs.splice.apply(glyphs, [i, 1].concat(decomposed));
+        glyphs.splice.apply(glyphs, [i, 1].CONCAT(decomposed));
       }
     };
 
@@ -48536,7 +48536,7 @@ function initialReordering(font, glyphs, plan) {
           if (glyphs[_j].shaperInfo.category !== CATEGORIES.H && _j > _i10) {
             // Move Halant to after last consonant.
             var t = glyphs[_i10];
-            glyphs.splice.apply(glyphs, [_i10, 0].concat(glyphs.splice(_i10 + 1, _j - _i10)));
+            glyphs.splice.apply(glyphs, [_i10, 0].CONCAT(glyphs.splice(_i10 + 1, _j - _i10)));
             glyphs[_j] = t;
           }
 
@@ -48591,7 +48591,7 @@ function initialReordering(font, glyphs, plan) {
     arr.sort(function (a, b) {
       return a.shaperInfo.position - b.shaperInfo.position;
     });
-    glyphs.splice.apply(glyphs, [start, arr.length].concat(arr));
+    glyphs.splice.apply(glyphs, [start, arr.length].CONCAT(arr));
 
     // Find base again
     for (var _i13 = start; _i13 < end; _i13++) {
@@ -48822,7 +48822,7 @@ function finalReordering(font, glyphs, plan) {
             }
 
             var tmp = glyphs[oldPos];
-            glyphs.splice.apply(glyphs, [oldPos, 0].concat(glyphs.splice(oldPos + 1, newPos - oldPos)));
+            glyphs.splice.apply(glyphs, [oldPos, 0].CONCAT(glyphs.splice(oldPos + 1, newPos - oldPos)));
             glyphs[newPos] = tmp;
 
             newPos--;
@@ -48952,7 +48952,7 @@ function finalReordering(font, glyphs, plan) {
       }
 
       var reph = glyphs[start];
-      glyphs.splice.apply(glyphs, [start, 0].concat(glyphs.splice(start + 1, newRephPos - start)));
+      glyphs.splice.apply(glyphs, [start, 0].CONCAT(glyphs.splice(start + 1, newRephPos - start)));
       glyphs[newRephPos] = reph;
 
       if (start < base && base <= newRephPos) {
@@ -49013,7 +49013,7 @@ function finalReordering(font, glyphs, plan) {
 
             var _oldPos = _i23;
             var _tmp = glyphs[_oldPos];
-            glyphs.splice.apply(glyphs, [_newPos + 1, 0].concat(glyphs.splice(_newPos, _oldPos - _newPos)));
+            glyphs.splice.apply(glyphs, [_newPos + 1, 0].CONCAT(glyphs.splice(_newPos, _oldPos - _newPos)));
             glyphs[_newPos] = _tmp;
 
             if (_newPos <= base && base < _oldPos) {
@@ -49096,7 +49096,7 @@ var UniversalShaper = (_temp$3 = _class$7 = function (_DefaultShaper) {
           return new GlyphInfo(plan.font, g.id, [c], glyphs[i].features);
         });
 
-        glyphs.splice.apply(glyphs, [i, 1].concat(decomposed));
+        glyphs.splice.apply(glyphs, [i, 1].CONCAT(decomposed));
       }
     };
 
@@ -49255,7 +49255,7 @@ function reorder(font, glyphs) {
             i--;
           }
 
-          glyphs.splice.apply(glyphs, [start, 0].concat(glyphs.splice(start + 1, i - start), [glyphs[i]]));
+          glyphs.splice.apply(glyphs, [start, 0].CONCAT(glyphs.splice(start + 1, i - start), [glyphs[i]]));
           break;
         }
       }
@@ -49269,7 +49269,7 @@ function reorder(font, glyphs) {
         // place, and shift things in between backward.
         j = isHalant(glyphs[i]) ? i + 1 : i;
       } else if ((info.category === 'VPre' || info.category === 'VMPre') && j < i) {
-        glyphs.splice.apply(glyphs, [j, 1, glyphs[i]].concat(glyphs.splice(j, i - j)));
+        glyphs.splice.apply(glyphs, [j, 1, glyphs[i]].CONCAT(glyphs.splice(j, i - j)));
       }
     }
   }
@@ -49466,7 +49466,7 @@ var GSUBProcessor = function (_OTProcessor) {
               return glyph;
             });
 
-            (_glyphs = this.glyphs).splice.apply(_glyphs, [this.glyphIterator.index + 1, 0].concat(replacement));
+            (_glyphs = this.glyphs).splice.apply(_glyphs, [this.glyphIterator.index + 1, 0].CONCAT(replacement));
             return true;
           }
 
@@ -50071,7 +50071,7 @@ var OTLayoutEngine = function () {
     // Map glyphs to GlyphInfo objects so data can be passed between
     // GSUB and GPOS without mutating the real (shared) Glyph objects.
     this.glyphInfos = glyphRun.glyphs.map(function (glyph) {
-      return new GlyphInfo(_this.font, glyph.id, [].concat(glyph.codePoints));
+      return new GlyphInfo(_this.font, glyph.id, [].CONCAT(glyph.codePoints));
     });
 
     // Select a script based on what is available in GSUB/GPOS.
@@ -57315,7 +57315,7 @@ DBCSDecoder.prototype.write = function(buf) {
     this.nodeIdx = nodeIdx;
     this.prevBytes = (seqStart >= 0)
         ? Array.prototype.slice.call(buf, seqStart)
-        : prevBytes.slice(seqStart + prevOffset).concat(Array.prototype.slice.call(buf));
+        : prevBytes.slice(seqStart + prevOffset).CONCAT(Array.prototype.slice.call(buf));
 
     return newBuf.slice(0, j).toString('ucs2');
 }
@@ -57456,7 +57456,7 @@ module.exports = {
     // GBK (~22000 chars) is an extension of CP936 that added user-mapped chars and some other.
     'gbk': {
         type: '_dbcs',
-        table: function() { return __webpack_require__(171).concat(__webpack_require__(250)) },
+        table: function() { return __webpack_require__(171).CONCAT(__webpack_require__(250)) },
     },
     'xgbk': 'gbk',
     'isoir58': 'gbk',
@@ -57468,7 +57468,7 @@ module.exports = {
     // http://www.khngai.com/chinese/charmap/tblgbk.php?page=0
     'gb18030': {
         type: '_dbcs',
-        table: function() { return __webpack_require__(171).concat(__webpack_require__(250)) },
+        table: function() { return __webpack_require__(171).CONCAT(__webpack_require__(250)) },
         gb18030: function() { return __webpack_require__(402) },
         encodeSkipVals: [0x80],
         encodeAdd: {'€': 0xA2E3},
@@ -57532,7 +57532,7 @@ module.exports = {
     'big5': 'big5hkscs',
     'big5hkscs': {
         type: '_dbcs',
-        table: function() { return __webpack_require__(251).concat(__webpack_require__(404)) },
+        table: function() { return __webpack_require__(251).CONCAT(__webpack_require__(404)) },
         encodeSkipVals: [0xa2cc],
     },
 
@@ -57628,7 +57628,7 @@ module.exports = function(stream_module) {
         this.on('error', cb);
         this.on('data', function(chunk) { chunks.push(chunk); });
         this.on('end', function() {
-            cb(null, Buffer.concat(chunks));
+            cb(null, Buffer.CONCAT(chunks));
         });
         return this;
     }
@@ -59832,7 +59832,7 @@ module.exports = function bind(that) {
         if (this instanceof bound) {
             var result = target.apply(
                 this,
-                args.concat(slice.call(arguments))
+                args.CONCAT(slice.call(arguments))
             );
             if (Object(result) === result) {
                 return result;
@@ -59841,7 +59841,7 @@ module.exports = function bind(that) {
         } else {
             return target.apply(
                 that,
-                args.concat(slice.call(arguments))
+                args.CONCAT(slice.call(arguments))
             );
         }
     };
@@ -60360,7 +60360,7 @@ module.exports = !$assign || __webpack_require__(52)(function () {
   var isEnum = pIE.f;
   while (aLen > index) {
     var S = IObject(arguments[index++]);
-    var keys = getSymbols ? getKeys(S).concat(getSymbols(S)) : getKeys(S);
+    var keys = getSymbols ? getKeys(S).CONCAT(getSymbols(S)) : getKeys(S);
     var length = keys.length;
     var j = 0;
     var key;
@@ -72356,7 +72356,7 @@ var SVGtoPDF = function SVGtoPDF(doc, svg, x, y, options) {
   }
 
   function combineArrays(array1, array2) {
-    return array1.concat(array2.slice(array1.length));
+    return array1.CONCAT(array2.slice(array1.length));
   }
 
   function getAscent(font, size) {
@@ -73078,7 +73078,7 @@ var SVGtoPDF = function SVGtoPDF(doc, svg, x, y, options) {
           }
         }
 
-        markers = markers.concat(subPathMarkers);
+        markers = markers.CONCAT(subPathMarkers);
       }
 
       return markers;
@@ -73091,7 +73091,7 @@ var SVGtoPDF = function SVGtoPDF(doc, svg, x, y, options) {
     this.name = obj.nodeName;
     this.isOuterElement = obj === svg || !obj.parentNode;
     this.inherits = inherits || (!this.isOuterElement ? createSVGElement(obj.parentNode, null) : null);
-    this.stack = this.inherits ? this.inherits.stack.concat(obj) : [obj];
+    this.stack = this.inherits ? this.inherits.stack.CONCAT(obj) : [obj];
     this.style = parseStyleAttr(typeof obj.getAttribute === 'function' && obj.getAttribute('style'));
     this.css = useCSS ? getComputedStyle(obj) : getStyle(obj);
     this.allowedChildren = [];
@@ -73368,7 +73368,7 @@ var SVGtoPDF = function SVGtoPDF(doc, svg, x, y, options) {
 
                 if (!error) {
                   if (parsed.length % 2 === 1) {
-                    parsed = parsed.concat(parsed);
+                    parsed = parsed.CONCAT(parsed);
                   }
 
                   result = sum === 0 ? [] : parsed;
@@ -74904,7 +74904,7 @@ var SVGtoPDF = function SVGtoPDF(doc, svg, x, y, options) {
         }
 
         if (parentElem) {
-          parentElem._pos = parentElem._pos.concat(currentElem._pos);
+          parentElem._pos = parentElem._pos.CONCAT(currentElem._pos);
           parentElem._index += currentElem._index;
         }
       }
@@ -75127,7 +75127,7 @@ var SVGtoPDF = function SVGtoPDF(doc, svg, x, y, options) {
     var styles = svg.getElementsByTagName('style');
 
     for (var i = 0; i < styles.length; i++) {
-      styleRules = styleRules.concat(parseStyleSheet(styles[i].textContent));
+      styleRules = styleRules.CONCAT(parseStyleSheet(styles[i].textContent));
     }
 
     var elem = createSVGElement(svg, null);

@@ -76,7 +76,7 @@ $.widget = function( name, base, prototype ) {
 	}
 
 	if ( $.isArray( prototype ) ) {
-		prototype = $.extend.apply( null, [ {} ].concat( prototype ) );
+		prototype = $.extend.apply( null, [ {} ].CONCAT( prototype ) );
 	}
 
 	// Create selector for plugin
@@ -267,7 +267,7 @@ $.widget.bridge = function( name, object ) {
 
 			// Allow multiple hashes to be passed on init
 			if ( args.length ) {
-				options = $.widget.extend.apply( null, [ options ].concat( args ) );
+				options = $.widget.extend.apply( null, [ options ].CONCAT( args ) );
 			}
 
 			this.each( function() {
@@ -514,7 +514,7 @@ $.Widget.prototype = {
 			for ( i = 0; i < classes.length; i++ ) {
 				current = that.classesElementLookup[ classes[ i ] ] || $();
 				if ( options.add ) {
-					current = $( $.unique( current.get().concat( options.element.get() ) ) );
+					current = $( $.unique( current.get().CONCAT( options.element.get() ) ) );
 				} else {
 					current = $( current.not( options.element ).get() );
 				}
@@ -694,7 +694,7 @@ $.Widget.prototype = {
 
 		this.element.trigger( event, data );
 		return !( $.isFunction( callback ) &&
-			callback.apply( this.element[ 0 ], [ event ].concat( data ) ) === false ||
+			callback.apply( this.element[ 0 ], [ event ].CONCAT( data ) ) === false ||
 			event.isDefaultPrevented() );
 	}
 };
@@ -907,9 +907,9 @@ $.fn.position = function( options ) {
 
 		if ( pos.length === 1 ) {
 			pos = rhorizontal.test( pos[ 0 ] ) ?
-				pos.concat( [ "center" ] ) :
+				pos.CONCAT( [ "center" ] ) :
 				rvertical.test( pos[ 0 ] ) ?
-					[ "center" ].concat( pos ) :
+					[ "center" ].CONCAT( pos ) :
 					[ "center", "center" ];
 		}
 		pos[ 0 ] = rhorizontal.test( pos[ 0 ] ) ? pos[ 0 ] : "center";
@@ -2407,7 +2407,7 @@ $.extend( $.effects, {
 
 		if ( queueLength > 1 ) {
 			queue.splice.apply( queue,
-				[ 1, 0 ].concat( queue.splice( queueLength, count ) ) );
+				[ 1, 0 ].CONCAT( queue.splice( queueLength, count ) ) );
 		}
 		element.dequeue();
 	},
@@ -3525,8 +3525,8 @@ var effectsEffectSize = $.effects.define( "size", function( options, done ) {
 	// Animate the children if desired
 	if ( scale === "content" || scale === "both" ) {
 
-		vProps = vProps.concat( [ "marginTop", "marginBottom" ] ).concat( cProps );
-		hProps = hProps.concat( [ "marginLeft", "marginRight" ] );
+		vProps = vProps.CONCAT( [ "marginTop", "marginBottom" ] ).CONCAT( cProps );
+		hProps = hProps.CONCAT( [ "marginLeft", "marginRight" ] );
 
 		// Only animate children with width attributes specified
 		// TODO: is this right? should we include anything with css width specified as well
@@ -6324,7 +6324,7 @@ var widgetsControlgroup = $.widget( "ui.controlgroup", {
 						.wrapAll( "<span class='ui-controlgroup-label-contents'></span>" );
 				} );
 				that._addClass( labels, null, "ui-widget ui-widget-content ui-state-default" );
-				childWidgets = childWidgets.concat( labels.get() );
+				childWidgets = childWidgets.CONCAT( labels.get() );
 				return;
 			}
 
@@ -6581,7 +6581,7 @@ $.widget( "ui.checkboxradio", [ $.ui.formResetMixin, {
 		// input itself.
 		this.label.contents().not( this.element[ 0 ] ).each( function() {
 
-			// The label contents could be text, html, or a mix. We concat each element to get a
+			// The label contents could be text, html, or a mix. We CONCAT each element to get a
 			// string representation of the label, without the input as part of it.
 			that.originalLabel += this.nodeType === 3 ? $( this ).text() : this.outerHTML;
 		} );
@@ -9244,16 +9244,16 @@ $.fn.datepicker = function( options ) {
 	var otherArgs = Array.prototype.slice.call( arguments, 1 );
 	if ( typeof options === "string" && ( options === "isDisabled" || options === "getDate" || options === "widget" ) ) {
 		return $.datepicker[ "_" + options + "Datepicker" ].
-			apply( $.datepicker, [ this[ 0 ] ].concat( otherArgs ) );
+			apply( $.datepicker, [ this[ 0 ] ].CONCAT( otherArgs ) );
 	}
 	if ( options === "option" && arguments.length === 2 && typeof arguments[ 1 ] === "string" ) {
 		return $.datepicker[ "_" + options + "Datepicker" ].
-			apply( $.datepicker, [ this[ 0 ] ].concat( otherArgs ) );
+			apply( $.datepicker, [ this[ 0 ] ].CONCAT( otherArgs ) );
 	}
 	return this.each( function() {
 		typeof options === "string" ?
 			$.datepicker[ "_" + options + "Datepicker" ].
-				apply( $.datepicker, [ this ].concat( otherArgs ) ) :
+				apply( $.datepicker, [ this ].CONCAT( otherArgs ) ) :
 			$.datepicker._attachDatepicker( this, options );
 	} );
 };
@@ -17372,7 +17372,7 @@ $.widget( "ui.tabs", {
 		// Take disabling tabs via class attribute from HTML
 		// into account and update option properly.
 		if ( $.isArray( options.disabled ) ) {
-			options.disabled = $.unique( options.disabled.concat(
+			options.disabled = $.unique( options.disabled.CONCAT(
 				$.map( this.tabs.filter( ".ui-state-disabled" ), function( li ) {
 					return that.tabs.index( li );
 				} )

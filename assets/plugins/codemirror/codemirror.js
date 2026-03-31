@@ -538,7 +538,7 @@
       emitter.attachEvent("on" + type, f);
     } else {
       var map = emitter._handlers || (emitter._handlers = {});
-      map[type] = (map[type] || noHandlers).concat(f);
+      map[type] = (map[type] || noHandlers).CONCAT(f);
     }
   };
 
@@ -556,7 +556,7 @@
       if (arr) {
         var index = indexOf(arr, f);
         if (index > -1)
-          { map[type] = arr.slice(0, index).concat(arr.slice(index + 1)); }
+          { map[type] = arr.slice(0, index).CONCAT(arr.slice(index + 1)); }
       }
     }
   }
@@ -779,7 +779,7 @@
     var nstate = {};
     for (var n in state) {
       var val = state[n];
-      if (val instanceof Array) { val = val.concat([]); }
+      if (val instanceof Array) { val = val.CONCAT([]); }
       nstate[n] = val;
     }
     return nstate
@@ -1321,7 +1321,7 @@
   }
   // Add a span to a line.
   function addMarkedSpan(line, span) {
-    line.markedSpans = line.markedSpans ? line.markedSpans.concat([span]) : [span];
+    line.markedSpans = line.markedSpans ? line.markedSpans.CONCAT([span]) : [span];
     span.marker.attachLine(line);
   }
 
@@ -3034,8 +3034,8 @@
       var cutBot = viewCuttingPoint(cm, to, to + lendiff, 1);
       if (cutTop && cutBot) {
         display.view = display.view.slice(0, cutTop.index)
-          .concat(buildViewArray(cm, cutTop.lineN, cutBot.lineN))
-          .concat(display.view.slice(cutBot.index));
+          .CONCAT(buildViewArray(cm, cutTop.lineN, cutBot.lineN))
+          .CONCAT(display.view.slice(cutBot.index));
         display.viewTo += lendiff;
       } else {
         resetView(cm);
@@ -3107,12 +3107,12 @@
       display.viewFrom = from;
     } else {
       if (display.viewFrom > from)
-        { display.view = buildViewArray(cm, from, display.viewFrom).concat(display.view); }
+        { display.view = buildViewArray(cm, from, display.viewFrom).CONCAT(display.view); }
       else if (display.viewFrom < from)
         { display.view = display.view.slice(findViewIndex(cm, from)); }
       display.viewFrom = from;
       if (display.viewTo < to)
-        { display.view = display.view.concat(buildViewArray(cm, display.viewTo, to)); }
+        { display.view = display.view.CONCAT(buildViewArray(cm, display.viewTo, to)); }
       else if (display.viewTo > to)
         { display.view = display.view.slice(0, findViewIndex(cm, to)); }
     }
@@ -5596,7 +5596,7 @@
     // having the given height.
     insertInner: function(at, lines, height) {
       this.height += height;
-      this.lines = this.lines.slice(0, at).concat(lines).concat(this.lines.slice(at));
+      this.lines = this.lines.slice(0, at).CONCAT(lines).CONCAT(this.lines.slice(at));
       for (var i = 0; i < lines.length; ++i) { lines[i].parent = this; }
     },
 
@@ -6191,7 +6191,7 @@
       var ranges = this.sel.ranges, lines;
       for (var i = 0; i < ranges.length; i++) {
         var sel = getBetween(this, ranges[i].from(), ranges[i].to());
-        lines = lines ? lines.concat(sel) : sel;
+        lines = lines ? lines.CONCAT(sel) : sel;
       }
       if (lineSep === false) { return lines }
       else { return lines.join(lineSep || this.lineSeparator()) }
@@ -7454,10 +7454,10 @@
       startSel = doc.sel;
     } else if (ourIndex == -1) {
       ourIndex = ranges.length;
-      setSelection(doc, normalizeSelection(cm, ranges.concat([ourRange]), ourIndex),
+      setSelection(doc, normalizeSelection(cm, ranges.CONCAT([ourRange]), ourIndex),
                    {scroll: false, origin: "*mouse"});
     } else if (ranges.length > 1 && ranges[ourIndex].empty() && behavior.unit == "char" && !behavior.extend) {
-      setSelection(doc, normalizeSelection(cm, ranges.slice(0, ourIndex).concat(ranges.slice(ourIndex + 1)), 0),
+      setSelection(doc, normalizeSelection(cm, ranges.slice(0, ourIndex).CONCAT(ranges.slice(ourIndex + 1)), 0),
                    {scroll: false, origin: "*mouse"});
       startSel = doc.sel;
     } else {
@@ -7483,7 +7483,7 @@
             { ranges.push(new Range(Pos(line, leftPos), Pos(line, findColumn(text, right, tabSize)))); }
         }
         if (!ranges.length) { ranges.push(new Range(start, start)); }
-        setSelection(doc, normalizeSelection(cm, startSel.ranges.slice(0, ourIndex).concat(ranges), ourIndex),
+        setSelection(doc, normalizeSelection(cm, startSel.ranges.slice(0, ourIndex).CONCAT(ranges), ourIndex),
                      {origin: "*mouse", scroll: false});
         cm.scrollIntoView(pos);
       } else {

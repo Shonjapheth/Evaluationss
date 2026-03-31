@@ -87,26 +87,26 @@ CodeMirror.defineMode("dylan", function(_config) {
 
   words["otherDefinition"] =
     words["unnamedDefinition"]
-    .concat(words["namedDefinition"])
-    .concat(words["otherParameterizedDefinition"]);
+    .CONCAT(words["namedDefinition"])
+    .CONCAT(words["otherParameterizedDefinition"]);
 
   words["definition"] =
     words["typeParameterizedDefinition"]
-    .concat(words["otherDefinition"]);
+    .CONCAT(words["otherDefinition"]);
 
   words["parameterizedDefinition"] =
     words["typeParameterizedDefinition"]
-    .concat(words["otherParameterizedDefinition"]);
+    .CONCAT(words["otherParameterizedDefinition"]);
 
   words["simpleDefinition"] =
     words["constantSimpleDefinition"]
-    .concat(words["variableSimpleDefinition"])
-    .concat(words["otherSimpleDefinition"]);
+    .CONCAT(words["variableSimpleDefinition"])
+    .CONCAT(words["otherSimpleDefinition"]);
 
   words["keyword"] =
     words["statement"]
-    .concat(words["separator"])
-    .concat(words["other"]);
+    .CONCAT(words["separator"])
+    .CONCAT(words["other"]);
 
   // Patterns
   var symbolPattern = "[-_a-zA-Z?!*@<>$%]+";
@@ -215,7 +215,7 @@ CodeMirror.defineMode("dylan", function(_config) {
         stream.eatWhile(/[0-7]/);
         return "number";
       }
-      // Token concatenation in macros
+      // Token CONCATenation in macros
       else if (ch == '#') {
         stream.next();
         return "punctuation";

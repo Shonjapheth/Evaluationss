@@ -20,7 +20,7 @@
 				<tbody>
 					<?php
 					$i = 1;
-					$qry = $conn->query("SELECT *,concat(firstname,' ',lastname) as name FROM faculty_list order by concat(firstname,' ',lastname) asc");
+					$qry = $conn->query("SELECT *,CONCAT(firstname,' ',lastname) as name FROM faculty_list order by CONCAT(firstname,' ',lastname) asc");
 					while($row= $qry->fetch_assoc()):
 					?>
 					<tr>

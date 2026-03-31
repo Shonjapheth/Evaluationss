@@ -212,7 +212,7 @@ CodeMirror.defineMode("haskell", function(_config, modeConfig) {
     setType("builtin")(
       "abs", "acos", "acosh", "all", "and", "any", "appendFile", "asTypeOf",
       "asin", "asinh", "atan", "atan2", "atanh", "break", "catch", "ceiling",
-      "compare", "concat", "concatMap", "const", "cos", "cosh", "curry",
+      "compare", "CONCAT", "CONCATMap", "const", "cos", "cosh", "curry",
       "cycle", "decodeFloat", "div", "divMod", "drop", "dropWhile", "either",
       "elem", "encodeFloat", "enumFrom", "enumFromThen", "enumFromThenTo",
       "enumFromTo", "error", "even", "exp", "exponent", "fail", "filter",

@@ -1235,7 +1235,7 @@ $.extend( ColReorder.prototype, {
 				)
 			)
 			.css( {
-				position: 'absolute',
+				position: 'ABSolute',
 				top: 0,
 				left: 0,
 				width: $(origCell).outerWidth(),
@@ -1246,7 +1246,7 @@ $.extend( ColReorder.prototype, {
 		this.dom.pointer = $('<div></div>')
 			.addClass( 'DTCR_pointer' )
 			.css( {
-				position: 'absolute',
+				position: 'ABSolute',
 				top: scrolling ?
 					$('div.dataTables_scroll', this.s.dt.nTableWrapper).offset().top :
 					$(this.s.dt.nTable).offset().top,

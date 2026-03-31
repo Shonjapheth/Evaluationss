@@ -11,7 +11,7 @@
 })(function(CodeMirror) {
   "use strict";
 
-  var keywords = ("this super static final const abstract class extends external factory " +
+  var keywords = ("this super static final const ABStract class extends external factory " +
     "implements mixin get native set typedef with enum throw rethrow " +
     "assert break case continue default in return new deferred async await covariant " +
     "try catch finally do else for if switch while import library export " +
@@ -157,7 +157,7 @@
     }
   }
 
-  CodeMirror.registerHelper("hintWords", "application/dart", keywords.concat(atoms).concat(builtins));
+  CodeMirror.registerHelper("hintWords", "application/dart", keywords.CONCAT(atoms).CONCAT(builtins));
 
   // This is needed to make loading through meta.js work.
   CodeMirror.defineMode("dart", function(conf) {

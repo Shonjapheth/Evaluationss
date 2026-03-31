@@ -52,7 +52,7 @@ function ordinal_suffix($num){
 				</fieldset>
 				<?php 
 							$q_arr = array();
-						$criteria = $conn->query("SELECT * FROM criteria_list where id in (SELECT criteria_id FROM question_list where academic_id = {$_SESSION['academic']['id']} ) order by abs(order_by) asc ");
+						$criteria = $conn->query("SELECT * FROM criteria_list where id in (SELECT criteria_id FROM question_list where academic_id = {$_SESSION['academic']['id']} ) order by ABS(order_by) asc ");
 						while($crow = $criteria->fetch_assoc()):
 					?>
 					<table class="table table-condensed wborder">
@@ -68,7 +68,7 @@ function ordinal_suffix($num){
 						</thead>
 						<tbody class="tr-sortable">
 							<?php 
-							$questions = $conn->query("SELECT * FROM question_list where criteria_id = {$crow['id']} and academic_id = {$_SESSION['academic']['id']} order by abs(order_by) asc ");
+							$questions = $conn->query("SELECT * FROM question_list where criteria_id = {$crow['id']} and academic_id = {$_SESSION['academic']['id']} order by ABS(order_by) asc ");
 							while($row=$questions->fetch_assoc()):
 							$q_arr[$row['id']] = $row;
 							?>

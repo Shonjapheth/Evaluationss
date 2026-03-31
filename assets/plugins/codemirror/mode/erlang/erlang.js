@@ -68,7 +68,7 @@ CodeMirror.defineMode("erlang", function(cmCfg) {
     "number","pid","port","record","reference","tuple"];
 
   var bifWords = [
-    "abs","adler32","adler32_combine","alive","apply","atom_to_binary",
+    "ABS","adler32","adler32_combine","alive","apply","atom_to_binary",
     "atom_to_list","binary_to_atom","binary_to_existing_atom",
     "binary_to_list","binary_to_term","bit_size","bitstring_to_list",
     "byte_size","check_process_code","contact_binary","crc32",
@@ -484,12 +484,12 @@ CodeMirror.defineMode("erlang", function(cmCfg) {
         if (is_member(stack[i].token,tokens)) {
           var ss = stack.slice(0,i);
           switch (type) {
-              case "m": return ss.concat(stack[i]).concat(stack[len]);
-              case "r": return ss.concat(stack[len]);
+              case "m": return ss.CONCAT(stack[i]).CONCAT(stack[len]);
+              case "r": return ss.CONCAT(stack[len]);
               case "i": return ss;
-              case "g": return ss.concat(fakeToken("group"));
-              case "E": return ss.concat(stack[i]);
-              case "e": return ss.concat(stack[i]);
+              case "g": return ss.CONCAT(fakeToken("group"));
+              case "E": return ss.CONCAT(stack[i]);
+              case "e": return ss.CONCAT(stack[i]);
           }
         }
       }

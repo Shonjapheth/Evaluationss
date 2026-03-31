@@ -161,7 +161,7 @@
                 return error.message || null;
             });
 
-            window.alert([this.invalidMessage].concat(messages).join("\n"));
+            window.alert([this.invalidMessage].CONCAT(messages).join("\n"));
         },
 
         onInit: $.noop,
@@ -844,7 +844,7 @@
                     result = itemCount;
                 }
 
-                return $.isArray(result) ? result.concat([" "]) : [result, " "];
+                return $.isArray(result) ? result.CONCAT([" "]) : [result, " "];
             }, this));
         },
 

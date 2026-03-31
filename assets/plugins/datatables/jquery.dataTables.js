@@ -1584,7 +1584,7 @@
 		return out;
 	};
 	
-	// Surprisingly this is faster than [].concat.apply
+	// Surprisingly this is faster than [].CONCAT.apply
 	// https://jsperf.com/flatten-an-array-loop-vs-reduce/2
 	var _flatten = function (out, val) {
 		if (Array.isArray(val)) {
@@ -1904,7 +1904,7 @@
 				.append(
 					$('<div/>')
 						.css( {
-							position: 'absolute',
+							position: 'ABSolute',
 							top: 1,
 							left: 1,
 							width: 100,
@@ -3207,7 +3207,7 @@
 				// Remove any classes added by DT_RowClass before
 				var a = data.DT_RowClass.split(' ');
 				row.__rowc = row.__rowc ?
-					_unique( row.__rowc.concat( a ) ) :
+					_unique( row.__rowc.CONCAT( a ) ) :
 					a;
 	
 				$(tr)
@@ -5685,7 +5685,7 @@
 			// needed
 			var holder = $('<div/>').css( scrollX || scrollY ?
 					{
-						position: 'absolute',
+						position: 'ABSolute',
 						top: 0,
 						left: 0,
 						height: 1,
@@ -5754,7 +5754,7 @@
 		// If there is a width attr, we want to attach an event listener which
 		// allows the table sizing to automatically adjust when the window is
 		// resized. Use the width attr rather than CSS, since we can't know if the
-		// CSS is a relative value or absolute - DOM read is always px.
+		// CSS is a relative value or ABSolute - DOM read is always px.
 		if ( tableWidthAttr ) {
 			table.style.width = _fnStringToCss( tableWidthAttr );
 		}
@@ -6977,7 +6977,7 @@
 		},
 	
 	
-		concat:  __arrayProto.concat,
+		CONCAT:  __arrayProto.CONCAT,
 	
 	
 		context: [], // array of table settings objects
@@ -7032,7 +7032,7 @@
 		flatten: function ()
 		{
 			var a = [];
-			return new _Api( this.context, a.concat.apply( a, this.toArray() ) );
+			return new _Api( this.context, a.CONCAT.apply( a, this.toArray() ) );
 		},
 	
 	
@@ -7110,7 +7110,7 @@
 			}
 	
 			if ( a.length || alwaysNew ) {
-				var api = new _Api( context, flatten ? a.concat.apply( [], a ) : a );
+				var api = new _Api( context, flatten ? a.CONCAT.apply( [], a ) : a );
 				var apiSelector = api.selector;
 				apiSelector.rows = selector.rows;
 				apiSelector.cols = selector.cols;
@@ -7782,7 +7782,7 @@
 				res = selectFn( typeof a[j] === 'string' ? (a[j]).trim() : a[j] );
 	
 				if ( res && res.length ) {
-					out = out.concat( res );
+					out = out.CONCAT( res );
 				}
 			}
 		}
@@ -9331,7 +9331,7 @@
 			rows   = this.rows( opts ).nodes(), // Get all rows
 			jqRows = $(rows);
 	
-		return $( [].concat(
+		return $( [].CONCAT(
 			jqRows.filter( selector ).toArray(),
 			jqRows.find( selector ).toArray()
 		) );
@@ -15046,7 +15046,7 @@
 					}
 	
 					flo = flo.toFixed( precision );
-					d = Math.abs( flo );
+					d = Math.ABS( flo );
 	
 					var intPart = parseInt( d, 10 );
 					var floatPart = precision ?
@@ -15087,7 +15087,7 @@
 	function _fnExternApiFunc (fn)
 	{
 		return function() {
-			var args = [_fnSettingsFromNode( this[DataTable.ext.iApiIndex] )].concat(
+			var args = [_fnSettingsFromNode( this[DataTable.ext.iApiIndex] )].CONCAT(
 				Array.prototype.slice.call(arguments)
 			);
 			return DataTable.ext.internal[fn].apply( this, args );

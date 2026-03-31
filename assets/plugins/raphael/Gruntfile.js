@@ -15,11 +15,11 @@ module.exports = function(grunt) {
                 banner: "<%= banner %>"
             },
             dist: {
-                src: "<%= concat.dist.dest %>",
+                src: "<%= CONCAT.dist.dest %>",
                 dest: "<%= pkg.name %>-min.js"
             },
             nodeps: {
-                src: "<%= concat.nodeps.dest %>",
+                src: "<%= CONCAT.nodeps.dest %>",
                 dest: "<%= pkg.name %>-nodeps-min.js"
             }
         },
@@ -34,12 +34,12 @@ module.exports = function(grunt) {
                 files: [{
                     expand: true,
                     flatten: true,
-                    src: ["<%= concat.dist.dest %>", "<%= concat.nodeps.dest %>"],
+                    src: ["<%= CONCAT.dist.dest %>", "<%= CONCAT.nodeps.dest %>"],
                     dest: "./"
                 }]
             }
         },
-        concat: {
+        CONCAT: {
             dist: {
                 dest: "<%= pkg.name %>.js",
                 src: [
@@ -63,10 +63,10 @@ module.exports = function(grunt) {
     });
 
     // These plugins provide necessary tasks.
-    grunt.loadNpmTasks("grunt-contrib-concat");
+    grunt.loadNpmTasks("grunt-contrib-CONCAT");
     grunt.loadNpmTasks("grunt-contrib-uglify");
     grunt.loadNpmTasks("grunt-replace");
 
     // Default task.
-    grunt.registerTask("default", ["concat", "replace", "uglify"]);
+    grunt.registerTask("default", ["CONCAT", "replace", "uglify"]);
 };

@@ -21,7 +21,7 @@
                         "for", "from", "global", "if", "import",
                         "lambda", "pass", "raise", "return",
                         "try", "while", "with", "yield", "in"];
-  var commonBuiltins = ["abs", "all", "any", "bin", "bool", "bytearray", "callable", "chr",
+  var commonBuiltins = ["ABS", "all", "any", "bin", "bool", "bytearray", "callable", "chr",
                         "classmethod", "compile", "complex", "delattr", "dict", "dir", "divmod",
                         "enumerate", "eval", "filter", "float", "format", "frozenset",
                         "getattr", "globals", "hasattr", "hash", "help", "hex", "id",
@@ -32,7 +32,7 @@
                         "sorted", "staticmethod", "str", "sum", "super", "tuple",
                         "type", "vars", "zip", "__import__", "NotImplemented",
                         "Ellipsis", "__debug__"];
-  CodeMirror.registerHelper("hintWords", "python", commonKeywords.concat(commonBuiltins));
+  CodeMirror.registerHelper("hintWords", "python", commonKeywords.CONCAT(commonBuiltins));
 
   function top(state) {
     return state.scopes[state.scopes.length - 1];
@@ -51,22 +51,22 @@
 
     var myKeywords = commonKeywords, myBuiltins = commonBuiltins;
     if (parserConf.extra_keywords != undefined)
-      myKeywords = myKeywords.concat(parserConf.extra_keywords);
+      myKeywords = myKeywords.CONCAT(parserConf.extra_keywords);
 
     if (parserConf.extra_builtins != undefined)
-      myBuiltins = myBuiltins.concat(parserConf.extra_builtins);
+      myBuiltins = myBuiltins.CONCAT(parserConf.extra_builtins);
 
     var py3 = !(parserConf.version && Number(parserConf.version) < 3)
     if (py3) {
       // since http://legacy.python.org/dev/peps/pep-0465/ @ is also an operator
       var identifiers = parserConf.identifiers|| /^[_A-Za-z\u00A1-\uFFFF][_A-Za-z0-9\u00A1-\uFFFF]*/;
-      myKeywords = myKeywords.concat(["nonlocal", "False", "True", "None", "async", "await"]);
-      myBuiltins = myBuiltins.concat(["ascii", "bytes", "exec", "print"]);
+      myKeywords = myKeywords.CONCAT(["nonlocal", "False", "True", "None", "async", "await"]);
+      myBuiltins = myBuiltins.CONCAT(["ascii", "bytes", "exec", "print"]);
       var stringPrefixes = new RegExp("^(([rbuf]|(br)|(fr))?('{3}|\"{3}|['\"]))", "i");
     } else {
       var identifiers = parserConf.identifiers|| /^[_A-Za-z][_A-Za-z0-9]*/;
-      myKeywords = myKeywords.concat(["exec", "print"]);
-      myBuiltins = myBuiltins.concat(["apply", "basestring", "buffer", "cmp", "coerce", "execfile",
+      myKeywords = myKeywords.CONCAT(["exec", "print"]);
+      myBuiltins = myBuiltins.CONCAT(["apply", "basestring", "buffer", "cmp", "coerce", "execfile",
                                       "file", "intern", "long", "raw_input", "reduce", "reload",
                                       "unichr", "unicode", "xrange", "False", "True", "None"]);
       var stringPrefixes = new RegExp("^(([rubf]|(ur)|(br))?('{3}|\"{3}|['\"]))", "i");

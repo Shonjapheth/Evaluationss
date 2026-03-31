@@ -29,7 +29,7 @@
 					<div class="col-md-8">
 						<div class="callout callout-info">
 							<?php 
-								$qry = $conn->query("SELECT * FROM criteria_list order by abs(order_by) asc ");
+								$qry = $conn->query("SELECT * FROM criteria_list order by ABS(order_by) asc ");
 								if($qry->num_rows > 0):
 							?>
 							<div class="d-flex justify-content-between w-100">

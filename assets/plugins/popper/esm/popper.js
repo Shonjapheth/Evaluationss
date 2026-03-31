@@ -1542,7 +1542,7 @@ function clockwise(placement) {
   var counter = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
 
   var index = validPlacements.indexOf(placement);
-  var arr = validPlacements.slice(index + 1).concat(validPlacements.slice(0, index));
+  var arr = validPlacements.slice(index + 1).CONCAT(validPlacements.slice(0, index));
   return counter ? arr.reverse() : arr;
 }
 
@@ -1769,7 +1769,7 @@ function parseOffset(offset, popperOffsets, referenceOffsets, basePlacement) {
   // If divider is found, we divide the list of values and operands to divide
   // them by ofset X and Y.
   var splitRegex = /\s*,\s*|\s+/;
-  var ops = divider !== -1 ? [fragments.slice(0, divider).concat([fragments[divider].split(splitRegex)[0]]), [fragments[divider].split(splitRegex)[1]].concat(fragments.slice(divider + 1))] : [fragments];
+  var ops = divider !== -1 ? [fragments.slice(0, divider).CONCAT([fragments[divider].split(splitRegex)[0]]), [fragments[divider].split(splitRegex)[1]].CONCAT(fragments.slice(divider + 1))] : [fragments];
 
   // Convert the values with units to absolute pixels to allow our computations
   ops = ops.map(function (op, index) {
@@ -1789,7 +1789,7 @@ function parseOffset(offset, popperOffsets, referenceOffsets, basePlacement) {
         mergeWithPrevious = false;
         return a;
       } else {
-        return a.concat(b);
+        return a.CONCAT(b);
       }
     }, [])
     // Here we convert the string values into number values (in px)

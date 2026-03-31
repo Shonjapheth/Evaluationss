@@ -206,7 +206,7 @@ CodeMirror.defineMode("oz", function (conf) {
   function buildElectricInputRegEx() {
     // Reindentation should occur on [] or on a match of any of
     // the block closing keywords, at the end of a line.
-    var allClosings = middle.concat(end);
+    var allClosings = middle.CONCAT(end);
     return new RegExp("[\\[\\]]|(" + allClosings.join("|") + ")$");
   }
 

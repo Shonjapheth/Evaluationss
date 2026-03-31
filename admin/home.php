@@ -18,7 +18,7 @@ $astat = array("Not Yet Started","On-going","Closed");
           <div class="col-12 col-sm-6 col-md-4">
             <div class="small-box bg-light shadow-sm border">
               <div class="inner">
-                <h3><?php echo count($conn->query("SELECT * FROM faculty_list ")->fetch(PDO::FETCH_ASSOC)); ?></h3>
+                <h3><?php echo count($conn->query("SELECT * FROM faculty_list ")->fetchAll(PDO::FETCH_ASSOC)); ?></h3>
 
                 <p>Total Faculties</p>
               </div>
@@ -30,7 +30,7 @@ $astat = array("Not Yet Started","On-going","Closed");
            <div class="col-12 col-sm-6 col-md-4">
             <div class="small-box bg-light shadow-sm border">
               <div class="inner">
-                <h3><?php echo count($conn->query("SELECT * FROM student_list")->fetch(PDO::FETCH_ASSOC)); ?></h3>
+                <h3><?php echo count($conn->query("SELECT * FROM student_list")->fetchAll(PDO::FETCH_ASSOC)); ?></h3>
 
                 <p>Total Students</p>
               </div>
@@ -42,7 +42,7 @@ $astat = array("Not Yet Started","On-going","Closed");
            <div class="col-12 col-sm-6 col-md-4">
             <div class="small-box bg-light shadow-sm border">
               <div class="inner">
-                <h3><?php echo count($conn->query("SELECT * FROM users")->fetch(PDO::FETCH_ASSOC)); ?></h3>
+                <h3><?php echo count($conn->query("SELECT * FROM users")->fetchAll(PDO::FETCH_ASSOC)); ?></h3>
 
                 <p>Total Users</p>
               </div>
@@ -54,7 +54,7 @@ $astat = array("Not Yet Started","On-going","Closed");
           <div class="col-12 col-sm-6 col-md-4">
             <div class="small-box bg-light shadow-sm border">
               <div class="inner">
-                <h3><?php echo count($conn->query("SELECT * FROM class_list")->fetch(PDO::FETCH_ASSOC)); ?></h3>
+                <h3><?php echo count($conn->query("SELECT * FROM class_list")->fetchAll(PDO::FETCH_ASSOC)); ?></h3>
 
                 <p>Total Classes</p>
               </div>

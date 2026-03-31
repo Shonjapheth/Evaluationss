@@ -22,8 +22,8 @@
 				<tbody>
 					<?php
 					$i = 1;
-					$qry = $conn->query("SELECT *,concat(curriculum,' ',level,'-',section) as `class` FROM class_list order by class asc ");
-					while($row= $qry->fetch_assoc()):
+					$qry = $conn->query("SELECT *,{concat(curriculum,' ',level,'-',section)} as `class` FROM class_list order by class asc ");
+					while($row= $qry->fetchAll(PDO::FETCH_ASSOC)):
 					?>
 					<tr>
 						<th class="text-center"><?php echo $i++ ?></th>

@@ -29,10 +29,10 @@
 				<tbody>
 					<?php
 					$i = 1;
-					$qry = $conn->query("SELECT * FROM academic_list order by abs(year) desc,abs(semester) desc ");
-					while($row= $qry->fetch_assoc()):
-						$questions = $conn->query("SELECT * FROM question_list where academic_id ={$row['id']} ")->num_rows;
-						$answers = $conn->query("SELECT * FROM evaluation_list where academic_id ={$row['id']} ")->num_rows;
+					$qry = $conn->query("SELECT * FROM academic_list order by {abs(year)} desc,{abs(semester)} desc ");
+					while($row= $qry->fetchAll(PDO::FETCH_ASSOC)):
+						$questions = count($conn->query("SELECT * FROM question_list where academic_id ={$row['id']} ")->fetchAll(PDO::FETCH_ASSOC));
+						$answers = count($conn->query("SELECT * FROM evaluation_list where academic_id ={$row['id']} ")->fetchAll(PDO::FETCH_ASSOC));
 					?>
 					<tr>
 						<th class="text-center"><?php echo $i++ ?></th>

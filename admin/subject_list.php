@@ -28,7 +28,7 @@
 					<?php
 					$i = 1;
 					$qry = $conn->query("SELECT * FROM subject_list order by subject asc ");
-					while($row= $qry->fetch_assoc()):
+					while($row= $qry->fetchAll(PDO::FETCH_ASSOC)):
 					?>
 					<tr>
 						<th class="text-center"><?php echo $i++ ?></th>
